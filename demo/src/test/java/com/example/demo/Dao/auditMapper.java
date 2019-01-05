@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper
 public interface auditMapper {
     @Select("select * from audio where checkNum = #{checkNum}")
-    public audio selectAudioByCheckNum(int checkNum);
+    public audio selectAudioByCheckNum(String checkNum);
 
     @Select("select * from audio")
     public List<audio> select();

@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface managerMapper {
     @Select("select * from manager where managerNum = #{managerName}")
-    public manager selectManagerByManagerName(int managerName);
+    public manager selectManagerByManagerName(String managerName);
 
     @Insert("insert into manager(managerNum, managerName, managerPwd, " +
             "managerRight, telephoneNum) values (#{managerNum},#{managerName}," +

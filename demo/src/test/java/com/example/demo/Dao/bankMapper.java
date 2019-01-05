@@ -11,10 +11,10 @@ import java.util.List;
 public interface bankMapper {
 
     @Select("select * from bank where bankNum = #{bankNum}")
-    public bank selectBankByBankNum(int bankNum);
+    public bank selectBankByBankNum(String bankNum);
 
     @Select("select * from bank where bankName = #{bankName}")
-    public bank selectBankByBankName(int bankName);
+    public bank selectBankByBankName(String bankName);
 
     @Select("select * from bank")
     public List<bank> select();

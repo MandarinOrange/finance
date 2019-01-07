@@ -12,4 +12,5 @@ public class Repayment {
     private long checkNum;
     private double repAmount;
     private double repSum;
+
 }

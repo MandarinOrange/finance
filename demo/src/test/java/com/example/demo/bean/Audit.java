@@ -24,5 +24,6 @@ public class Audit {
     private  int year;
     private int equation;
 
+
     public Audit(){};
 }

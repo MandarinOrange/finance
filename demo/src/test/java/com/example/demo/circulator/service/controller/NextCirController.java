@@ -34,6 +34,7 @@ public class NextCirController {
             request.setAttribute("next",next_principal_and_intrate);
         }else{
             return "/计算失败";
+
         }
 
         return "/next";

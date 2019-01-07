@@ -14,5 +14,6 @@ public class Bank {
     private String bankName;
     private String contact;//联系方式
 
+
     public Bank(){};
 }

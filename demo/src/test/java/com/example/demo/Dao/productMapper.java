@@ -27,6 +27,7 @@ public interface productMapper {
             "productDescription=#{productDescription},pictureAddress=#{pictureAddress}")
     public void updateProduct(Product products);
 
+
     @Delete("delete from product where productNum=#{productNum}")
     public void deleteProduct(int productNum);
 }

@@ -28,5 +28,6 @@ public class Transaction {
         this.payer = payer;
         this.payee = payee;
         this.transactionAmount=transactionNum;
+
     }
 }

@@ -52,6 +52,7 @@ public class ProductHistroy {
         this.alterTime = alterTime;
     }
 
+
     public String getDeleteTime() {
         return deleteTime;
     }

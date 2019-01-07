@@ -20,6 +20,7 @@ public class Manager {
     private String managerRight;
     private String telephoneNum;
 
+
     public Manager(){};
 
     public long getManagerNum() {

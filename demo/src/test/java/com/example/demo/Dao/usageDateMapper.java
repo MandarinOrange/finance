@@ -27,4 +27,5 @@ public interface usageDateMapper {
 
     @Delete("delete from usagedate where checkNum=#{checkNum}")
     public void deleteUsageDate(long checkNum);
+
 }

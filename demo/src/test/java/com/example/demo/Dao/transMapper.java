@@ -26,4 +26,5 @@ public interface transMapper {
 
     @Delete("delete from audit where transactionNum=#{transactionNum}")
     public void deleteTransaction(long transactionNum);
+
 }

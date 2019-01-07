@@ -25,5 +25,6 @@ public class User {
     private String isIdentify;
     private String registerTime;
 
+
     public User(){};
 }

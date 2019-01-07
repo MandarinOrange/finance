@@ -13,4 +13,5 @@ public interface paymentMapper {
 
     @Update("update repayment set repAmount = {#repAmount} ,repSum = {#repSum} where checkNum = {#checkNum}")
     public void updateRepayment(Repayment repayment);
+
 }

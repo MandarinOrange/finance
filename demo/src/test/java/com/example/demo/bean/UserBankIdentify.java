@@ -10,4 +10,5 @@ public class UserBankIdentify {
     private String userName;
     private String bankAccount;
     private short bankAccountIdentify;
+
 }

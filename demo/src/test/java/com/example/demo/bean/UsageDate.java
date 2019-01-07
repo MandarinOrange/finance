@@ -20,4 +20,5 @@ public class UsageDate {
 
     public UsageDate(){};
     private int equation;
+
 }

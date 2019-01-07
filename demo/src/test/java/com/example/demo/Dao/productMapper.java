@@ -8,13 +8,10 @@ import java.util.List;
 @Mapper
 public interface productMapper {
     @Select("select * from product where productNum = #{productNum}")
-    public Product selectProductByProductNum(String productNum);
-
-    @Select("select intrate from product where productNum = #{productNum}")
-    public Product selectProductIntrateByProductNum(String productNum);
+    public Product selectProductByProductNum(long productNum);
 
     @Select("select * from product where productName = #{productName}")
-    public Product selectProductByProductName(String productName);
+    public Product selectProductByProductName(long productName);
 
     @Select("select * from product")
     public List<Product> select();

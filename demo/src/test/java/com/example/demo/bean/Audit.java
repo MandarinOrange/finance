@@ -18,6 +18,7 @@ public class Audit {
     private short isSignContract;
     private  String productNum;
     private  int year;
+    private int equation;
 
     public Audit(){};
 

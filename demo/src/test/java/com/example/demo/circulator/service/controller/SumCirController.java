@@ -1,7 +1,8 @@
 package com.example.demo.circulator.service.controller;
 
-import com.example.demo.circulator.service.CirculatorService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.circulator.service.CirService;
+import com.example.demo.circulator.service.EPAIR_CirService;
+import com.example.demo.circulator.service.EPR_CirService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class SumCirController {
     //@Autowired
-    private CirculatorService circulatorService;
+    private CirService cirService;
 
     @GetMapping("/cir/sum")
     public String SumCirculator(HttpServletRequest request, HttpServletResponse response){
@@ -20,18 +21,18 @@ public class SumCirController {
         int year = Integer.parseInt(request.getParameter("year"));
         int equation = Integer.parseInt(request.getParameter("equation"));
 
-        double sum_principal_and_intrate = 0;
         switch (equation){
             case 1:
-                sum_principal_and_intrate = circulatorService.Equal_principal_and_interest_repaymentSumCirculator(productNum,amount,year);
+                cirService = new EPAIR_CirService();
                 break;
             case 2:
-                sum_principal_and_intrate = circulatorService.Equal_principal_repaymentSumCirculator(productNum,amount,year);
+                cirService = new EPR_CirService();
                 break;
             default:
-                System.out.println("not exit");
+                System.out.println("not exit ");
                 break;
         }
+        double sum_principal_and_intrate = cirService.SumCirculator(productNum,amount,year);
         request.setAttribute("sum",sum_principal_and_intrate);
         return "/circulator";
     }

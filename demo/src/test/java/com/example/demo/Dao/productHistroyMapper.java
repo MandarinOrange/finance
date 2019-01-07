@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface productHistroyMapper {
     @Select("select * from producthistroy where productNum = #{productNum}")
-    public ProductHistroy selectAudioByCheckNum(int productNum);
+    public ProductHistroy selectAudioByCheckNum(long productNum);
 
     @Select("select * from producthistroy")
     public List<ProductHistroy> select();

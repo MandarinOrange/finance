@@ -14,7 +14,7 @@ import javax.persistence.Id;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userNum;
+    private long userNum;
     private String userName;
     private String userPwd;
     private String userRight;
@@ -22,8 +22,9 @@ public class User {
     private String idNum;
     private String telephoneNum;
     private String address;
-    private int isIdentify;
+    private String isIdentify;
     private String registerTime;
+
 
     public User(){};
 }

@@ -16,25 +16,43 @@ public class EPAIR_CirService extends CirService{
 
     @Transactional //数据库与事物的一致性
     public double NextCirculator(long checkNum){
-        UsageDate usageDate = usageDateMapper.selectUsageDateByCheckNum(checkNum);
-        int year = usageDate.getYear();
-        double amount = usageDate.getAmount();
-        long productNum = usageDate.getProductNum();
+        try{
+            UsageDate usageDate = usageDateMapper.selectUsageDateByCheckNum(checkNum);
+            int year = usageDate.getYear();
+            double amount = usageDate.getAmount();
+            long productNum = usageDate.getProductNum();
 
-        Product product = productMapper.selectProductByProductNum(productNum);
-        float intrate = product.getIntrate();
-        intrate /= 12;
-        int month = year*12;
-        double rep = Math.pow((1+intrate),month)/(Math.pow((1+intrate),month)-1);
-        double next_principal_and_interest = rep * intrate * amount;
-        return next_principal_and_interest;
+            Product product = productMapper.selectProductByProductNum(productNum);
+            float intrate = product.getIntrate();
+            double rep_amount = 0;
+
+            double not_rep_amount = amount - rep_amount;
+            intrate /= 12;
+            int month = year*12;
+            double rep = Math.pow((1+intrate),month)/(Math.pow((1+intrate),month)-1);
+            double next_principal_and_interest = rep * intrate * amount;
+            return next_principal_and_interest;
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+
+
+        }
+        return -1;
     }
 
     public double SumCirculator(long productNum,double amount,int year){
-        Product product = productMapper.selectProductByProductNum(productNum);
-        float intrate = product.getIntrate();
-        double rep = Math.pow((1+intrate),year)/(Math.pow((1+intrate),year)-1);
-        double principal_and_interest = rep * intrate * amount * year;
-        return principal_and_interest;
+        try{
+            Product product = productMapper.selectProductByProductNum(productNum);
+            float intrate = product.getIntrate();
+            double rep = Math.pow((1+intrate),year)/(Math.pow((1+intrate),year)-1);
+            double principal_and_interest = rep * intrate * amount * year;
+            return principal_and_interest;
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+
+        }
+        return -1;
     }
 }

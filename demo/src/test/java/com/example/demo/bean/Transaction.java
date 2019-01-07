@@ -14,12 +14,20 @@ import javax.persistence.Id;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int transactionNum;
-    private String payer;
-    private String payee;
+    private long transactionNum;
+    private long payer;
+    private long payee;
     private float transactionTime;
     private float transactionAmount;
     private String note;
+    private long checkNum;
 
     public Transaction(){};
+    public Transaction(long checkNum,long payer,long payee,double transationAmount){
+        this.checkNum=checkNum;
+        this.payer = payer;
+        this.payee = payee;
+        this.transactionAmount=transactionNum;
+
+    }
 }

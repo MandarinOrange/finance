@@ -14,7 +14,7 @@ import javax.persistence.Id;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int productNum;
+    private long productNum;
     private String productName;
     private String category;
     private float intrate;
@@ -68,7 +68,7 @@ public class Product {
         this.intrate = intrate;
     }
 
-    public int getProductNum() {
+    public long getProductNum() {
         return productNum;
     }
 
@@ -76,7 +76,8 @@ public class Product {
         this.productName = productName;
     }
 
-    public void setProductNum(int productNum) {
+    public void setProductNum(long productNum) {
         this.productNum = productNum;
     }
 }
+

@@ -20,12 +20,12 @@ public interface productHistroyMapper {
             "#{productDescription},#{uploadTime},#{deleteTime},#{alterTime})")
     public void addProductHistroy(ProductHistroy productHistroys);
 
-    @Update("update producthistroy set productNum=#{productNum},productName=#{productName}" +
-            ",category=#{category},intrate=#{intrate},bankNum=#{bankNum}," +
-            "productDescription=#{productDescription},uploadTime=#{uploadTime},deleteTime=#{deleteTime}," +
-            "alterTime=#{alterTime}where productNum=#{productNum}")
-    public void updateProductHistroy(ProductHistroy productHistroys);
+//    @Update("update producthistroy set productNum=#{productNum},productName=#{productName}" +
+//            ",category=#{category},intrate=#{intrate},bankNum=#{bankNum}," +
+//            "productDescription=#{productDescription},uploadTime=#{uploadTime},deleteTime=#{deleteTime}," +
+//            "alterTime=#{alterTime}where productNum=#{productNum}")
+//    public void updateProductHistroy(ProductHistroy productHistroys);
 
-    @Delete("delete from producthistroy where productNum=#{productNum}")
-    public void deleteProductHistroy(int productNum);
+//    @Delete("delete from producthistroy where productNum=#{productNum}")
+//    public void deleteProductHistroy(int productNum);
 }

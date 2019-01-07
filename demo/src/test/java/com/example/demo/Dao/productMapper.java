@@ -25,8 +25,8 @@ public interface productMapper {
     @Update("update product set productNum=#{productNum},productName=#{productName}" +
             ",category=#{category},intrate=#{intrate},bankNum=#{bankNum}," +
             "productDescription=#{productDescription},pictureAddress=#{pictureAddress}")
-    public void updateAudio(Product products);
+    public void updateProduct(Product products);
 
     @Delete("delete from product where productNum=#{productNum}")
-    public void deleteAudio(String productNum);
+    public void deleteProduct(int productNum);
 }

@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface userMapper {
     @Select("select * from user where userNum = #{userNum}")
-    public User selectUserByuserNum(String userNum);
+    public User selectUserByuserNum(int userNum);
 
     @Select("select * from user")
     public List<User> select();
@@ -26,5 +26,5 @@ public interface userMapper {
     public void updateUser(User users);
 
     @Delete("delete from user where userNum=#{userNum}")
-    public void deleteUser(String userNum);
+    public void deleteUser(int userNum);
 }

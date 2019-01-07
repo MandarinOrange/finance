@@ -7,12 +7,15 @@ import javax.persistence.Entity;
 @Getter
 @Entity
 public class UsageDate {
-    private String checkNum;
-    private String productNum;
-    private String userNum;
+    private long checkNum;
+    private long productNum;
+    private long userNum;
     private String bankAccount;
-    private String bankNum;
+    private int bankNum;
     private int year;
     private float amount;
     private String startTime;
+
+    public UsageDate(){};
+    private int equation;
 }

@@ -1,15 +1,20 @@
 package com.example.demo.bean;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Getter
+@Setter
 @Entity
 public class Manager {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String managerNum;
+    private int managerNum;
     private String managerName;
     private String managerPwd;
     private String managerRight;
@@ -17,43 +22,11 @@ public class Manager {
 
     public Manager(){};
 
-    public String getTelephoneNum() {
-        return telephoneNum;
-    }
-
-    public void setTelephoneNum(String telephoneNum) {
-        this.telephoneNum = telephoneNum;
-    }
-
-    public String getManagerRight() {
-        return managerRight;
-    }
-
-    public void setManagerRight(String managerRight) {
-        this.managerRight = managerRight;
-    }
-
-    public String getManagerPwd() {
-        return managerPwd;
-    }
-
-    public void setManagerPwd(String managerPwd) {
-        this.managerPwd = managerPwd;
-    }
-
-    public String getManagerName() {
-        return managerName;
-    }
-
-    public void setManagerName(String managerName) {
-        this.managerName = managerName;
-    }
-
-    public String getManagerNum() {
+    public int getManagerNum() {
         return managerNum;
     }
 
-    public void setManagerNum(String managerNum) {
+    public void setManagerNum(int managerNum) {
         this.managerNum = managerNum;
     }
 }

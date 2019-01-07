@@ -8,22 +8,22 @@ import java.util.List;
 @Mapper
 public interface transMapper {
     @Select("select * from transaction where transactionNum = #{transactionNum}")
-    public Transaction selectAudioByCheckNum(int transactionNum);
+    public Transaction selectAudioByCheckNum(long transactionNum);
 
     @Select("select * from transaction")
     public List<Transaction> select();
 
     @Insert("insert into transaction(transactionNum, payer, payee," +
-            " transactionTime, transactionAmount, note)" +
+            " transactionTime, transactionAmount, note,checkNum)" +
             " values (#{transactionNum},#{payer},#{payee},#{transactionTime},#{transactionAmount}," +
-            "#{note})")
+            "#{note},#{checkNum})")
     public void addTransaction(Transaction transactions);
 
-    @Update("update audio set transactionNum=#{transactionNum},payer=#{payer}" +
+    @Update("update audit set transactionNum=#{transactionNum},payer=#{payer}" +
             ",payee=#{payee},transactionTime=#{transactionTime},transactionAmount=#{transactionAmount}," +
             "note=#{note}")
     public void updateTransaction(Transaction transactions);
 
-    @Delete("delete from audio where transactionNum=#{transactionNum}")
-    public void deleteTransaction(int transactionNum);
+    @Delete("delete from audit where transactionNum=#{transactionNum}")
+    public void deleteTransaction(long transactionNum);
 }

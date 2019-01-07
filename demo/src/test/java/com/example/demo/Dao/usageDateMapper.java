@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface usageDateMapper {
     @Select("select * from usagedate where transactionNum = #{transactionNum}")
-    public UsageDate selectUsageDateByCheckNum(int checkNum);
+    public UsageDate selectUsageDateByCheckNum(long checkNum);
 
     @Select("select * from usagedate")
     public List<UsageDate> select();
@@ -26,5 +26,5 @@ public interface usageDateMapper {
     public void updateUsageDate(UsageDate usageDate);
 
     @Delete("delete from usagedate where checkNum=#{checkNum}")
-    public void deleteUsageDate(int checkNum);
+    public void deleteUsageDate(long checkNum);
 }

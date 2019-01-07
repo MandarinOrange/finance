@@ -30,7 +30,12 @@ public class NextCirController {
                 break;
         }
         double next_principal_and_intrate = cirService.NextCirculator(checkNum);
-        request.setAttribute("next",next_principal_and_intrate);
+        if(next_principal_and_intrate>=0){
+            request.setAttribute("next",next_principal_and_intrate);
+        }else{
+            return "/计算失败";
+        }
+
         return "/next";
     }
 }

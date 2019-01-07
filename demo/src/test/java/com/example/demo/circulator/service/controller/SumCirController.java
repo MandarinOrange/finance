@@ -33,7 +33,12 @@ public class SumCirController {
                 break;
         }
         double sum_principal_and_intrate = cirService.SumCirculator(productNum,amount,year);
-        request.setAttribute("sum",sum_principal_and_intrate);
+        if(sum_principal_and_intrate>=0){
+            request.setAttribute("sum",sum_principal_and_intrate);
+        }else{
+            return "/计算失败";
+        }
+
         return "/circulator";
     }
 }

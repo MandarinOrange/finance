@@ -12,15 +12,15 @@ import javax.persistence.*;
 public class Audit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int checkNum;
-    private  int userNum;
+    private long checkNum;
+    private  long userNum;
     private  double amount;
     private  String applyTime;
     private String bankAccount;
-    private int checkState;
-    private int contractNum;
+    private long checkState;
+    private long contractNum;
     private short isSignContract;
-    private  int productNum;
+    private  long productNum;
     private  int year;
     private int equation;
 

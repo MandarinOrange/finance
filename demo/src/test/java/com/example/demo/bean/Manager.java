@@ -14,7 +14,7 @@ import javax.persistence.Id;
 public class Manager {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int managerNum;
+    private long managerNum;
     private String managerName;
     private String managerPwd;
     private String managerRight;
@@ -22,7 +22,7 @@ public class Manager {
 
     public Manager(){};
 
-    public int getManagerNum() {
+    public long getManagerNum() {
         return managerNum;
     }
 

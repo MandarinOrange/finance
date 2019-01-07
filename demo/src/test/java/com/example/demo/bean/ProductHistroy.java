@@ -15,9 +15,9 @@ import javax.persistence.Id;
 public class ProductHistroy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int productNum;
+    private long productNum;
     private int bankNum;
-    private int managerNum;
+    private long managerNum;
     private String productName;
     private String category;
     private float intrate;
@@ -28,19 +28,19 @@ public class ProductHistroy {
 
     public ProductHistroy(){};
 
-    public int getManagerNum() {
+    public long getManagerNum() {
         return managerNum;
     }
 
-    public void setManagerNum(int managerNum) {
+    public void setManagerNum(long managerNum) {
         this.managerNum = managerNum;
     }
 
-    public int getProductNum() {
+    public long getProductNum() {
         return productNum;
     }
 
-    public void setProductNum(int productNum) {
+    public void setProductNum(long productNum) {
         this.productNum = productNum;
     }
 

@@ -11,7 +11,7 @@ public class addPro {
       private productHistroyMapper proHisMapper;
       private ProductHistroy productHistroy;
 
-      public addPro(Product product1){
+      public int add(Product product1){
             productMapper.addProduct(product1);
             productHistroy.setProductNum(product1.getProductNum());
             productHistroy.setProductName(product1.getProductName());
@@ -22,5 +22,6 @@ public class addPro {
             productHistroy.setProductDescription(product1.getProductDescription());
             productHistroy.setUpLoadTime(nowTime.nowTime());
             proHisMapper.addProductHistroy(productHistroy);
+            return 1;
       }
 }

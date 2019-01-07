@@ -1,31 +1,29 @@
 package com.example.demo.Dao;
 
-import com.example.demo.bean.bank;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import com.example.demo.bean.Bank;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
+@Mapper
 public interface bankMapper {
 
     @Select("select * from bank where bankNum = #{bankNum}")
-    public bank selectBankByBankNum(String bankNum);
+    public Bank selectBankByBankNum(String bankNum);
 
     @Select("select * from bank where bankName = #{bankName}")
-    public bank selectBankByBankName(String bankName);
+    public Bank selectBankByBankName(String bankName);
 
     @Select("select * from bank")
-    public List<bank> select();
+    public List<Bank> select();
 
     @Insert("insert into bank(bankNum, bankName, contact, " +
             " values (#{bankNum},#{bankName},#{contact},)")
-    public void addBank(bank banks);
+    public void addBank(Bank banks);
 
     @Update("update bank set bankNum=#{bankNum},bankName=#{bankName}" +
             ",contact=#{contact} where bankNum=#{bankNum}")
-    public void updateBank(bank banks);
+    public void updateBank(Bank banks);
 
 //    @Delete("delete from bank where bankNum=#{bankNum}")
 //    public void deleteBank(String bankNum);

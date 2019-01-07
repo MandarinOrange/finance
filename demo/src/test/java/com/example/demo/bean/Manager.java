@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class manager {
+public class Manager {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String managerNum;
@@ -15,7 +15,7 @@ public class manager {
     private String managerRight;
     private String telephoneNum;
 
-    public manager(){};
+    public Manager(){};
 
     public String getTelephoneNum() {
         return telephoneNum;

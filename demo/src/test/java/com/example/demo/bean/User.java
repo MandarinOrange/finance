@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class user {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String userNum;
@@ -20,7 +20,7 @@ public class user {
     private int isIdentify;
     private String registerTime;
 
-    public user(){};
+    public User(){};
 
     public String getRegisterTime() {
         return registerTime;

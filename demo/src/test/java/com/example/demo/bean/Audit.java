@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 @Entity
-public class audio {
+public class Audit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String checkNum;
@@ -19,7 +19,7 @@ public class audio {
     private  String productNum;
     private  int year;
 
-    public audio(){};
+    public Audit(){};
 
     public int getYear() {
         return year;

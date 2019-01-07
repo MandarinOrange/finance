@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class product {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String productNum;
@@ -17,7 +17,7 @@ public class product {
     private String productDescription;
     private String pictureAddress;
 
-    public product(){};
+    public Product(){};
 
     public String getPictureAddress() {
         return pictureAddress;

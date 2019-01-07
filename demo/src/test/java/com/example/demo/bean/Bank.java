@@ -4,12 +4,12 @@ package com.example.demo.bean;
 import javax.persistence.*;
 
 @Entity
-public class bank {
+public class Bank {
     private String bankNum;
     private String bankName;
     private String contact;//联系方式
 
-    public bank(){};
+    public Bank(){};
 
     public String getBankNum() {
         return bankNum;

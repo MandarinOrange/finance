@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class transaction {
+public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String transaction;
@@ -16,7 +16,7 @@ public class transaction {
     private float transactionAmount;
     private String note;
 
-    public transaction(){};
+    public Transaction(){};
 
     public String getNote() {
         return note;

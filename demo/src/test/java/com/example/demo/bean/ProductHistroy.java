@@ -1,5 +1,6 @@
 package com.example.demo.bean;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,19 +9,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 @Getter
 @Setter
-@Entity
-public class Product {
+public class ProductHistroy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int productNum;
+    private int bankNum;
     private String productName;
     private String category;
     private float intrate;
-    private int bankNum;
     private String productDescription;
-    private String pictureAddress;
+    private String upLoadTime;
+    private String deleteTime;
+    private String alterTime;
 
-    public Product(){};
+    public ProductHistroy(){};
+
+    public int getProductNum() {
+        return productNum;
+    }
+
+    public void setProductNum(int productNum) {
+        this.productNum = productNum;
+    }
 }

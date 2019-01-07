@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper
 public interface auditMapper {
     @Select("select * from audit where checkNum = #{checkNum}")
-    public Audit selectAudioByCheckNum(String checkNum);
+    public Audit selectAudioByCheckNum(int checkNum);
 
     @Select("select * from audit")
     public List<Audit> select();
@@ -31,5 +31,5 @@ public interface auditMapper {
     public void updateAudit(Audit audits);
 
     @Delete("delete from audit where checkNum=#{checkNum}")
-    public void deleteAudit(String checkNum);
+    public void deleteAudit(int checkNum);
 }

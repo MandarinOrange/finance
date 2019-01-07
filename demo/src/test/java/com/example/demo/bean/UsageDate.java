@@ -15,5 +15,7 @@ public class UsageDate {
     private int year;
     private float amount;
     private String startTime;
+
+    public UsageDate(){};
     private int equation;
 }

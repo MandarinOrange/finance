@@ -9,7 +9,7 @@ import java.util.List;
 public interface bankMapper {
 
     @Select("select * from bank where bankNum = #{bankNum}")
-    public Bank selectBankByBankNum(String bankNum);
+    public Bank selectBankByBankNum(int bankNum);
 
     @Select("select * from bank where bankName = #{bankName}")
     public Bank selectBankByBankName(String bankName);

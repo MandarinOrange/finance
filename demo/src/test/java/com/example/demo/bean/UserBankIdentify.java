@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 @Getter
 @Entity
 public class UserBankIdentify {
-    private String userNum;
+    private String userName;
     private String bankAccount;
     private short bankAccountIdentify;
 }

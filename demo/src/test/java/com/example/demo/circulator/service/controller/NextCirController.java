@@ -26,7 +26,7 @@ public class NextCirController {
                 cirService = new EPR_CirService();
                 break;
             default:
-                System.out.println("not exit");
+                System.out.println("not exit！！");
                 break;
         }
         double next_principal_and_intrate = cirService.NextCirculator(checkNum);

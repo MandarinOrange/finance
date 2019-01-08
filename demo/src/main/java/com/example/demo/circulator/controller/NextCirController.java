@@ -34,11 +34,11 @@ public class NextCirController {
         if(next_principal_and_intrate>=0){
             request.setAttribute("next",next_principal_and_intrate);
         }else if(next_principal_and_intrate==-1){
-            return "/计算失败";
+            return "/计算失败!";
         }else if(next_principal_and_intrate==-2){
-            return "/未贷款此类业务";
+            return "/未贷款此类业务!";
         }else if(next_principal_and_intrate==-3){
-            return "/无此类业务";
+            return "/无此类业务!";
         }
         return "/next";
     }

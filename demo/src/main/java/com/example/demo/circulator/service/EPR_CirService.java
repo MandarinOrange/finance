@@ -7,16 +7,12 @@ import com.example.demo.bean.Product;
 import com.example.demo.bean.Repayment;
 import com.example.demo.bean.UsageDate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
 public class EPR_CirService extends CirService{
     @Autowired
     private usageDateMapper usageDateMapper;
-    @Autowired
     private paymentMapper paymentMapper;
-    @Autowired
     private productMapper productMapper;
 
     @Transactional //数据库与事物的一致性
@@ -24,7 +20,7 @@ public class EPR_CirService extends CirService{
         try{
             UsageDate usageDate = usageDateMapper.selectUsageDateByCheckNum(checkNum);
             Repayment repayment = paymentMapper.selectPepaymentBycheckNum(checkNum);
-            if(usageDate!=null){return -2;}
+            if(usageDate==null)return -2;
             int year = usageDate.getYear();
             double amount = usageDate.getAmount();
             long productNum = usageDate.getProductNum();
@@ -34,7 +30,7 @@ public class EPR_CirService extends CirService{
             float intrate = product.getIntrate();
             double rep_amount = 0;
             if(repayment!=null)
-                repayment.getRepAmount();
+                rep_amount = repayment.getRepAmount();
             intrate /= 12;
             int month = year*12;
             double next_principal_and_interest = amount/month + (amount - rep_amount) * intrate;
@@ -51,7 +47,6 @@ public class EPR_CirService extends CirService{
     public double SumCirculator(long productNum,double amount,int year){
         try{
             Product product = productMapper.selectProductByProductNum(productNum);
-            if(product==null)return -3;
             float intrate = product.getIntrate();
             intrate /= 12;
             int month = year * 12;

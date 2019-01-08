@@ -23,7 +23,27 @@ public class UsageDate {
     private float amount;
     private String startTime;
 
-    public UsageDate(){};
+    public UsageDate(){}
     private int equation;
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public long getProductNum() {
+        return 0;
+    }
+
+    public long getUserNum() {
+        return 0;
+    }
+
+    public int getBankNum() {
+        return 0;
+    }
 
 }

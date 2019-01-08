@@ -12,6 +12,7 @@ import javax.persistence.Id;
 @Entity
 public class Bank {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bankNum;
     private String bankName;
     private String contact;//联系方式

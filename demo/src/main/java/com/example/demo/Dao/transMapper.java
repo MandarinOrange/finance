@@ -19,12 +19,11 @@ public interface transMapper {
             "#{note},#{checkNum})")
     public void addTransaction(Transaction transactions);
 
-    @Update("update audit set transactionNum=#{transactionNum},payer=#{payer}" +
+    @Update("update transaction set transactionNum=#{transactionNum},payer=#{payer}" +
             ",payee=#{payee},transactionTime=#{transactionTime},transactionAmount=#{transactionAmount}," +
             "note=#{note}")
     public void updateTransaction(Transaction transactions);
 
-    @Delete("delete from audit where transactionNum=#{transactionNum}")
-    public void deleteTransaction(long transactionNum);
-
+    @Delete("delete from transaction where transactionNum=#{transactionNum}")
+    public void deleteTransaction(int transactionNum);
 }

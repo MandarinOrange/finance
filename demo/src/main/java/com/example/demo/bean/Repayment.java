@@ -18,4 +18,13 @@ public class Repayment {
     private double repAmount;
     private double repSum;
 
+    public double getRepAmount() {
+        return 0;
+    }
+
+    public void setRepAmount(double repamount) {
+    }
+
+    public void setRepSum(double pay) {
+    }
 }

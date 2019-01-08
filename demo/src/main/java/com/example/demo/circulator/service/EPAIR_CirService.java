@@ -7,7 +7,7 @@ import com.example.demo.bean.UsageDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-public class EPAIR_CirService extends CirService{
+public class EPAIR_CirService extends CirService {
     @Autowired
     private usageDateMapper usageDateMapper;
     @Autowired

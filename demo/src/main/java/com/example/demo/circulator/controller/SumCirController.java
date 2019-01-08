@@ -36,9 +36,9 @@ public class SumCirController {
         if(sum_principal_and_intrate>=0){
             request.setAttribute("sum",sum_principal_and_intrate);
         }else if(sum_principal_and_intrate==-3){
-            return "/无此类产品!";
+            return "无此类产品!";
         }else{
-            return "/计算失败!";
+            return "计算失败!";
         }
 
         return "/circulator";

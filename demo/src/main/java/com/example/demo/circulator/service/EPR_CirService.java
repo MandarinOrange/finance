@@ -9,7 +9,7 @@ import com.example.demo.bean.UsageDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-public class EPR_CirService extends CirService{
+public class EPR_CirService extends CirService {
     @Autowired
     private usageDateMapper usageDateMapper;
     private paymentMapper paymentMapper;

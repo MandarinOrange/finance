@@ -15,7 +15,7 @@ public interface paymentMapper {
     @Update("update repayment set repAmount = {#repAmount} ,repSum = #{repSum} where checkNum = #{checkNum}")
     public void updateRepayment(Repayment repayment);
 
-    @Insert("insert into repayment(checkNum,repAmount,repSum) values (#{checkNum},#{repAmount}," +
+    @Insert(" insert into repayment(checkNum,repAmount,repSum) values (#{checkNum},#{repAmount}," +
             "#{repSum})")
-    public void addRepayment(Repayment repayment);
+    public void addRepayment( Repayment repayment);
 }

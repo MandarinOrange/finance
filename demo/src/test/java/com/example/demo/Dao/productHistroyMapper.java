@@ -15,7 +15,7 @@ public interface productHistroyMapper {
     public List<ProductHistroy> select();
 
     @Insert("insert into productHistroy(productNum, productName, category, " +
-            "intrate, bankNum, productDescription, uploadTime, deleteTime, alterTime)" +
+            "intrate, bankNum, productDescription, uploadTime, deleteTime, alterTime,managerNum)" +
             " values (#{productNum},#{productName},#{category},#{intrate},#{bankNum}," +
             "#{productDescription},#{uploadTime},#{deleteTime},#{alterTime})")
     public void addProductHistroy(ProductHistroy productHistroys);

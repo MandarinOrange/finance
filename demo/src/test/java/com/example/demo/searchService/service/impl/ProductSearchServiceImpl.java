@@ -32,7 +32,7 @@ public class ProductSearchServiceImpl implements ProductSearchService {
     @Override
     public List<Product> findByCount(){
         List<Product> productList = new ArrayList<Product>();
-        List<Integer> listusage = usageDateMapper.findByCount();
+        List<Integer> listusage = usageDateMapper.selectByCount();
         int[] arr = listusage.stream().mapToInt(Integer::valueOf).toArray();
         for(int i=0;i<arr.length;i++){
             product = productMapper.selectProductByProductNum(arr[i]);

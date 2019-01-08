@@ -13,7 +13,7 @@ public interface productMapper {
     @Select("select * from product where productName = #{category}")
     public List<Product> findByCategory(String category);
 
-    @Select("select * from product where intrate = #{intrate} order by intrate DESC")
+    @Select("select * from product where intrate = #{intrate} order by intrate ASC")
     public List<Product> findByIntrate(float intrate);
 
     @Select("select * from product where productNum = #{productNum}")

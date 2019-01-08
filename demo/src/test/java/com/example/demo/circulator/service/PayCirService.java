@@ -6,10 +6,16 @@ import com.example.demo.Dao.usageDateMapper;
 import com.example.demo.bean.Repayment;
 import com.example.demo.bean.Transaction;
 import com.example.demo.bean.UsageDate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PayCirService {
+    @Autowired
     private usageDateMapper usageDateMapper;
+    @Autowired
     private paymentMapper paymentMapper;
+    @Autowired
     private transMapper transMapper;
 
     public int payAmountCirculator(long checkNum,double pay){

@@ -5,13 +5,14 @@ import com.example.demo.Dao.usageDateMapper;
 import com.example.demo.bean.Product;
 import com.example.demo.bean.UsageDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
-
-public class EPAIR_CirService extends CirService{
+@Service
+public class EPAIR_CirService extends CirService {
     @Autowired
     private usageDateMapper usageDateMapper;
+    @Autowired
     private productMapper productMapper;
 
     @Transactional //数据库与事物的一致性
@@ -26,7 +27,7 @@ public class EPAIR_CirService extends CirService{
             float intrate = product.getIntrate();
             double rep_amount = 0;
 
-            double not_rep_amount = amount - rep_amount;
+            //double not_rep_amount = amount - rep_amount;
             intrate /= 12;
             int month = year*12;
             double rep = Math.pow((1+intrate),month)/(Math.pow((1+intrate),month)-1);

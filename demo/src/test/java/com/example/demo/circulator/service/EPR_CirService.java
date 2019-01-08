@@ -7,14 +7,16 @@ import com.example.demo.bean.Product;
 import com.example.demo.bean.Repayment;
 import com.example.demo.bean.UsageDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
-
-public class EPR_CirService extends CirService{
+@Service
+public class EPR_CirService extends CirService {
     @Autowired
     private usageDateMapper usageDateMapper;
+    @Autowired
     private paymentMapper paymentMapper;
+    @Autowired
     private productMapper productMapper;
 
     @Transactional //数据库与事物的一致性

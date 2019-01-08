@@ -16,7 +16,7 @@ public class PayCirService {
         try{
             Repayment repayment = paymentMapper.selectPepaymentBycheckNum(checkNum);
             UsageDate usageDate= usageDateMapper.selectUsageDateByCheckNum(checkNum);
-            double rep_amount = repayment.getRepAmount();
+            double repamount = repayment.getRepAmount();
             long userNum = usageDate.getUserNum();
             int bankNum = usageDate.getBankNum();
             double amount = usageDate.getAmount();
@@ -25,8 +25,8 @@ public class PayCirService {
             Transaction transaction = new Transaction(checkNum,userNum,bankNum,pay);
             transMapper.addTransaction(transaction);
 
-            rep_amount = pay - amount/(year*12);
-            repayment.setRepAmount(rep_amount);
+            repamount = pay - amount/(year*12);
+            repayment.setRepAmount(repamount);
             repayment.setRepSum(pay);
             paymentMapper.updateRepayment(repayment);
             return 1;

@@ -10,12 +10,6 @@ public interface userMapper {
     @Select("select * from user where userNum = #{userNum}")
     public User selectUserByuserNum(long userNum);
 
-    @Select("select userPwd from user where userName = #{userName}")
-    public String  selectuserPwdByuserName(String userName);
-
-    @Select("select * from user where userName = #{userName}")
-    public User selectUserByuserName(String userName);
-
     @Select("select * from user")
     public List<User> select();
 

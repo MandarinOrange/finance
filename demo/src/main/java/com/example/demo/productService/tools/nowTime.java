@@ -1,8 +1,8 @@
 package com.example.demo.productService.tools;
 
 
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class nowTime{

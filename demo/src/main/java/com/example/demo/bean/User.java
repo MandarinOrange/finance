@@ -27,12 +27,4 @@ public class User {
 
 
     public User(){};
-
-    public String getUserPwd() {
-        return userPwd;
-    }
-
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
-    }
 }

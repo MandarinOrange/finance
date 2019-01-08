@@ -1,7 +1,6 @@
 package com.example.demo.productService.tools;
 
 import com.example.demo.Dao.productHistroyMapper;
-import com.example.demo.bean.Product;
 import com.example.demo.bean.ProductHistroy;
 
 public class deletePro {

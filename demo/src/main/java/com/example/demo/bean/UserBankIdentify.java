@@ -1,7 +1,7 @@
 package com.example.demo.bean;
 
-import lombok.Getter;
 import lombok.Setter;
+import lombok.Getter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

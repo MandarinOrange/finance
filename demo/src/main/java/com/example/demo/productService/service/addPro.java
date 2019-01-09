@@ -1,22 +1,23 @@
-package com.example.demo.productService.tools;
+package com.example.demo.productService.service;
 
 import com.example.demo.Dao.productHistroyMapper;
 import com.example.demo.Dao.productMapper;
 import com.example.demo.bean.Product;
 import com.example.demo.bean.ProductHistroy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class addPro {
-
       private nowTime nowTime=new nowTime();
       @Autowired
       private productMapper productMapper;
       @Autowired
       private productHistroyMapper proHisMapper;
-      @Autowired
-      private ProductHistroy productHistroy;
 
       public int add(Product product1){
+            ProductHistroy productHistroy = new ProductHistroy();
+            if(productMapper.selectProductByProductNum(product1.getProductNum())!=null)return -1;
             productMapper.addProduct(product1);
             productHistroy.setProductNum(product1.getProductNum());
             productHistroy.setProductName(product1.getProductName());
@@ -26,6 +27,7 @@ public class addPro {
             //productHistroy.setManagerNum(); manager.setManagerNum();调用登陆里面的一个接口得到managerNum
             productHistroy.setProductDescription(product1.getProductDescription());
             productHistroy.setUpLoadTime(nowTime.nowTime());
+            //System.out.println(productHistroy.getUpLoadTime()+productHistroy.getBankNum());
             proHisMapper.addProductHistroy(productHistroy);
             return 1;
       }

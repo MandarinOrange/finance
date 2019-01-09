@@ -1,17 +1,23 @@
-package com.example.demo.productService.tools;
+package com.example.demo.productService.service;
 
 import com.example.demo.Dao.productHistroyMapper;
 import com.example.demo.Dao.productMapper;
 import com.example.demo.bean.Product;
 import com.example.demo.bean.ProductHistroy;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class updatePro {
-    private com.example.demo.productService.tools.nowTime nowTime;
+    private nowTime nowTime=new nowTime();
+    @Autowired
     private productMapper productMapper;
+    @Autowired
     private productHistroyMapper proHisMapper;
-    private ProductHistroy productHistroy;
 
     public int update(Product product1){
+        ProductHistroy productHistroy = new ProductHistroy();
+        if(productMapper.selectProductByProductNum(product1.getProductNum())==null)return -1;
         productMapper.updateProduct(product1);
         productHistroy.setProductNum(product1.getProductNum());
         productHistroy.setProductName(product1.getProductName());

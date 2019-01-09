@@ -1,29 +1,30 @@
 package com.example.demo.productService.controller;
 
 import com.example.demo.bean.Product;
-import com.example.demo.productService.tools.updatePro;
+import com.example.demo.productService.service.updatePro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
 @Controller
-public class updateController {
-    @Autowired
-    private updatePro updatePro;
+public class updateController extends HttpServlet {
+   @Autowired
+    updatePro updatePro;
     @RequestMapping("/updateproduct")
     public String doPost(HttpServletResponse response, HttpServletRequest request){
         PrintWriter writer=null;
         Product product=new Product();
         try{
-            product.setProductNum(Integer.parseInt(request.getParameter("productNum")));
+            product.setProductNum(Long.parseLong(request.getParameter("productNum")));
             product.setProductName(request.getParameter("productName"));
             product.setBankNum(Integer.parseInt(request.getParameter("bankNum")));
             product.setCategory(request.getParameter("productName"));
-            product.setIntrate(Integer.parseInt(request.getParameter("intrate")));
+            product.setIntrate(Float.parseFloat(request.getParameter("intrate")));
             product.setProductDescription(request.getParameter("description"));
             product.setPictureAddress(request.getParameter("address"));
             int result= updatePro.update(product);
@@ -32,6 +33,9 @@ public class updateController {
             if(result==1){
                 writer.write("修改成功");
                 return "/";//返回增加删除修改的总页面
+            }else if(result==-1){
+                writer.write("此业务不存在 ");
+                return "/";
             }
             writer.write("修改失败");
             return "/";//返回修改的页面

@@ -22,7 +22,7 @@ public class ProductHistroy {
     private String category;
     private float intrate;
     private String productDescription;
-    private String upLoadTime;
+    private String upLoadTime;  //数据库是小写的uploadTime
     private String deleteTime;
     private String alterTime;
 

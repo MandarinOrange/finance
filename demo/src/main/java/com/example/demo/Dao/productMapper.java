@@ -39,5 +39,5 @@ public interface productMapper {
 
 
     @Delete("delete from product where productNum=#{productNum}")
-    public void deleteProduct(int productNum);
+    public void deleteProduct(long productNum);
 }

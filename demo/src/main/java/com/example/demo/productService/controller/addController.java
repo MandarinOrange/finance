@@ -28,7 +28,7 @@ public class addController extends HttpServlet {
             product.setProductDescription(request.getParameter("description"));
             product.setPictureAddress(request.getParameter("address"));
             int result= addPro.add(product);
-            response.setContentType("text/hmtl;charset=utf-8");
+            response.setContentType("text/html;charset=utf-8");
             writer=response.getWriter();
             if(result==1){
                 writer.write("增加成功");

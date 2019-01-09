@@ -14,7 +14,7 @@ import javax.persistence.Id;
 public class UserBankIdentify {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String userName;
+    private long userNum;
     private String bankAccount;
     private short bankAccountIdentify;
     private String idNum;

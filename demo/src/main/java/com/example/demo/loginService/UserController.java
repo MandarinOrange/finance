@@ -20,7 +20,7 @@ public class UserController extends HttpServlet {
     private User user;
     private String userPwd;
 
-    @PostMapping("/Login.do")
+    @PostMapping("/login")
     public void handle(HttpServletRequest request)throws Exception{
         String action=request.getParameter("action");
         if(action.equals("登录")){
@@ -35,16 +35,16 @@ public class UserController extends HttpServlet {
         String userPwd1=request.getParameter("userPwd1");
         user=this.userService.selectUserByuserName("userName");
         if(user!=null){
-            return "操作错误！";
+            return "/operateError";
         }else if(userPwd==userPwd1){
                 long count = this.userService.count();
             SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd  HH-mm-ss");
                 String registerTime=dateFormat.format(new Date());
                 String userRight="0";
                 this.userService.insertUser(count, userName, userPwd,registerTime,userRight);
-                return "插入成功！";
+                return "/registerSuccess";
         }else{
-               return "密码不一致！";
+               return "/userPwdNotSame";
         }
     }
 
@@ -52,17 +52,17 @@ public class UserController extends HttpServlet {
         String userName = request.getParameter("userName");
         userPwd = request.getParameter("userPwd");
         user = this.userService.selectUserByuserName(userName);
-        HttpSession session=request.getSession();
-        session.getAttribute("user");
         if(user!=null){
             if(user.getUserPwd().equals(userPwd)){
-                return "/login1";
+                HttpSession session=request.getSession();
+                session.setAttribute("user",user);
+                return "redirect:http://localhost:8080/firstproject/demo/Front-end/首页/index.html";
             }
             else{
-                return "/login2";
+                return "/userPwdError";
             }
         }else{
-            return "/login2";
+            return "/userNotExist";
         }
     }
 

@@ -1,15 +1,20 @@
 package com.example.demo.circulator.service;
 
+import com.example.demo.Dao.paymentMapper;
 import com.example.demo.Dao.productMapper;
 import com.example.demo.Dao.usageDateMapper;
 import com.example.demo.bean.Product;
 import com.example.demo.bean.UsageDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-public class EPAIR_CirService extends CirService {
+@Service
+public class EPAIR_CirService extends CirService{
     @Autowired
     private usageDateMapper usageDateMapper;
+    @Autowired
+    private paymentMapper paymentMapper;
     @Autowired
     private productMapper productMapper;
 

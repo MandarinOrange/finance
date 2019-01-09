@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface usageDateMapper {
-    @Select("select * from usagedate where transactionNum = #{transactionNum}")
+    @Select("select * from usagedate where checkNum = #{checkNum}")
     public UsageDate selectUsageDateByCheckNum(long checkNum);
 
     @Select("select * from usagedate")

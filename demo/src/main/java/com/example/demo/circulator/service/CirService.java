@@ -1,10 +1,17 @@
 package com.example.demo.circulator.service;
 
+import com.example.demo.Dao.paymentMapper;
+import com.example.demo.Dao.productMapper;
+import com.example.demo.Dao.usageDateMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 
-public abstract class CirService {
+@Service
+public class CirService {
+
     @PostConstruct
     public void init(){}
 

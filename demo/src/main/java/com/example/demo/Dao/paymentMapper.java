@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface paymentMapper {
-    @Select("select * from repayment where checkNum =#{checkNum}")
+    @Select("select * from repayment where checkNum = #{checkNum}")
     public Repayment selectPepaymentBycheckNum(long checkNum);
 
     @Update("update repayment set repAmount = {#repAmount} ,repSum = #{repSum} where checkNum = #{checkNum}")

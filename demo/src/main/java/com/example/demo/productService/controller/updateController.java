@@ -34,7 +34,7 @@ public class updateController extends HttpServlet {
                 writer.write("修改成功");
                 return "/";//返回增加删除修改的总页面
             }else if(result==-1){
-                writer.write("此业务不存在");
+                writer.write("此业务不存在 ");
                 return "/";
             }
             writer.write("修改失败");

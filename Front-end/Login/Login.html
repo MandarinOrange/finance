@@ -299,12 +299,12 @@
                     <i style="right: 5px">录</i>
                 </div>
                 <span>
-                    <form action=" ">
-                        <p class="form"><input type="text" id="user" placeholder="账号"></p>
-                        <p class="form"><input type="password" id="passwd" placeholder="密码"></p>
-                        <p class="form confirm"><input type="password" id="confirm-passwd" placeholder="确认密码"></p>
-                        <input type="button" value="登录" class="btn" onclick="login()" style="margin-right: 20px;">
-                        <input type="button" value="注册" class="btn" onclick="signin()" id="btn">
+                    <form action="/Login.do" method="post">
+                        <p class="form"><input type="text" id="userName" placeholder="账号"></p>
+                        <p class="form"><input type="password" id="userPwd" placeholder="密码"></p>
+                        <p class="form confirm"><input type="password" id="userPwd1" placeholder="确认密码"></p>
+                        <input type="submit" value="登录" class="btn" name="action">
+                        <input type="submit" value="注册" class="btn" name="action">
                     </form>
                     <a href="#">忘记密码</a>
                 </span>

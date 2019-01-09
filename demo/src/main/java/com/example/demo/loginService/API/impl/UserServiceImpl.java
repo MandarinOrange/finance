@@ -12,6 +12,20 @@ public class UserServiceImpl implements UserService{
     private userMapper UserMapper;
     @Transactional(propagation=Propagation.REQUIRED,readOnly = true)
     public User selectUserByuserName(String userName){
+
         return this.UserMapper.selectUserByuserName(userName);
     }
+    @Transactional(propagation=Propagation.REQUIRED,readOnly = true)
+    public User selectUserBytelephoneNum(String telephoneNum){
+        return this.UserMapper.selectUserBytelephoneNum(telephoneNum);
+    }
+    @Transactional(propagation=Propagation.REQUIRED,readOnly = false)
+    public void insertUser(long userNum,String userName,String userPwd){
+        this.UserMapper.insertUser(userNum,userName,userPwd);
+    }
+    @Transactional(propagation=Propagation.REQUIRED,readOnly = true)
+    public long count(){
+        return this.UserMapper.count();
+    }
+
 }

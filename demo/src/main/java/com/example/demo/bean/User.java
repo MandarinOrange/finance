@@ -18,8 +18,8 @@ public class User {
     private String userName;
     private String userPwd;
     private String userRight;
-    private String idNum;
     private String telephoneNum;
+    private String isIdentify;
     private String address;
     private String registerTime;
 

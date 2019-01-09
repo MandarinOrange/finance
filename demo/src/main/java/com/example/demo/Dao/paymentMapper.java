@@ -1,6 +1,5 @@
 package com.example.demo.Dao;
 
-import com.example.demo.bean.Manager;
 import com.example.demo.bean.Repayment;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

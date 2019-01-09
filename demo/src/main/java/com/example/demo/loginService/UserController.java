@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 @Controller
@@ -33,29 +36,43 @@ public class UserController extends HttpServlet {
         user=this.userService.selectUserByuserName("userName");
         if(user!=null){
             return "操作错误！";
-
         }else if(userPwd==userPwd1){
                 long count = this.userService.count();
-                this.userService.insertUser(count, userName, userPwd);
+            SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd  HH-mm-ss");
+                String registerTime=dateFormat.format(new Date());
+                String userRight="0";
+                this.userService.insertUser(count, userName, userPwd,registerTime,userRight);
                 return "插入成功！";
         }else{
                return "密码不一致！";
         }
     }
 
-    public void doPost1(HttpServletRequest request) {
+    public String  doPost1(HttpServletRequest request) {
         String userName = request.getParameter("userName");
         userPwd = request.getParameter("userPwd");
         user = this.userService.selectUserByuserName(userName);
+        HttpSession session=request.getSession();
+        session.getAttribute("user");
+        if(user!=null){
+            if(user.getUserPwd().equals(userPwd)){
+                return "/login1";
+            }
+            else{
+                return "/login2";
+            }
+        }else{
+            return "/login2";
+        }
     }
 
-    @PostMapping("/Login1.do")
+   /** @PostMapping("/Login1.do")
     public void doPost2(HttpServletRequest request) {
         String telephoneNum = request.getParameter("telephoneNum");
         userPwd = request.getParameter("userPwd");
         user = this.userService.selectUserBytelephoneNum(telephoneNum);
     }
-    public String select(){
+    public String select(Object user){
             if(user!=null){
         if(user.getUserPwd().equals(userPwd)){
             return "/login1";
@@ -66,5 +83,5 @@ public class UserController extends HttpServlet {
     }else{
         return "/login2";
     }
-}
+}**/
 }

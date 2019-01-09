@@ -19,7 +19,7 @@ public interface userBankIdMapper {
             "#{idNum},#{telephoneNum},#{bankAccountIdentify})")
     public void addUserBankIdentify(UserBankIdentify userBankIdentifys);
 
-    @Update("update userBankIdentify set userNum=#{userNum},bankAccount=#{bankAccount}" +
+    @Update("update userBankIdentify set userNum=#{userNum                                                                                 },bankAccount=#{bankAccount}" +
             ",trueName=#{trueName},idNum=#{idNum},telephoneNum=#{telephoneNum}," +
             "bankAccountIdentify=#{bankAccountIdentify}")
     public void updateUserBankIdentify(UserBankIdentify userBankIdentifys);

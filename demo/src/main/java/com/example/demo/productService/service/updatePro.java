@@ -1,14 +1,19 @@
-package com.example.demo.productService.tools;
+package com.example.demo.productService.service;
 
 import com.example.demo.Dao.productHistroyMapper;
 import com.example.demo.Dao.productMapper;
 import com.example.demo.bean.Product;
 import com.example.demo.bean.ProductHistroy;
 
+//@Service
 public class updatePro {
-    private com.example.demo.productService.tools.nowTime nowTime;
+   // @Autowired
+    private com.example.demo.productService.service.nowTime nowTime;
+   // @Autowired
     private productMapper productMapper;
+    //@Autowired
     private productHistroyMapper proHisMapper;
+    //@Autowired
     private ProductHistroy productHistroy;
 
     public int update(Product product1){

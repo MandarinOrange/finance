@@ -1,7 +1,7 @@
 package com.example.demo.productService.controller;
 
 import com.example.demo.bean.Product;
-import com.example.demo.productService.tools.addPro;
+import com.example.demo.productService.service.addPro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +20,11 @@ public class addController extends HttpServlet {
         Product product=new Product();
         PrintWriter writer=null;
         try{
-            product.setProductNum(Integer.parseInt(request.getParameter("productNum")));
+            product.setProductNum(Long.parseLong(request.getParameter("productNum")));
             product.setProductName(request.getParameter("productName"));
             product.setBankNum(Integer.parseInt(request.getParameter("bankNum")));
             product.setCategory(request.getParameter("productName"));
-            product.setIntrate(Integer.parseInt(request.getParameter("intrate")));
+            product.setIntrate(Float.parseFloat(request.getParameter("intrate")));
             product.setProductDescription(request.getParameter("description"));
             product.setPictureAddress(request.getParameter("address"));
             int result= addPro.add(product);

@@ -16,10 +16,10 @@ public interface productHistroyMapper {
     @Select("select * from producthistroy")
     public List<ProductHistroy> select();
 
-    @Insert("insert into productHistroy(productNum, productName, category, " +
+    @Insert("insert into producthistory(productNum, productName, category, " +
             "intrate, bankNum, productDescription, uploadTime, deleteTime, alterTime,managerNum)" +
             " values (#{productNum},#{productName},#{category},#{intrate},#{bankNum}," +
-            "#{productDescription},#{uploadTime},#{deleteTime},#{alterTime})")
+            "#{productDescription},#{upLoadTime},#{deleteTime},#{alterTime},#{managerNum})")
     public void addProductHistroy(ProductHistroy productHistroys);
 
 //    @Update("update producthistroy set productNum=#{productNum},productName=#{productName}" +

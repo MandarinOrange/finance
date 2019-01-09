@@ -1,7 +1,7 @@
 package com.example.demo.productService.controller;
 
 import com.example.demo.bean.Product;
-import com.example.demo.productService.tools.updatePro;
+import com.example.demo.productService.service.updatePro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -2,7 +2,7 @@ package com.example.demo.productService.controller;
 
 
 import com.example.demo.bean.Product;
-import com.example.demo.productService.tools.deletePro;
+import com.example.demo.productService.service.deletePro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 @Controller
 public class deleteController {
     @Autowired
-    private deletePro deletes;
+    deletePro deletes;
     @RequestMapping("/deleteproduct")
     public String doPost(HttpServletResponse response, HttpServletRequest request){
         PrintWriter writer=null;

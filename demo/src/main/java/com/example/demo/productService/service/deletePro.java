@@ -1,12 +1,17 @@
-package com.example.demo.productService.tools;
+package com.example.demo.productService.service;
 
 import com.example.demo.Dao.productHistroyMapper;
 import com.example.demo.bean.ProductHistroy;
 
+//@Service
 public class deletePro {
-    private com.example.demo.productService.tools.nowTime nowTime;
+   // @Autowired
+    private com.example.demo.productService.service.nowTime nowTime;
+   // @Autowired
     private com.example.demo.Dao.productMapper productMapper;
+   // @Autowired
     private productHistroyMapper proHisMapper;
+    //@Autowired
     private ProductHistroy productHistroy;
 
     public int delete(int productNum){

@@ -18,11 +18,9 @@ public class User {
     private String userName;
     private String userPwd;
     private String userRight;
-    private String trueName;
     private String idNum;
     private String telephoneNum;
     private String address;
-    private String isIdentify;
     private String registerTime;
 
 

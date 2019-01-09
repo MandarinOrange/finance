@@ -13,12 +13,13 @@ public interface userBankIdentify {
     @Select("select * from userBankIdentify")
     public List<UserBankIdentify> select();
 
-    @Insert("insert into usagedate(userName, bankAccount, bankAccountIdentify)" +
+    @Insert("insert into usagedate(userName, bankAccount,trueName,idNum,telephoneNum, bankAccountIdentify)" +
             " values (#{userName},#{bankAccount},#{bankAccountIdentify})")
     public void addUserBankIdentify(UserBankIdentify userBankIdentifys);
 
     @Update("update usagedate set userName=#{userName},bankAccount=#{bankAccount}" +
-            ",bankAccountIdentify=#{bankAccountIdentify}")
+            ",trueName=#{trueName},idNum=#{idNum},telephoneNum=#{telephoneNum}," +
+            "bankAccountIdentify=#{bankAccountIdentify}")
     public void updateUserBankIdentify(UserBankIdentify userBankIdentifys);
 
     @Delete("delete from usagedate where userName=#{userName}")

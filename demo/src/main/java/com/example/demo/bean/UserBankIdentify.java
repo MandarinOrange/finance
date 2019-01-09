@@ -17,5 +17,9 @@ public class UserBankIdentify {
     private String userName;
     private String bankAccount;
     private short bankAccountIdentify;
+    private String idNum;
+    private String trueName;
+    private String telephoneNum;
 
+    public UserBankIdentify(){};
 }

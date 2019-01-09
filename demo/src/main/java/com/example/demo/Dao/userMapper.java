@@ -27,14 +27,14 @@ public interface userMapper {
     public void insertUser(long userNum,String userName,String userPwd);
 
     @Insert("insert into user(userNum, userName, userPwd, userRight," +
-            " tureName, idNum, telephoneNum, address, isIdentify, registerTime)" +
-            " values (#{userNum},#{userName},#{userPwd},#{userRight},#{tureName}," +
-            "#{idNum},#{telephoneNum},#{address},#{isIdentify},#{registerTime})")
+            " telephoneNum, address, isIdentify, registerTime)" +
+            " values (#{userNum},#{userName},#{userPwd},#{userRight}," +
+            "#{telephoneNum},#{address},#{isIdentify},#{registerTime})")
     public void addUser(User users);
 
     @Update("update user set userNum=#{userNum},userName=#{userName}" +
-            ",userPwd=#{userPwd},userRight=#{userRight},tureName=#{tureName}," +
-            "idNum=#{idNum},telephoneNum=#{telephoneNum},address=#{address}," +
+            ",userPwd=#{userPwd},userRight=#{userRight}," +
+            "telephoneNum=#{telephoneNum},address=#{address}," +
             "isIdentify=#{isIdentify},registerTime=#{registerTime}where userNum=#{userNum}")
     public void updateUser(User users);
 

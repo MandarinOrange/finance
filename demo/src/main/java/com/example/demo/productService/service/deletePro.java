@@ -18,7 +18,7 @@ public class deletePro {
 
     public int delete(long productNum){
         ProductHistroy productHistroy = new ProductHistroy();
-
+        if(productMapper.selectProductByProductNum(productNum)==null)return -1;
         Product product = productMapper.selectProductByProductNum(productNum);
         if(product == null)return -1;
         productHistroy.setProductNum(product.getProductNum());

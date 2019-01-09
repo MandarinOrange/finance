@@ -17,6 +17,7 @@ public class addPro {
 
       public int add(Product product1){
             ProductHistroy productHistroy = new ProductHistroy();
+            if(productMapper.selectProductByProductNum(product1.getProductNum())!=null)return -1;
             productMapper.addProduct(product1);
             productHistroy.setProductNum(product1.getProductNum());
             productHistroy.setProductName(product1.getProductName());

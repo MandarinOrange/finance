@@ -20,11 +20,11 @@ public class updateController extends HttpServlet {
         PrintWriter writer=null;
         Product product=new Product();
         try{
-            product.setProductNum(Integer.parseInt(request.getParameter("productNum")));
+            product.setProductNum(Long.parseLong(request.getParameter("productNum")));
             product.setProductName(request.getParameter("productName"));
             product.setBankNum(Integer.parseInt(request.getParameter("bankNum")));
             product.setCategory(request.getParameter("productName"));
-            product.setIntrate(Integer.parseInt(request.getParameter("intrate")));
+            product.setIntrate(Float.parseFloat(request.getParameter("intrate")));
             product.setProductDescription(request.getParameter("description"));
             product.setPictureAddress(request.getParameter("address"));
             int result= updatePro.update(product);
@@ -33,6 +33,9 @@ public class updateController extends HttpServlet {
             if(result==1){
                 writer.write("修改成功");
                 return "/";//返回增加删除修改的总页面
+            }else if(result==-1){
+                writer.write("此业务不存在");
+                return "/";
             }
             writer.write("修改失败");
             return "/";//返回修改的页面

@@ -33,6 +33,9 @@ public class addController extends HttpServlet {
             if(result==1){
                 writer.write("增加成功");
                 return "/";//返回增加删除修改的总页面
+            }else if(result==-1){
+                writer.write("已存在该产品");
+                return "/";
             }
             writer.write("增加失败");
             return "/";//返回增加的页面

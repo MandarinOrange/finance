@@ -26,7 +26,6 @@ public class UsageDate {
     public UsageDate(){}
     private int equation;
 
-<<<<<<< HEAD
     public int getYear() {
         return 0;
     }
@@ -35,27 +34,16 @@ public class UsageDate {
         return 0;
     }
 
-    public double getAmount() {
-=======
     public double getAmount() {
         return amount;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public long getProductNum() {
->>>>>>> origin/master
-        return 0;
-    }
-
     public long getUserNum() {
-        return 0;
+        return userNum;
     }
 
     public int getBankNum() {
-        return 0;
+        return bankNum;
     }
 
 }

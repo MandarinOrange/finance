@@ -2,6 +2,7 @@ package com.example.demo.productService.controller;
 
 import com.example.demo.bean.Product;
 import com.example.demo.productService.tools.addPro;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,10 +13,11 @@ import java.io.PrintWriter;
 
 @Controller
 public class addController extends HttpServlet {
-    Product product;
-    addPro addPro;
+    @Autowired
+    private addPro addPro;
     @RequestMapping("/addproduct")
     public String doPost(HttpServletResponse response,HttpServletRequest request){
+        Product product=new Product();
         PrintWriter writer=null;
         try{
             product.setProductNum(Integer.parseInt(request.getParameter("productNum")));

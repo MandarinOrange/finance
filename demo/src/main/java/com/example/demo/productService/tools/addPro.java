@@ -4,11 +4,16 @@ import com.example.demo.Dao.productHistroyMapper;
 import com.example.demo.Dao.productMapper;
 import com.example.demo.bean.Product;
 import com.example.demo.bean.ProductHistroy;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class addPro {
-      private com.example.demo.productService.tools.nowTime nowTime;
+
+      private nowTime nowTime=new nowTime();
+      @Autowired
       private productMapper productMapper;
+      @Autowired
       private productHistroyMapper proHisMapper;
+      @Autowired
       private ProductHistroy productHistroy;
 
       public int add(Product product1){

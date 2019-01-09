@@ -23,6 +23,13 @@ public class User {
     private String address;
     private String registerTime;
 
+    public String getIsIdentify() {
+        return isIdentify;
+    }
+
+    public void setIsIdentify(String isIdentify) {
+        this.isIdentify = isIdentify;
+    }
 
     public User(){};
 

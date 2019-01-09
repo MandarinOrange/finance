@@ -3,6 +3,7 @@ package com.example.demo.productService.controller;
 
 import com.example.demo.bean.Product;
 import com.example.demo.productService.tools.deletePro;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,11 +13,12 @@ import java.io.PrintWriter;
 
 @Controller
 public class deleteController {
-    Product product;
-    deletePro deletes;
+    @Autowired
+    private deletePro deletes;
     @RequestMapping("/deleteproduct")
     public String doPost(HttpServletResponse response, HttpServletRequest request){
         PrintWriter writer=null;
+        Product product=new Product();
         try{
             int productNum=Integer.parseInt(request.getParameter("productNum"));
             int result= deletes.delete(productNum);

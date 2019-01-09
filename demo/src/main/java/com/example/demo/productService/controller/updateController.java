@@ -6,14 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
 @Controller
-public class updateController {
-    @Autowired
-    private updatePro updatePro;
+public class updateController extends HttpServlet {
+   @Autowired
+    updatePro updatePro;
     @RequestMapping("/updateproduct")
     public String doPost(HttpServletResponse response, HttpServletRequest request){
         PrintWriter writer=null;

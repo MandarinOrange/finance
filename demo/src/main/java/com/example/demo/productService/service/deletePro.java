@@ -1,24 +1,36 @@
 package com.example.demo.productService.service;
 
 import com.example.demo.Dao.productHistroyMapper;
+import com.example.demo.Dao.productMapper;
+import com.example.demo.bean.Product;
 import com.example.demo.bean.ProductHistroy;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-//@Service
+@Service
 public class deletePro {
-   // @Autowired
-    private com.example.demo.productService.service.nowTime nowTime;
-   // @Autowired
-    private com.example.demo.Dao.productMapper productMapper;
-   // @Autowired
+    private nowTime nowTime = new nowTime();
+    @Autowired
+    private productMapper productMapper;
+    @Autowired
     private productHistroyMapper proHisMapper;
-    //@Autowired
-    private ProductHistroy productHistroy;
 
-    public int delete(int productNum){
+
+    public int delete(long productNum){
+        ProductHistroy productHistroy = new ProductHistroy();
+
+        Product product = productMapper.selectProductByProductNum(productNum);
+        if(product == null)return -1;
+        productHistroy.setProductNum(product.getProductNum());
+        productHistroy.setProductName(product.getProductName());
+        productHistroy.setBankNum(product.getBankNum());
+        productHistroy.setCategory(product.getCategory());
+        productHistroy.setIntrate(product.getIntrate());
+        productHistroy.setProductDescription(product.getProductDescription());
+
         productMapper.deleteProduct(productNum);
-        productHistroy.setProductNum(productNum);
         //productHistroy.setManagerNum(); manager.setManagerNum();调用登陆里面的一个接口得到managerNum
-        productHistroy.setUpLoadTime(nowTime.nowTime());
+        productHistroy.setDeleteTime(nowTime.nowTime());
         proHisMapper.addProductHistroy(productHistroy);
         return 1;
     }

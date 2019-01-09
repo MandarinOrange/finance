@@ -7,11 +7,21 @@ import java.util.List;
 
 @Mapper
 public interface productMapper {
+    @Select("select * from product where productName like '%#{productName}%'")
+    public List<Product> findByNameLike(String productName);
+
+    @Select("select * from product where productName = #{category}")
+    public List<Product> findByCategory(String category);
+
+
+    @Select("select * from product where intrate = #{intrate} order by intrate ASC")
+    public List<Product> findByIntrate(float intrate);
+
     @Select("select * from product where productNum = #{productNum}")
     public Product selectProductByProductNum(long productNum);
 
     @Select("select * from product where productName = #{productName}")
-    public Product selectProductByProductName(long productName);
+    public Product selectProductByProductName(String productName);
 
     @Select("select * from product")
     public List<Product> select();

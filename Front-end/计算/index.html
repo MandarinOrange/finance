@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>利息计算器</title>
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+        <meta content="yes" name="apple-mobile-web-app-capable"/>
+        <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+        <meta content="telephone=no" name="format-detection"/>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="tab.js"></script>
+
+    </head>
+    <body>
+
+      
+
+        <section class="aui-flexView">
+            <header class="aui-navBar aui-navBar-fixed b-line">
+                <a href="javascript:;" class="aui-navBar-item">
+                    <i class="icon icon-return"></i>
+                </a>
+                <div class="aui-center">
+                    <span class="aui-center-title">利息计算器</span>
+                </div>
+                <a href="javascript:;" class="aui-navBar-item">
+                    <i class="icon icon-sys"></i>
+                </a>
+            </header>
+            <section class="aui-scrollView">
+                <div class="aui-tab" data-ydui-tab>
+                    <ul class="tab-nav b-line">
+                        <li class="tab-nav-item tab-active"> </li>
+                        <li class="tab-nav-item"> </li>
+                        <li class="tab-nav-item"> </li>
+                    </ul>
+                    <div class="tab-panel">
+                        <div class="tab-panel-item tab-active">
+                            <a href="javascript:;" class="aui-flex b-line">
+                                <div class="aui-calc-title">
+                                    <h2>贷款金额</h2>
+                                </div>
+                                <div class="aui-flex-box aui-flex-box-right">
+                                    <input type="text" placeholder="请输入贷款金额">
+                                    <span></span>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="aui-flex b-line">
+                                <div class="aui-calc-title">
+                                    <h2>贷款期限</h2>
+                                </div>
+                                <div class="aui-flex-box aui-flex-box-right">
+                                    <input type="text" placeholder="请输入贷款期限">
+                                    <span>日</span>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="aui-flex b-line">
+                                <div class="aui-calc-title">
+                                    <h2>贷款利率</h2>
+                                </div>
+                                <div class="aui-flex-box aui-flex-box-right aui-flex-box-dow">
+                                    <select class="cell-select">
+                                        <option value="">4.90%</option>
+                                        <option value="1">3.80%</option>
+                                        <option value="2">3.90%</option>
+                                        <option value="3">1.90%</option>
+                                    </select>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="aui-flex b-line">
+                                <div class="aui-calc-title">
+                                    <h2>还款方式</h2>
+                                </div>
+                                <div class="aui-flex-box aui-flex-box-right">
+                                    <button>等额本息</button>
+                                    <button>等额本金</button>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tab-panel-item">
+                            <a href="javascript:;" class="aui-flex b-line">
+                                <div class="aui-calc-title">
+                                    <h2>贷款金额</h2>
+                                </div>
+                                <div class="aui-flex-box aui-flex-box-right">
+                                    <input type="text" placeholder="请输入贷款金额">
+                                    <span></span>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="aui-flex b-line">
+                                <div class="aui-calc-title">
+                                    <h2>贷款期限</h2>
+                                </div>
+                                <div class="aui-flex-box aui-flex-box-right">
+                                    <input type="text" placeholder="请输入贷款期限">
+                                    <span>年</span>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="aui-flex b-line">
+                                <div class="aui-calc-title">
+                                    <h2>贷款利率</h2>
+                                </div>
+                                <div class="aui-flex-box aui-flex-box-right aui-flex-box-dow">
+                                    <select class="cell-select">
+                                        <option value="">4.90%</option>
+                                        <option value="1">3.80%</option>
+                                        <option value="2">3.90%</option>
+                                        <option value="3">1.90%</option>
+                                    </select>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="aui-flex b-line">
+                                <div class="aui-calc-title">
+                                    <h2>还款方式</h2>
+                                </div>
+                                <div class="aui-flex-box aui-flex-box-right">
+                                    <button>等额本息</button>
+                                    <button>等额本金</button>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tab-panel-item">
+                            <a href="javascript:;" class="aui-flex b-line">
+                                <div class="aui-calc-title">
+                                    <h2>贷款金额</h2>
+                                </div>
+                                <div class="aui-flex-box aui-flex-box-right">
+                                    <input type="text" placeholder="请输入贷款金额">
+                                    <span>万</span>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="aui-flex b-line">
+                                <div class="aui-calc-title">
+                                    <h2>贷款期限</h2>
+                                </div>
+                                <div class="aui-flex-box aui-flex-box-right">
+                                    <input type="text" placeholder="请输入贷款期限">
+                                    <span>年</span>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="aui-flex b-line">
+                                <div class="aui-calc-title">
+                                    <h2>贷款利率</h2>
+                                </div>
+                                <div class="aui-flex-box aui-flex-box-right aui-flex-box-dow">
+                                    <select class="cell-select">
+                                        <option value="">4.90%</option>
+                                        <option value="1">3.80%</option>
+                                        <option value="2">3.90%</option>
+                                        <option value="3">1.90%</option>
+                                    </select>
+                                </div>
+                            </a>
+                            <a href="javascript:;" class="aui-flex b-line">
+                                <div class="aui-calc-title">
+                                    <h2>还款方式</h2>
+                                </div>
+                                <div class="aui-flex-box aui-flex-box-right">
+                                    <button>等额本息</button>
+                                    <button>等额本金</button>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="tab-button">
+                            <button>开始计算</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+    </body>
+</html>

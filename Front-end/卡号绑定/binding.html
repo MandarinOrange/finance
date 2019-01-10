@@ -7,10 +7,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta content="telephone=no" name="format-detection" />
 
-<link href="style.css" tppabs="http://www.17sucai.com/preview/1089623/2018-06-08/form/css/style.css" rel="stylesheet" type="text/css">
+<link href="bindingStyle.css" tppabs="http://www.17sucai.com/preview/1089623/2018-06-08/form/css/style.css" rel="stylesheet" type="text/css">
 
 
-<title>注册判断</title>
+<title>卡号绑定</title>
 
 <script>
 (function (doc, win) {
@@ -42,14 +42,14 @@
 </div>
 <!--中间内容部分-->
 <div id="content">
-	<div class="txt01">银行卡号<input type="number" id="mobile" name="mobile" class="text" value="" pattern="[0-9]*" tabindex="10" onChange="check_for_btn()" /></div>
+	<div class="txt01">银行卡号<input type="number" id="bankAccount" name="bankAccount" class="text" value="" pattern="[0-9]*" tabindex="10" onChange="check_for_btn()" /></div>
     <div class="txt01">真实姓名<input type="text" id="realname" name="realname" class="text" tabindex="7" onChange="check_for_btn()" /></div>
     <div class="txt01">身份证号
-        <input type="text" id="realname" pattern="[0-9]*" name="realname" class="text" tabindex="6"/>
+        <input type="text" id="idNum" pattern="[0-9]*" name="idNum" class="text" tabindex="6"/>
     </div>
-    <div class="txt01">预留手机号<input type="number" id="realname" pattern="[0-9]*" name="realname" class="text1" tabindex="6"/></div>
+    <div class="txt01">预留手机号<input type="number" id="phoneNum" pattern="[0-9]*" name="phoneNum" class="text1" tabindex="6"/></div>
 </div>
-<button id="btn" class="r_but" onClick="check()">确定</button>
+<button id="btn" class="r_but" onclick="check()">确定</button>
 
 <script type="text/javascript" src="jquery-1.8.3.min.js" tppabs="http://www.17sucai.com/preview/1089623/2018-06-08/form/js/jquery-1.8.3.min.js"></script>
 
@@ -67,18 +67,38 @@ function clearmsg() {
 	}, 2000)
 };
 
+// $("#btn").check(){
+//     if(bankNum!=""&&realname!=""&&idNum!=""&&phoneNum!=""){
+//         var userBank = {"bankNum":document.getElementById("bankNum").value,
+//             "realname":document.getElementById("realname").value,
+//             "idNum":document.getElementById("idNum").value,
+//             "phoneNum":document.getElementById("phoneNum").value,
+//         }
+//         var jsonStr = JSON.stringify(userBank);
+//         $.ajax({
+//             type:"POST",
+//             url:"bankCardController",
+//             dataType:"JSON",
+//             data:jsonStr
+//         })
+//     }else{
+//         alert("请检查您的输入！");
+//     }
+// }
+
 //提交后的check
 function check() {
 
-	var mobile = $("#mobile").val();
+
+    var phoneNum = $("#phoneNum").val();
 	var realname = $("#realname").val();
 
-	if(mobile == "") {
+	if(phoneNum == "") {
 		alert1("请输入手机号");
 		clearmsg();
 		return false;
 	}
-	if(!(/^1[34578]\d{9}$/.test(mobile))) {
+	if(!(/^1[34578]\d{9}$/.test(phoneNum))) {
 		alert1("请输入正确的手机号");
 		clearmsg();
 		return false;
@@ -95,12 +115,12 @@ function check() {
 
 //必填项没有全部填写时,灰色,全部填写时蓝色
 function check_for_btn() {
-	var mobile = $("#mobile").val();
+	var phoneNum = $("#phoneNum").val();
 	var realname = $("#realname").val();
-	if(realname == "" || mobile == null) {
+	if(realname == "" || phoneNum == null) {
 		$(".r_but").css("background", "#d1d5db");
 	}
-	if(realname != "" && mobile != null) {
+	if(realname != "" && phoneNum != null) {
 		$(".r_but").css("background", "#49b9eb");
 	}
 

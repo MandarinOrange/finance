@@ -27,7 +27,7 @@ public class deleteController extends HttpServlet {
             writer=response.getWriter();
             if(result==1){
                 writer.write("删除成功");
-                return "/";//返回增加删除修改的总页面
+                return "/delete";//返回增加删除修改的总页面
             }if(result==-1){
                 writer.write("无此业务");
                 return "/";

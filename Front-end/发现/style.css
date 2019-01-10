@@ -1,0 +1,324 @@
+/*样式初始化 star*/
+
+html {
+	overflow-y: scroll;
+	width: 100%;
+	font-family: "微软雅黑";
+}
+
+body {
+	margin: 0;
+	background: #f7f7f7;
+}
+
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+blockquote,
+p {
+	padding: 0;
+	margin: 0;
+}
+
+table,
+td,
+tr,
+th {
+	font-size: 12px;
+}
+
+li {
+	list-style-type: none;
+}
+
+img {
+	vertical-align: top;
+	border: 0;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+address,
+cite,
+code,
+em,
+th {
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+/*样式初始化 end*/
+
+
+/*serch 样式   star*/
+
+.headBox {
+	width: 100%;
+	height: auto;
+	margin-top: 2%;
+	background-color: #ffffff;
+	text-align: center;
+	padding: 4% 0;
+}
+
+.titHead {
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin-bottom: 2%;
+}
+
+.titNeck {
+	font-size: 0.9rem;
+	color: #a7a7a7;
+	margin-bottom: 15px;
+}
+
+.search {
+	position: relative;
+}
+
+.search input {
+	width: 80%;
+	height: 36px;
+	font-size: 1rem;
+	color: #d2d2d2;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	padding-left: 2%;
+	background-color: #f2f2f2;
+	border-radius: 6px;
+}
+
+input::-webkit-input-placeholder {
+	color: #d2d2d2;
+}
+
+.search button {
+	position: absolute;
+	height: 36px;
+	width: 13%;
+	top: 0;
+	right: 10%;
+	border-radius: 0 6px 6px 0;
+	border: none;
+	outline: none;
+	background-color: #d3d3d3;
+	background: url("serch.jpg") no-repeat;
+	background-size: 100%;
+	background-position: center;
+}
+
+.content {
+	width: 100%;
+	height: auto;
+}
+
+.content label {
+	display: block;
+	width: 90%;
+	height: 70px;
+	margin: 2% auto;
+	background-color: #FFFFFF;
+	position: relative;
+}
+
+.content label img {
+	float: left;
+	width: auto;
+	height: 85%;
+	vertical-align: middle;
+	margin-top: 1.5%;
+	margin-left: 2%;
+}
+
+.content label h4 {
+	font-size: 1rem;
+	font-weight: 600;
+	color: #000000;
+	margin: 2% 0 2% 25%;
+	width: 65%;
+	padding-top: 3%;
+}
+
+.content label p {
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: #dbdbdb;
+	width: 60%;
+	margin-left: 25%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.content label input {
+	position: absolute;
+	top: 35%;
+	right: 5%;
+}
+
+.el-checkbox input[type=checkbox]:checked {
+	background: url("checkbox.png")no-repeat center;
+	background-size: 100%;
+}
+
+.el-checkbox>input[type="checkbox"]+.el-checkbox-style:before {
+	border-radius: 50%;
+}
+
+.el-checkbox>input[type="checkbox"]+.el-checkbox-style:after {
+	top: 0.15em;
+	left: 0.5em;
+	box-sizing: border-box;
+	width: 0.4em;
+	height: 0.85em;
+	transform: rotate(45deg);
+	border-right: 2px solid #fff;
+	border-bottom: 2px solid #fff;
+}
+
+input[type='checkbox'] {
+	width: 25px;
+	height: 25px;
+	background-color: #fff;
+	-webkit-appearance: none;
+	border: 1px solid #c9c9c9;
+	border-radius: 50%;
+	outline: none;
+}
+
+.el-checkbox input[type=radio]:checked {
+	background: url("checkbox.png")no-repeat center;
+	background-size: 100%;
+}
+
+.el-checkbox>input[type="radio"]+.el-checkbox-style:before {
+	border-radius: 50%;
+}
+
+.el-checkbox>input[type="radio"]+.el-checkbox-style:after {
+	top: 0.15em;
+	left: 0.5em;
+	box-sizing: border-box;
+	width: 0.4em;
+	height: 0.85em;
+	transform: rotate(45deg);
+	border-right: 2px solid #fff;
+	border-bottom: 2px solid #fff;
+}
+
+input[type='radio'] {
+	width: 25px;
+	height: 25px;
+	background-color: #fff;
+	-webkit-appearance: none;
+	border: 1px solid #c9c9c9;
+	border-radius: 50%;
+	outline: none;
+}
+
+.el-checkbox input[type=radio]:checked {
+	background: url("checkbox.png")no-repeat center;
+	background-size: 100%;
+}
+
+.footBox {
+	width: 100%;
+	height: 64px;
+	position: fixed;
+	bottom: 0;
+	background-color: #FFFFFF;
+	text-align: center;
+}
+
+.footBox input {
+	width: 90%;
+	height: 70%;
+	margin: 0 auto;
+	background-color: #09bb07;
+	margin-top: 3%;
+	border: none;
+	outline: none;
+	border-radius: 6px;
+	font-size: 1rem;
+	color: #FFFFFF;
+}
+
+
+/*serch 样式   end*/
+
+
+/*checkbox 样式  star*/
+
+.headBoxTwo {
+	width: 100%;
+	height: auto;
+	background-color: #ffffff;
+	text-align: center;
+	padding: 6% 0;
+}
+
+.headBoxTwo .titHead {
+	margin-bottom: 2%;
+}
+
+.headBoxTwo .titNeck {
+	margin-bottom: 0px;
+}
+
+
+/*checkbox 样式  end*/
+
+
+
+
+@media only screen and (min-width: 420px) and (max-width: 1024px) {
+	.search button {
+		background-size: 100%;
+		right: 10%;
+		width: 7%;
+	}
+	.content label img {
+		margin-top: 0.5%;
+		margin-left: 1%;
+	}
+	.content label h4 {
+		margin: 0 0 1% 25%;
+		padding-top: 1%;
+	}
+	.footBox input {
+		margin-top: 1%;
+	}
+}
+
+

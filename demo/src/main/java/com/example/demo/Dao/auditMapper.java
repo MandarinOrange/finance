@@ -13,6 +13,9 @@ public interface auditMapper {
     @Select("select * from audit")
     public List<Audit> select();
 
+    @Select("select top 1 checkNum from audit order by checkNum DESC")
+    public Long selectBigCheckNum();
+
     @Insert("insert into audit(checkNum, userNum, productNum, " +
             "bankAccount, checkState, contractNum, " +
             "isSignContract, year, amount, applyTime)" +

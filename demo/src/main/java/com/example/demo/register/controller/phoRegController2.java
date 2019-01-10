@@ -14,7 +14,7 @@ public class phoRegController2 {
 
     phone phone=new phone();
 
-    @RequestMapping("")//第二个手机验证界面
+    @RequestMapping("/phoreg2")//第二个手机验证界面
     public String doPost(HttpServletRequest request, HttpServletResponse response){
         PrintWriter writer=null;
         try{

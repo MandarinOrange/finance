@@ -7,7 +7,9 @@
         <meta content="yes" name="apple-mobile-web-app-capable"/>
         <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
         <meta content="telephone=no" name="format-detection"/>
-        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <link href="showstyle.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="show.js"></script>
     </head>
     <body>
 
@@ -21,7 +23,7 @@
                 <div class="aui-center">
                     <span class="aui-center-title">产品列表</span>
                 </div>
-                <a href="javascript:location.reload();" class="aui-navBar-item">
+                <a href="javascript:location.reload();" class="aui-navBar-item" id="reload">
                     <i class="icon icon-sys"></i>刷新
                 </a>
             </header>
@@ -37,10 +39,10 @@
                         <div class="aui-pri-button"> </div>
                     </div>
                 </div>
-                <div class="aui-list-box">
+                <div class="aui-list-box" id="content">
                     <a href="javascript:;" class="aui-list-item">
                         <div class="aui-right-top"> </div>
-                        <div class="aui-list-head">产品1</div>
+                        <div class="aui-list-head" id="proname">产品1</div>
                         <div class="aui-flex">
                             <div class="aui-flex-box">
                                 <h4>1111</h4>
@@ -48,7 +50,7 @@
                             </div>
                             <div class="aui-text-time"> </div>
                             <div class="aui-button-get">
-                                <button>申请</button>
+                                <button id="apply", onclick="location='apply.html'">申请</button>
                             </div>
                         </div>
                         <div class="aui-dotted"> </div>

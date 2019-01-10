@@ -6,7 +6,10 @@ import com.example.demo.searchService.service.ProductSearchService;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.ServletException;
@@ -19,7 +22,9 @@ import java.util.List;
 
 @Controller
 public class SearchServiceController extends HttpServlet {
+    @Autowired
     private ProductSearchService productSearchService;
+
     @RequestMapping("/search")
     public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
@@ -45,7 +50,13 @@ public class SearchServiceController extends HttpServlet {
         response.getWriter().print(json);
 
     }
-    public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-        doPost(request,response);
+
+    @PostMapping("/showIndex")
+    public void showPro(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+        List<Product> products = productSearchService.findByCount();
+        String json = JSONObject.toJSONString(products);
+        System.out.println(json);
+        response.setCharacterEncoding("utf-8");
+        response.getWriter().print(json);
     }
 }

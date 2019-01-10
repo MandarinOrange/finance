@@ -4,6 +4,7 @@ import com.example.demo.bean.Product;
 
 import java.util.List;
 
+
 public interface ProductSearchService {
     //按关键字查询
     List<Product> findByNameLike(String productName);

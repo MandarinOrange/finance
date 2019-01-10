@@ -4,6 +4,7 @@ import com.example.demo.bean.User;
 import com.example.demo.loginService.API.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.ServletException;
@@ -21,7 +22,7 @@ public class UserController extends HttpServlet {
     @Autowired
     private UserServiceImpl userServiceImpl;
 
-    @PostMapping("/login")
+    @GetMapping("/login")
     public String  handle(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
         String userName = request.getParameter("userName");
         String userPwd = request.getParameter("userPwd");
@@ -30,8 +31,8 @@ public class UserController extends HttpServlet {
             if(user.getUserPwd().equals(userPwd)){
                 HttpSession session=request.getSession();
                 session.setAttribute("user",user);
-                return "redirect:index.html";
-                //request.getRequestDispatcher("/").forward(request,response);
+                //request.getRequestDispatcher("index.html").forward(request,response);
+                return "index";
             }
             else{
                 return "/userPwdError";

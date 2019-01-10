@@ -17,7 +17,7 @@ public class bankCardController extends HttpServlet {
     @Autowired
     userBankIdMapper userBankIdMapper;
 
-    @RequestMapping("")//手机表单界面
+    @RequestMapping("/phone")//手机表单界面
     public String doPost(HttpServletResponse response, HttpServletRequest request){
         try{
             long num=1;//获取得到userNum

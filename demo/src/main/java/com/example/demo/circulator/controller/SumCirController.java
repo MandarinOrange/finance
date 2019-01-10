@@ -49,6 +49,7 @@ public class SumCirController {
             return "计算失败!";
         }
 
+        System.out.println(sum_principal_and_intrate);
         return "/circulator";
     }
 }

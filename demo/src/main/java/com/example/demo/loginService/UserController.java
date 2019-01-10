@@ -1,7 +1,7 @@
 package com.example.demo.loginService;
 
 import com.example.demo.bean.User;
-import com.example.demo.loginService.API.UserService;
+import com.example.demo.loginService.API.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -18,42 +19,50 @@ import java.util.Date;
 @Controller
 public class UserController extends HttpServlet {
     @Autowired
-    private UserService userService;
-    private User user;
-    private String userPwd;
+    private UserServiceImpl userServiceImpl;
 
     @PostMapping("/login")
-    public String  doPost(HttpServletRequest request){
+    public String  handle(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
         String userName = request.getParameter("userName");
-        userPwd = request.getParameter("userPwd");
-        user = this.userService.selectUserByuserName(userName);
+        String userPwd = request.getParameter("userPwd");
+        User user = this.userServiceImpl.selectUserByuserName(userName);
         if(user!=null){
             if(user.getUserPwd().equals(userPwd)){
                 HttpSession session=request.getSession();
                 session.setAttribute("user",user);
-                return "redirect:http://localhost:8080/firstproject/demo/Front-end/首页/index.html";
+                return "redirect:index.html";
+                //request.getRequestDispatcher("/").forward(request,response);
             }
             else{
                 return "/userPwdError";
+                //response.sendRedirect("userPwdError.jsp");
             }
         }else{
-            return "/userNotExist";
+            return "userNotExist";
+            //response.sendRedirect("notexit.jsp");
         }
     }
     @PostMapping("/login1")
-    public String  doPost1(HttpServletRequest request){
+    public String  handle1(HttpServletRequest request,HttpServletResponse response){
         String userName = request.getParameter("userName");
-        userPwd = request.getParameter("userPwd");
+        String userPwd = request.getParameter("userPwd");
         String userPwd1=request.getParameter("userPwd1");
-        user=this.userService.selectUserByuserName("userName");
+        User user=this.userServiceImpl.selectUserByuserName("userName");
+        long count = 0;
         if(user!=null){
             return "/operateError";
         }else if(userPwd.equals(userPwd1)){
-                long count = this.userService.count()+1;
+                count = this.userServiceImpl.count()+1;
             SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd  HH-mm-ss");
                 String registerTime=dateFormat.format(new Date());
                 String userRight="0";
-                this.userService.insertUser(count, userName, userPwd,registerTime,userRight);
+                user = new User();
+                user.setUserNum(count);
+                user.setUserName(userName);
+                user.setUserPwd(userPwd);
+                user.setRegisterTime(registerTime);
+                user.setUserRight(userRight);
+                this.userServiceImpl.insertUser(user);
                 return "/registerSuccess";
         }else{
                return "/userPwdNotSame";

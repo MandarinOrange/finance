@@ -15,13 +15,13 @@ public class bankCardController extends HttpServlet {
 
     private identify identify=new identify();
 
-    @RequestMapping("/phone")//手机表单界面
+    @RequestMapping("/binding")//卡号绑定界面
     public String doPost(HttpServletResponse response, HttpServletRequest request){
         try{
             long num=1;//获取得到userNum
             short result=0;
             UserBankIdentify userBankIdentify=new UserBankIdentify();
-            userBankIdentify.setBankAccount(request.getParameter("mobile"));
+            userBankIdentify.setBankAccount(request.getParameter("bankAccount"));
             userBankIdentify.setTrueName(request.getParameter("realname"));
             userBankIdentify.setIdNum(request.getParameter("idNum"));
             userBankIdentify.setTelephoneNum(request.getParameter("phoneNum"));
@@ -31,6 +31,6 @@ public class bankCardController extends HttpServlet {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "";//返回首页
+        return "../首页/index.html";//返回首页
     }
 }

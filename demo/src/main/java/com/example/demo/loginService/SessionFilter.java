@@ -9,7 +9,7 @@ import java.io.IOException;
 @WebFilter(filterName = "sessionFilter",urlPatterns = {"/*"})
 public class SessionFilter implements Filter {
     String NO_LOGIN="/notLogin";
-    String includeUrl=new String("redirect:http://localhost:8080/firstproject/demo/Front-end/Login/Login.html");
+    String[] includeUrls=new String[]{"redirect:http://localhost:8080/firstproject/demo/Front-end/Login/Login.html","redirect:http://localhost:8080/firstproject/demo/Front-end/Login/Login1.html"};
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws ServletException,IOException{
         HttpServletRequest request=(HttpServletRequest) servletRequest;
@@ -32,7 +32,7 @@ public class SessionFilter implements Filter {
                     response.sendRedirect(NO_LOGIN);
                 }else{
                     //重定向到登录页(需要在static文件夹下建立此html文件)
-                    response.sendRedirect(request.getContextPath()+includeUrl);
+                    response.sendRedirect(request.getContextPath()+"redirect:http://localhost:8080/firstproject/demo/Front-end/Login/Login.html");
                 }
                 return;
             }
@@ -40,10 +40,12 @@ public class SessionFilter implements Filter {
 
 
     }
-    public boolean isNeedFilter(String uri){
-          if(includeUrl.equals(uri)){
-              return false;
-          }
+    public boolean isNeedFilter(String uri) {
+        for (String includeUrl : includeUrls) {
+            if (includeUrl.equals(uri)) {
+                return false;
+            }
+        }
       return true;
     }
 

@@ -18,7 +18,7 @@ public class Transaction {
     private long payer;
     private long payee;
     private float transactionTime;
-    private float transactionAmount;
+    private double transactionAmount;
     private String note;
     private long checkNum;
 
@@ -27,7 +27,7 @@ public class Transaction {
         this.checkNum=checkNum;
         this.payer = payer;
         this.payee = payee;
-        this.transactionAmount=transactionNum;
+        this.transactionAmount=transationAmount;
 
     }
 }

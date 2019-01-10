@@ -25,5 +25,5 @@ public interface transMapper {
     public void updateTransaction(Transaction transactions);
 
     @Delete("delete from transaction where transactionNum=#{transactionNum}")
-    public void deleteTransaction(int transactionNum);
+    public void deleteTransaction(long transactionNum);
 }

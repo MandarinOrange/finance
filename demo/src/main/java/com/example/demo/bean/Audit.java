@@ -20,7 +20,7 @@ public class Audit {
     private  double amount;
     private  String applyTime;
     private String bankAccount;
-    private long checkState;
+    private int checkState;
     private long contractNum;
     private short isSignContract;
     private  long productNum;

@@ -1,4 +1,4 @@
-package com.example.demo.productService.service;
+package com.example.demo.util;
 
 
 import java.text.SimpleDateFormat;

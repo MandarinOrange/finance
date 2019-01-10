@@ -30,5 +30,5 @@ public interface productHistroyMapper {
 //    public void updateProductHistroy(ProductHistroy productHistroys);
 
 //    @Delete("delete from producthistroy where productNum=#{productNum}")
-//    public void deleteProductHistroy(int productNum);
+//    public void deleteProductHistroy(long productNum);
 }

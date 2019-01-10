@@ -21,6 +21,6 @@ public interface managerMapper {
     public void updateManager(Manager managers);
 
 //    @Delete("delete from manager where managerNum=#{managerNum}")
-//    public void deleteManager(String managerNum);
+//    public void deleteManager(long managerNum);
 
 }

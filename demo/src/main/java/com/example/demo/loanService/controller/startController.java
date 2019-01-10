@@ -21,9 +21,9 @@ public class startController extends HttpServlet {
         User user=new User();
         int num=1;//从登陆那里得到登陆者的序号
         user=userMapper.selectUserByuserNum(num);
-        if(user.getIsIdentify()=="1"){
+        if(user.getIsIdentify()==1){
             return "";//验证手机号的界面二号
-        }if(user.getIsIdentify()=="0"){
+        }if(user.getIsIdentify()==0){
             return "";//认证的界面
         }else{
             return "";//页面出错的界面

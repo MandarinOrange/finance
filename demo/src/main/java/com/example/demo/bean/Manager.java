@@ -23,11 +23,4 @@ public class Manager {
 
     public Manager(){};
 
-    public long getManagerNum() {
-        return managerNum;
-    }
-
-    public void setManagerNum(int managerNum) {
-        this.managerNum = managerNum;
-    }
 }

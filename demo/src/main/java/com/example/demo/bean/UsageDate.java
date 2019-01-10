@@ -18,32 +18,13 @@ public class UsageDate {
     private long productNum;
     private long userNum;
     private String bankAccount;
-    private int bankNum;
+    private long bankNum;
     private int year;
-    private float amount;
+    private double amount;
     private String startTime;
-
-    public UsageDate(){}
     private int equation;
 
-    public int getYear() {
-        return 0;
-    }
+    public UsageDate(){}
 
-    public long getProductNum() {
-        return 0;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public long getUserNum() {
-        return userNum;
-    }
-
-    public int getBankNum() {
-        return bankNum;
-    }
 
 }

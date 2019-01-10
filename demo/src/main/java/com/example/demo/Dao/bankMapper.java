@@ -12,7 +12,7 @@ import java.util.List;
 public interface bankMapper {
 
     @Select("select * from bank where bankNum = #{bankNum}")
-    public Bank selectBankByBankNum(int bankNum);
+    public Bank selectBankByBankNum(long bankNum);
 
     @Select("select * from bank where bankName = #{bankName}")
     public Bank selectBankByBankName(String bankName);
@@ -29,7 +29,7 @@ public interface bankMapper {
     public void updateBank(Bank banks);
 
 //    @Delete("delete from bank where bankNum=#{bankNum}")
-//    public void deleteBank(String bankNum);
+//    public void deleteBank(long bankNum);
 //
 //    @Delete("delete from bank where bankName=#{bankName}")
 //    public void deleteBanks(String bankName);

@@ -19,33 +19,11 @@ public class User {
     private String userPwd;
     private String userRight;
     private String telephoneNum;
-    private String isIdentify;
+    private short isIdentify;
     private String address;
     private String registerTime;
 
-    public String getIsIdentify() {
-        return isIdentify;
-    }
-
-    public void setIsIdentify(String isIdentify) {
-        this.isIdentify = isIdentify;
-    }
-
     public User(){};
 
-    public String getUserPwd() {
-        return userPwd;
-    }
 
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 }

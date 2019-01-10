@@ -30,7 +30,7 @@ public class PayCirService {
             double repamount = 0;
             long productNum = usageDate.getProductNum();
             long userNum = usageDate.getUserNum();
-            int bankNum = usageDate.getBankNum();
+            long bankNum = usageDate.getBankNum();
             double amount = usageDate.getAmount();
 
             if (repayment != null)

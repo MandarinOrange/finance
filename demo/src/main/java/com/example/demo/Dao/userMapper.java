@@ -16,7 +16,7 @@ public interface userMapper {
     @Select("select * from user where telephoneNum = #{telephoneNum}")
     public User selectUserBytelephoneNum(String telephoneNum);
 
-    @Select("select count(*) from user where userName!='null'")
+    @Select("select count(*) from user")
     public long count();
 
     @Select("select * from user")

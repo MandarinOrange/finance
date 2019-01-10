@@ -14,7 +14,6 @@ public class UserServiceImpl implements UserService{
     private userMapper UserMapper;
     @Transactional(propagation=Propagation.REQUIRED,readOnly = true)
     public User selectUserByuserName(String userName){
-
         return this.UserMapper.selectUserByuserName(userName);
     }
     @Transactional(propagation=Propagation.REQUIRED,readOnly = true)

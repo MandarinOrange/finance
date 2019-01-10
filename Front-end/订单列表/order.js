@@ -52,7 +52,7 @@ function showMessage(){
     //判断就绪状态和响应状态码是否符合要求
     if(xmlHttp.readyState==4&&xmlHttp.status==200) {
         var result = xmlHttp.responseText;//接收服务器响应的文本
-        document.getElementById("myspan").innerHTML = result;
+        document.getElementById("myspan").innerHTL = result;
     }
 }
-</script>
+

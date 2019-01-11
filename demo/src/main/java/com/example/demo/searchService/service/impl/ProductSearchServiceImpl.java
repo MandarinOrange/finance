@@ -5,15 +5,17 @@ import com.example.demo.Dao.usageDateMapper;
 import com.example.demo.bean.Product;
 import com.example.demo.searchService.service.ProductSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ProductSearchServiceImpl implements ProductSearchService {
     @Autowired
     productMapper productMapper;
+    @Autowired
     usageDateMapper usageDateMapper;
-    Product product;
 
     @Override
     public List<Product> findByNameLike(String productName){
@@ -32,6 +34,7 @@ public class ProductSearchServiceImpl implements ProductSearchService {
 
     @Override
     public List<Product> findByCount(){
+        Product product = new Product();
         List<Product> productList = new ArrayList<Product>();
         List<Integer> listusage = usageDateMapper.selectByCount();
         int[] arr = listusage.stream().mapToInt(Integer::valueOf).toArray();

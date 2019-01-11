@@ -30,29 +30,29 @@ function sendRequest(){
         alert("XMLHttpRequest对象创建失败!!");
         return;
     }
-    var str = document.getElementById("txtMessage").value;
-
-    /*GET方式发送请求
-    //初始化请求
-    xmlHttp.open("GET","AjaxMessageServlet?message="+str,true);
-    //设置回调函数
-    xmlHttp.onreadystatechange=showMessage;
-    xmlHttp.send(null);*/
 
     //Post方式发送请求
-    xmlHttp.open("POST","AjaxMessageServlet",true);
-    xmlHttp.onreadystatechange=showMessage;
+    xmlHttp.open("POST","SearchServiceController",true);
+    xmlHttp.onreadystatechange=showProduct;
     xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");//设置编码方式
     xmlHttp.send("message="+str);
 }
 
 
 //回调函数
-function showMessage(){
+function showProduct(){
     //判断就绪状态和响应状态码是否符合要求
     if(xmlHttp.readyState==4&&xmlHttp.status==200) {
-        var result = xmlHttp.responseText;//接收服务器响应的文本
-        document.getElementById("myspan").innerHTL = result;
+        var jsonPro = xmlHttp.responseText;//接收服务器响应的文本
+        $("#content").html=null;
+        for(var i=0;i<jsonPro.length;i++){
+            var pro = jsonPro[i];
+            var str = '<a href="javascript:;" class="aui-list-item"><div class="aui-right-top"></div><div class="aui-list-head" id="proname">'+pro.productName+'</div><div class="aui-flex"><div class="aui-flex-box"><h4>'+pro.productNum+'</h4></div><div class="aui-text-time"></div><div class="aui-button-get"><button id="apply", onclick="location=\'apply.html\'">申请</button> </div></div><div class="aui-dotted"></div></a>';
+
+        }
+        $("#content").append(str);
+
     }
 }
+
 

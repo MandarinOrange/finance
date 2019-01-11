@@ -16,16 +16,16 @@ public interface userMapper {
     @Select("select * from user where telephoneNum = #{telephoneNum}")
     public User selectUserBytelephoneNum(String telephoneNum);
 
-    @Select("select count(*) from user where userName!='null'")
+    @Select("select count(*) from user")
     public long count();
 
     @Select("select * from user")
     public List<User> select();
 
-    @Insert("insert into user(userNum, userName, userPwd,registerTime,userRight)" +
-            " values (#{userNum},#{userName},#{userPwd},#{registerTime},#{userRight})")
-    public void insertUser(long userNum,String userName,String userPwd,String registerTime,String userRight);
-
+//    @Insert("insert into user(userNum, userName, userPwd,userRight,registerTime)" +
+//            " values (#{userNum},#{userName},#{userPwd},#{userRight},#{registerTime})")
+//    public void insertUser(long userNum,String userName,String userPwd,String registerTime,String userRight);
+//
 
     @Insert("insert into user(userNum, userName, userPwd, userRight," +
             " telephoneNum, address, isIdentify, registerTime)" +

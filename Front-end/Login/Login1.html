@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
         }
-        
+
         html,
         body {
             height: 100%;
@@ -23,18 +23,18 @@
             src: url("NEOTERICc.ttf")/*tpa=http://www.17sucai.com/preview/384665/2018-12-28/login/font/NEOTERICc.ttf*/;
         }
         input:focus{
-			outline: none;
-		}
-		.form input{
-			width: 300px;
-			height: 30px;
-			font-size: 18px;
+            outline: none;
+        }
+        .form input{
+            width: 300px;
+            height: 30px;
+            font-size: 18px;
             background: none;
             border: none;
             border-bottom: 1px solid #fff;
             color: #fff;
             margin-bottom: 20px;
-		}
+        }
         .form input::placeholder{
             color: rgba(255,255,255,0.8);
             font-size: 18px;
@@ -45,18 +45,18 @@
             overflow: hidden;
             transition: .25s;
         }
-		.btn{
-			width:140px;
-			height: 40px;
-			border: 1px solid #fff;
+        .btn{
+            width:140px;
+            height: 40px;
+            border: 1px solid #fff;
             background: none;
-			font-size:20px;
-			color: #fff;
+            font-size:20px;
+            color: #fff;
             cursor: pointer;
             margin-top: 25px;
             font-family: "neo";
             transition: .25s;
-		}
+        }
         .btn:hover{
             background: rgba(255,255,255,.25);
         }
@@ -258,7 +258,7 @@
             }
             #login{
                 width: 100%;
-                
+
             }
         }
         @media screen and (max-width:560px ) {
@@ -287,34 +287,35 @@
 
 
 <body>
-    <div id="bg">
-        <div id="hint"><!-- 提示框 -->
-            <p>登录失败</p>
-        </div>
-        <div id="login_wrap">
-            <div id="login"><!-- 登录注册切换动画 -->
-                <div id="status">
-                    <i style="top: 0">登</i>
-                    <i style="top: 35px">登</i>
-                    <i style="right: 5px">录</i>
-                </div>
-                <span>
-                    <form action="/login" method="post">
+<div id="bg">
+    <div id="hint"><!-- 提示框 -->
+        <p>登录失败</p>
+    </div>
+    <div id="login_wrap">
+        <div id="login"><!-- 登录注册切换动画 -->
+            <div id="status">
+                <i style="top: 0">登</i>
+                <i style="top: 35px">登</i>
+                <i style="right: 5px">录</i>
+            </div>
+            <span>
+                    <form action="/login1" method="post">
                         <p class="form"><input type="text" id="userName" placeholder="账号"></p>
                         <p class="form"><input type="password" id="userPwd" placeholder="密码"></p>
-                        <input type="submit" value="登录" class="btn" name="action">
-                        <input type="button" value="注册" class="btn" onclick="location.href='Login1.html'">
+                        <p class="form"><input type="password" id="userPwd1" placeholder="确认密码"></p>
+                        <input type="button" value="登录" class="btn" onclick="location.href='Login.html'">
+                        <input type="submit" value="确认注册" class="btn" name="action">
                     </form>
                     <a href="#">忘记密码</a>
                 </span>
-            </div>
+        </div>
 
-            <div id="login_img"><!-- 图片绘制框 -->
-                <span class="circle">
+        <div id="login_img"><!-- 图片绘制框 -->
+            <span class="circle">
                     <span></span>
                     <span></span>
                 </span>
-                <span class="star">
+            <span class="star">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -324,14 +325,14 @@
                     <span></span>
                     <span></span>
                 </span>
-                <span class="fly_star">
+            <span class="fly_star">
                     <span></span>
                     <span></span>
                 </span>
-                <p id="title">CLOUD</p>
-            </div>
+            <p id="title">CLOUD</p>
         </div>
     </div>
+</div>
 </body>
 <script>
     var onoff = true//根据此布尔值判断当前为注册状态还是登录状态
@@ -339,7 +340,7 @@
     //var user = document.getElementById("user")
     //var passwd = document.getElementById("passwd")
     //var con_pass = document.getElementById("confirm-passwd")
-    
+
     //自动居中title
     var name_c = document.getElementById("title")
     name = name_c.innerHTML.split("")

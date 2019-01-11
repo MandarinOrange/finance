@@ -21,8 +21,8 @@ public class UserServiceImpl extends UserService{
         return this.UserMapper.selectUserBytelephoneNum(telephoneNum);
     }
     @Transactional(propagation=Propagation.REQUIRED,readOnly = false)
-    public void insertUser(long userNum,String userName,String userPwd,String registerTime,String userRight){
-        this.UserMapper.insertUser(userNum,userName,userPwd,registerTime,userRight);
+    public void insertUser(User user){
+        this.UserMapper.addUser(user);
     }
     @Transactional(propagation=Propagation.REQUIRED,readOnly = true)
     public long count(){

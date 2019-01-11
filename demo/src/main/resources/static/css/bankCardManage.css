@@ -208,14 +208,14 @@ a {
 .aui-card-list-bg {
     padding-left: 20px;
     padding-top: 20px;
-    background: url("icon-pig.png")/*tpa=http://www.17sucai.com/preview/1268063/2018-07-17/BankCard/images/icon-pig.png*/ no-repeat right;
+    background: url("../images/bankCardManage1.png")/*tpa=http://www.17sucai.com/preview/1268063/2018-07-17/BankCard/images/icon-pig.png*/ no-repeat right;
     background-size: contain;
     height: 140px;
     position: relative;
 }
 
 .aui-card-list-loan {
-    background: url("icon-loan.png")/*tpa=http://www.17sucai.com/preview/1268063/2018-07-17/BankCard/images/icon-loan.png*/ no-repeat right;
+    background: url("../images/bankCardManage2.png")/*tpa=http://www.17sucai.com/preview/1268063/2018-07-17/BankCard/images/icon-loan.png*/ no-repeat right;
     background-size: contain;
 }
 

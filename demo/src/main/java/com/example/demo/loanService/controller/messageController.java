@@ -20,7 +20,7 @@ public class messageController extends HttpServlet {
     private nowTime nowTime=new nowTime();
     private message message=new message();
 
-    @RequestMapping("")//填写贷款基本信息的界面
+    @RequestMapping("/借款/index.html")//填写贷款基本信息的界面
     public String doPost(HttpServletResponse response, HttpServletRequest request){
         long num=1;//从登陆那里得到登陆者的序号
         Audit audit=new Audit();

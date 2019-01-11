@@ -114,8 +114,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="divHeight"></div>
-                <!--<div class="aui-borrow-head">-->
+                <div class="divHeight" ></div>
+                <div>
+                    <table id = "tab"></table>
+                </div>
                     <!--<div class="aui-borrow-head-title">-->
                         <!--<h2>标题1</h2>-->
                     <!--</div>-->
@@ -178,7 +180,7 @@
 
             window.onload(function requestData(){
                 $.ajax({
-                    url: "/show",
+                    url: "/showIndex",
                     type: "post",
                     dataType: "json",
                     success: function(data){
@@ -195,8 +197,7 @@
             function showData(data) {
                 var str = "";//定义用于拼接的字符串
                 for (var i = 0; i < data.length; i++) {
-                    //拼接表格的行和列
-                    //str = "<tr><td>" + data[i].name + "</td><td>" + data[i].password + "</td></tr>";
+
                     str=   "                <div class=\"aui-borrow-head\">\n" +
                         "                    <div class=\"aui-borrow-head-title\">\n" +
                         "                        <h2>"+data[i].productNum+""</h2>\n" +
@@ -205,6 +206,8 @@
                         "                        <img src=\"\">\n" +
                         "                    </div>\n" +
                         "                </div>";
+
+                    // str = "<tr><td>"+data[i].productNum+"</td></tr>";
                     //追加到table中
                     $("#tab").append(str);         }
             }

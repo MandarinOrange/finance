@@ -7,7 +7,46 @@
         <meta content="yes" name="apple-mobile-web-app-capable"/>
         <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
         <meta content="telephone=no" name="format-detection"/>
-        <link href="style.css" rel="stylesheet" type="text/css"/>
+        <!--<link href="orderliststyle.css" rel="stylesheet" type="text/css"/>-->
+        <script type="text/javascript">
+            window.onload(function requestData(){
+                $.ajax({
+                    url: "/orderlist",
+                    type: "post",
+                    dataType: "json",
+                    success: function(data){
+                        /*这个方法里是ajax发送请求成功之后执行的代码*/
+                        showData(data);//我们仅做数据展示
+                    },
+                    error: function(msg){
+                        alert("ajax连接异常："+msg);
+                    }
+                });
+            });
+
+            //展示数据
+            function showData(data) {
+                var str = "";//定义用于拼接的字符串
+                for (var i = 0; i < data.length; i++) {
+                    str = " <a href=\"javascript:;\" class=\"aui-list-item\">\n" +
+                        "                        <div class=\"aui-right-top\"> </div>\n" +
+                        "                        <div class=\"aui-list-head\">"+data[i].checkNum+"</div>\n" +
+                        "                        <div class=\"aui-flex\">\n" +
+                        "                            <div class=\"aui-flex-box\">\n" +
+                        "                                <h4>"+data[i].checkNum+"</h4>\n" +
+                        "                               \n" +
+                        "                            </div>\n" +
+                        "                            <div class=\"aui-text-time\"> </div>\n" +
+                        "                            <div class=\"aui-button-get\">\n" +
+                        "                                <button>详情</button>\n" +
+                        "                            </div>\n" +
+                        "                        </div>\n" +
+                        "                        <div class=\"aui-dotted\"> </div>\n" +
+                        "                    </a>"
+                    //追加到table中
+                    $("#orderlist").append(str);         }
+            }
+        </script>
     </head>
     <body>
 
@@ -37,7 +76,7 @@
                         <div class="aui-pri-button"> </div>
                     </div>
                 </div>
-                <div class="aui-list-box">
+                <div class="aui-list-box" id="orderlist">
                     <a href="javascript:;" class="aui-list-item">
                         <div class="aui-right-top"> </div>
                         <div class="aui-list-head">订单1</div>

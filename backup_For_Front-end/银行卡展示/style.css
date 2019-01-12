@@ -1,0 +1,242 @@
+/* 公共样式表css */
+html,body {
+    color: #333;
+    margin: 0;
+    height: 100%;
+    font-family: "Myriad Set Pro","Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: normal;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a, label, button, input, select {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+img {
+    border: 0;
+}
+
+body {
+    background: #f8f8f8;
+    color: #666;
+}
+
+html, body, div, dl, dt, dd, ol, ul, li, h1, h2, h3, h4, h5, h6, p, blockquote, pre, button, fieldset, form, input, legend, textarea, th, td {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #08acee;
+}
+
+button {
+    outline: 0;
+}
+
+img {
+    border: 0;
+}
+
+button,input,optgroup,select,textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #666;
+}
+
+.clearfix::after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.clearfix {
+}
+
+/* 必要布局样式css */
+.aui-flexView {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.aui-navBar {
+    height: 44px;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.99);
+}
+
+.aui-navBar-item {
+    height: 44px;
+    min-width: 25%;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    padding: 0 10px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #5C5C5C;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    background-size: 18px;
+    display: block;
+}
+
+.icon-return {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAC3UlEQVRoQ93bvYvUQBQA8PdmsqyyIsgJFgcKWrjgkuwaRLjGww8EQQQFsbE5re5fEGyEq+wsbESr66wUjhNUPPUEi5mBxUbwT7ARDovbNSOjicTlcgfJfLzd9DOZX/Lem7yEIEzJ0e125zqdzrLWektK+QgAxnWWjnUG+R7T6/WOtNvtTwBw3Jxba70ipbxXZx3kwZPYHLwhpVycOXAFdltrfUUp9WamwFVYALgmpVyvgzVjSIa0KyxJsEssOXCSJPNRFL0vqnEetmOt9dUmYVwOfzIhnWPN1nO0tMBxlmU3lFIv6ubs5DgSYF9YEiHtExsc7BsbFFyB/ZVl2XWbOUsih3fB3lJKPbdVoHaax3vRCon1HtKhsV7BO2H13+Om6zD2/uBRhQWA21LKVZc5671oUcI6D2lqWKdgilhn4F0K1F2l1FOfOes8hyljrd9h6lir4GnAWgNXPEFBlmV3Ques9RweDAbHGGPmtUz5TYU5z7IQ4nHIAmW9eTBYRNxExPmJyUliG4V0HMenoyjaBIB9fybCf40XWWwjcJqm3wDgxLTc2WKdtfvhNE2/A8BcMZHWehsRLwghPlLLWyvdUpIkS5zzJ1iKZQD4CQCXKaNr32Fz1fr9/iXG2EtEbJeuIml0I3COXmSMrU8LujF42tBWwHugzwshPlMpZNbABZpzvgYA+0vVewsRL1JBWwXn6AXO+WuqaOtg6mgnYMpoZ2CqaKfgAs0Ye4WIBygUMufgHH2GMfaWAtoLmBLaG5gK2iu4QOf79MEQOe0dnKP7nPMNAPCODgIOiQ4GDoUOCt4DfU4IIW13WcHBBTrfpw+VgD8AwLSWVtEkwAaZJMkpzvkHRHSKJgP2hSYF9oEmB3aNJgku0FEUvQOAwzYLGVmwQcZxfLLVapkvGf+hR6PR2eFw+LXOlkUaXIXWWj+TUi7NJLgCfV8I8WBmwXlOm/8hVrTWX6SUD80PanXAvwF8evVM7fdtLQAAAABJRU5ErkJggg==');
+}
+
+.aui-center {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 44px;
+    width: 50%;
+}
+
+.aui-center-title {
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+    color: #333333;
+}
+
+.aui-scrollView {
+    width: 100%;
+    height: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    margin-bottom: 1px;
+}
+
+.aui-box-item {
+    padding: 15px 10px;
+}
+
+.aui-card-list {
+    height: 140px;
+    border-radius: 8px;
+    background-image: -webkit-gradient(linear,left top,right top,from(#fe9b2c),to(#ff7b03));
+    background-image: -webkit-linear-gradient(left,#fe9b2c,#ff7b03);
+    background-image: -moz-linear-gradient(left,#fe9b2c,#ff7b03);
+    background-image: linear-gradient(to right,#fe9b2c,#ff7b03);
+    background-color: #ff7b03;
+    margin-bottom: 20px;
+}
+
+.aui-card-blue {
+    background-image: -webkit-gradient(linear,left top,right top,from(#60a5f5),to(#006ae3));
+    background-image: -webkit-linear-gradient(left,#60a5f5,#006ae3);
+    background-image: -moz-linear-gradient(left,#60a5f5,#006ae3);
+    background-image: linear-gradient(to right,#60a5f5,#006ae3);
+    background-color: #006ae3;
+}
+
+.aui-card-list-bg {
+    padding-left: 20px;
+    padding-top: 20px;
+    background: url("icon-pig.png")/*tpa=http://www.17sucai.com/preview/1268063/2018-07-17/BankCard/images/icon-pig.png*/ no-repeat right;
+    background-size: contain;
+    height: 140px;
+    position: relative;
+}
+
+.aui-card-list-loan {
+    background: url("icon-loan.png")/*tpa=http://www.17sucai.com/preview/1268063/2018-07-17/BankCard/images/icon-loan.png*/ no-repeat right;
+    background-size: contain;
+}
+
+.aui-card-list-bg h2 {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.aui-card-list-link {
+    position: absolute;
+    right: 30px;
+    bottom: 15px;
+    font-size: 0.8rem;
+    color: #fff;
+    text-align: right;
+}
+
+.icon-arrow {
+    position: absolute;
+    right: -20px;
+    bottom: 0;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NkRFNDJCMTQ4MUIxMTFFOEE0MTJEMkRDQTIwN0VGOUYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NkRFNDJCMTU4MUIxMTFFOEE0MTJEMkRDQTIwN0VGOUYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2REU0MkIxMjgxQjExMUU4QTQxMkQyRENBMjA3RUY5RiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo2REU0MkIxMzgxQjExMUU4QTQxMkQyRENBMjA3RUY5RiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsJXOMQAAAJ5SURBVHja7JpNSFVBFIDve2oaLRIFkcqKhBYVtIlCXGZEBkEQ0boWLgI3GoIlKgghBBFCLYV2iSIVGG2MaFUQboykHzV/QET6QQ3Mn9s3MA/ldq4E94rDcQ58PJjFhe/dMzNnztxMGIbBTopssMPCC3thL+yFvbAX9sLbF/kpPGMPVNnftzDjtLEpLRNQCE/D9RiCSwmfuaVkEtbSxfAjMrYE96DF/J/a5vAvaITfG8YK4Ta8gAptKZ3jPHwI/41vUOtSSqf5sMPwRJD+A20ahQ27oBGWBPEB2KdNOEcNjMSk+AWNwoaD0CNIr0IrZLUJGwrgFizHpPh+bcI5zsJXQXoCzmkUDuzb7BOk16AZ8rUJG/LgjpWMhilRD2gT3lioTAjSY3aFVydsqLALl7SKN0GRNuHAzttWKymleKU24Rym3p4SpEfTrsVdOquaFH8pSC/bhW63NuHAVl8dsCKI98Pp7W4AbFXUQhcciYzPQjV80dbEG4BeYbwMzrjQAEiTvfAwlONZ0orMNdnj8CqmidCkbdG6CNOC7LQ9fKjZlrK2SyKtzK/hkKZ9uAS6Y+brg7T2XleEj8E7QXQRbmg7PFyGWUH2UxrFhUvCZr62bLLllGs6D5fGNPVMtNsWr5qOx0kYFkTn4Iq2ntZV+CnIvocTmrqWpgTsjEnhxzbF1fSlyzZp3zTYZp6amwezrXwWZCdt+ajqbuk6zAuyg3BU0+2huVK5HzNfH9kjn5rr0vKYI50pEesgo+kbjyJ4A6ci4yNwEwZda6UkFS6FucjYc6iHcY0fpn2HZvgIC3AXrrkqm8Yb9p8eemEv7IW9sBf2wl74v+OvAAMAnNUWIiVsUYIAAAAASUVORK5CYII=');
+}

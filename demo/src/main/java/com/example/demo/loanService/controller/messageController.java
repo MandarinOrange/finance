@@ -3,6 +3,7 @@ package com.example.demo.loanService.controller;
 
 import com.example.demo.Dao.auditMapper;
 import com.example.demo.bean.Audit;
+import com.example.demo.bean.User;
 import com.example.demo.loanService.service.message;
 import com.example.demo.util.nowTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class messageController extends HttpServlet {
@@ -22,7 +24,10 @@ public class messageController extends HttpServlet {
 
     @RequestMapping("/借款/index.html")//填写贷款基本信息的界面
     public String doPost(HttpServletResponse response, HttpServletRequest request){
-        long num=1;//从登陆那里得到登陆者的序号
+        HttpSession session=request.getSession();
+        User user=new User();
+        user=(User)session.getAttribute("user");
+        long num=user.getUserNum();
         Audit audit=new Audit();
         audit.setUserNum(num);
         audit.setAmount(Double.parseDouble(request.getParameter("amount")));

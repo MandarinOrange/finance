@@ -22,6 +22,12 @@ public interface userMapper {
     @Select("select * from user")
     public List<User> select();
 
+    @Select("select count(*) from user where userNum = #{userNum} and userPwd = #{userPwd}")
+    public int selectPwd(long userNum,String userPwd);
+
+    @Select("select isIdentify fron user where userNum = #{userNum}")
+    public short selectIsId(long userNum);
+
 //    @Insert("insert into user(userNum, userName, userPwd,userRight,registerTime)" +
 //            " values (#{userNum},#{userName},#{userPwd},#{userRight},#{registerTime})")
 //    public void insertUser(long userNum,String userName,String userPwd,String registerTime,String userRight);

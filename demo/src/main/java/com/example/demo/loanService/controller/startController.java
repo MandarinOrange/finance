@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class startController extends HttpServlet {
@@ -18,12 +19,13 @@ public class startController extends HttpServlet {
 
     @RequestMapping("/start")//浏览商品之后点击申请贷款的按钮之后跳到的界面
     public String doPost(HttpServletResponse response, HttpServletRequest request){
+        HttpSession session=request.getSession();
         User user=new User();
-        int num=1;//从登陆那里得到登陆者的序号
-        user=userMapper.selectUserByuserNum(num);
-        if(user.getIsIdentify()==1){
+        user=(User)session.getAttribute("user");
+        short num=userMapper.selectIsId(user.getUserNum());
+        if(num==1){
             return "";//验证手机号的界面二号
-        }if(user.getIsIdentify()==0){
+        }if(num==0){
             return "";//认证的界面
         }else{
             return "";//页面出错的界面

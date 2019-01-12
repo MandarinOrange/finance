@@ -62,4 +62,15 @@ public class EPAIR_CirService extends CirService{
         }
         return -1;
     }
+    public double SumCirculator( float intrate,double amount,int year){
+        try{
+            double rep = Math.pow((1+intrate),year)/(Math.pow((1+intrate),year)-1);
+            double principal_and_interest = rep * intrate * amount * year;
+            return principal_and_interest;
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+        }
+        return -1;
+    }
 }

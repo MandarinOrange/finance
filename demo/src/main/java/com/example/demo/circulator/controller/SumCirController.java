@@ -52,4 +52,37 @@ public class SumCirController {
         System.out.println(sum_principal_and_intrate);
         return "/circulator";
     }
+
+
+    @GetMapping("/sum")
+    public String SumCir(HttpServletRequest request, HttpServletResponse response){
+        double amount = Double.parseDouble(request.getParameter("amount"));
+        float intrate = Float.parseFloat(request.getParameter("intrate"));
+        int year = Integer.parseInt(request.getParameter("year"));
+        int equation = Integer.parseInt(request.getParameter("equation"));
+
+        double sum_principal_and_intrate = 0;
+        switch (equation){
+            case 1:
+                //cirService = new EPAIR_CirService();
+                sum_principal_and_intrate = epair_cirService.SumCirculator(intrate,amount,year);
+                break;
+            case 2:
+                //cirService = new EPR_CirService();
+                sum_principal_and_intrate = epr_cirService.SumCirculator(intrate,amount,year);
+                break;
+            default:
+                System.out.println("not exit！！");
+                break;
+        }
+        //double sum_principal_and_intrate = cirService.SumCirculator(productNum,amount,year);
+        if(sum_principal_and_intrate>=0) {
+            request.setAttribute("sum", sum_principal_and_intrate);
+        }else{
+            return "计算失败!";
+        }
+
+        System.out.println(sum_principal_and_intrate);
+        return "/circulator";
+    }
 }

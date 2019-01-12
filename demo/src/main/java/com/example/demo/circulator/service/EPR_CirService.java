@@ -69,4 +69,21 @@ public class EPR_CirService extends CirService {
         }
         return -1;
     }
+
+    public double SumCirculator(float intrate,double amount,int year){
+        Product product =  null;
+        try{
+            intrate /= 12;
+            int month = year * 12;
+            double first_principal_and_interest = amount/month + amount*intrate;
+            double last_principal_and_interest = amount/month + amount*(1-(month-1)/month)*intrate;
+            double principal_and_interest = (first_principal_and_interest + last_principal_and_interest)*month/2;
+            return principal_and_interest;
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally {
+
+        }
+        return -1;
+    }
 }

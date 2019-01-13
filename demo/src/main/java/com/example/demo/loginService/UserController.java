@@ -24,6 +24,7 @@ public class UserController extends HttpServlet {
 
     @GetMapping("/login")
     public String  handle(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
+        //System.out.println("_______________");
         String userName = request.getParameter("userName");
         String userPwd = request.getParameter("userPwd");
         User user = this.userServiceImpl.selectUserByuserName(userName);
@@ -32,7 +33,7 @@ public class UserController extends HttpServlet {
                 HttpSession session=request.getSession();
                 session.setAttribute("user",user);
                 //request.getRequestDispatcher("index.html").forward(request,response);
-                return "index";
+                return "/index";
             }
             else{
                 return "/userPwdError";
@@ -43,18 +44,21 @@ public class UserController extends HttpServlet {
             //response.sendRedirect("notexit.jsp");
         }
     }
-    @PostMapping("/login1")
+
+
+    @GetMapping("/login1")
     public String  handle1(HttpServletRequest request,HttpServletResponse response){
         String userName = request.getParameter("userName");
         String userPwd = request.getParameter("userPwd");
         String userPwd1=request.getParameter("userPwd1");
-        User user=this.userServiceImpl.selectUserByuserName("userName");
+        User user=new User();
+        user = this.userServiceImpl.selectUserByuserName(userName);
         long count = 0;
         if(user!=null){
-            return "/operateError";
+            return "已有该用户名";
         }else if(userPwd.equals(userPwd1)){
                 count = this.userServiceImpl.count()+1;
-            SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd  HH-mm-ss");
+                SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd  HH-mm-ss");
                 String registerTime=dateFormat.format(new Date());
                 String userRight="0";
                 user = new User();
@@ -63,10 +67,11 @@ public class UserController extends HttpServlet {
                 user.setUserPwd(userPwd);
                 user.setRegisterTime(registerTime);
                 user.setUserRight(userRight);
+                //System.out.println(user);
                 this.userServiceImpl.insertUser(user);
-                return "/registerSuccess";
+                return "注册成功";
         }else{
-               return "/userPwdNotSame";
+               return "密码错误";
         }
     }
 

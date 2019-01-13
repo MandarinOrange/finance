@@ -1,6 +1,6 @@
 window.onload(function requestData(){
     $.ajax({
-        url: "/search",
+        url: "/orderlist",
         type: "post",
         dataType: "json",
         success: function(data){
@@ -12,6 +12,7 @@ window.onload(function requestData(){
         }
     });
 });
+
 
 //展示数据
 function showData(data) {

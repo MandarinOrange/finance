@@ -1,6 +1,6 @@
 $(function(){
     $.ajax({
-        url: "/search",
+        url: "/search/show",
         type: "post",
         data: {},
         dataType: "json",

@@ -21,7 +21,7 @@ import java.util.List;
 
 //@Controller
 @RestController
-@RequestMapping("/search")
+@RequestMapping("/")
 public class SearchServiceController{
     @Autowired
     private ProductSearchService productSearchService;

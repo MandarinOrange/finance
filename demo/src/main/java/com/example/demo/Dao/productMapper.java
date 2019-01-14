@@ -7,7 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface productMapper {
-    @Select("select * from product where productName like '%#{productName}%'")
+    @Select("select * from product where productName like '%${productName}%'")
     public List<Product> findByNameLike(String productName);
 
     @Select("select * from product where productName = #{category}")

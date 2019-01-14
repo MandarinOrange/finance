@@ -9,15 +9,17 @@
 	</head>
 
 	<body>
-	<form action="/search" method="post">
+
 		<div class="headBox">
 			<h2 class="titHead">产品搜索</h2>
 			<!--<h3 class="titNeck">内容简介</h3>-->
+			<form action="/search/show" method="post">
 			<div class="search">
 
 					<input name="productName" type="text" placeholder="搜索">
 					<button name="btn" type="button"></button>
 			</div>
+			</form>
 		</div>
 			<div class="content">
 
@@ -26,7 +28,7 @@
 				<input type="submit" name="action" id="btn2" value="确&nbsp;&nbsp;定" />
 
 			</div>
-	</form>
+
 
 		<script type="text/javascript" src="js/search.js"></script>
 	</body>

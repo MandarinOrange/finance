@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,18 +19,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+//@Controller
+@RestController
+@RequestMapping("/search")
 public class SearchServiceController extends HttpServlet {
     @Autowired
     private ProductSearchService productSearchService;
 
-    @RequestMapping("/search")
-    public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+    @RequestMapping(value = "/show",method = RequestMethod.POST)
+    public List<Product> search(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
         List<Product> list = new ArrayList<Product>();
         String productName = request.getParameter("productName");
         String category = request.getParameter("category");
-        float intrate = Integer.parseInt(request.getParameter("intrate"));
+        float intrate = Float.parseFloat(request.getParameter("intrate"));
         if(productName!=null){
             list = productSearchService.findByNameLike(productName);
 
@@ -43,9 +47,9 @@ public class SearchServiceController extends HttpServlet {
             list = productSearchService.findByCount();
             //默认按产品使用的产品的数量由高到低排序
         }
-        String json = JSONObject.toJSONString(list);
-        response.getWriter().print(json);
-
+//        String json = JSONObject.toJSONString(list);
+//        response.getWriter().print(json);
+        return list;
     }
 
     @PostMapping("/showIndex")

@@ -1,9 +1,11 @@
-window.onload(function requestData(){
+$(function(){
     $.ajax({
         url: "/search",
         type: "post",
+        data: {},
         dataType: "json",
         success: function(data){
+            console.log(data);//查看从后台传值内容
             /*这个方法里是ajax发送请求成功之后执行的代码*/
             showData(data);//我们仅做数据展示
         },
@@ -19,7 +21,7 @@ function showData(data) {
     $("#content").html=null;
     for (var i = 0; i < data.length; i++) {
             var pro = data[i];
-            var str = '<a href="javascript:;" class="aui-list-item"><div class="aui-right-top"></div><div class="aui-list-head" id="proname">'+pro.productName+'</div><div class="aui-flex"><div class="aui-flex-box"><h4>'+pro.productNum+'</h4></div><div class="aui-text-time"></div><div class="aui-button-get"><button id="apply", onclick="location=\'apply.html\'">申请</button> </div></div><div class="aui-dotted"></div></a>';
+            str = '<a href="javascript:;" class="aui-list-item"><div class="aui-right-top"></div><div class="aui-list-head" id="proname">'+pro.productName+'</div><div class="aui-flex"><div class="aui-flex-box"><h4>'+pro.productNum+'</h4></div><div class="aui-text-time"></div><div class="aui-button-get"><button id="apply", onclick="location=\'apply.html\'">申请</button> </div></div><div class="aui-dotted"></div></a>';
             $("#content").append(str);
         }
 

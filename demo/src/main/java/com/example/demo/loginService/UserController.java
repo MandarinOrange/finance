@@ -48,16 +48,16 @@ public class UserController extends HttpServlet {
 
 
     @PostMapping("/login1")
-    @ResponseBody
-    public String  handle1(HttpServletRequest request,HttpServletResponse response){
+    public void  handle1(HttpServletRequest request,HttpServletResponse response)throws IOException{
         String userName = request.getParameter("userName");
         String userPwd = request.getParameter("userPwd");
         String userPwd1=request.getParameter("userPwd1");
         User user=new User();
         user = this.userServiceImpl.selectUserByuserName(userName);
         long count = 0;
+        int result = 0;
         if(user!=null){
-            return "/已有该用户名";
+            result = 3;
         }else if(userPwd.equals(userPwd1)){
                 count = this.userServiceImpl.count()+1;
                 SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd  HH-mm-ss");
@@ -71,10 +71,13 @@ public class UserController extends HttpServlet {
                 user.setUserRight(userRight);
                 //System.out.println(user);
                 this.userServiceImpl.insertUser(user);
-                return "注册成功";
+                result = 1;
         }else{
-               return "密码错误";
+               result = 2;
         }
+        if(result==1)response.sendRedirect("注册成功");
+        else if(result==2)response.sendRedirect("用户已存在");
+        else response.sendRedirect("密码不相同");
     }
 
 

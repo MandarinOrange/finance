@@ -3,7 +3,6 @@ package com.example.demo.loginService;
 import com.example.demo.bean.User;
 import com.example.demo.loginService.API.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,12 +41,12 @@ public class UserController extends HttpServlet {
             result = 3;
         }
         if(result==1)response.sendRedirect("index.html");
-        else if(result==2)response.sendRedirect("login.html");
-        else response.sendRedirect("login.html");
+        else if(result==2)response.sendRedirect("userPwdError.html");
+        else response.sendRedirect("userNotExist.html");
     }
 
 
-    @PostMapping("/login1")
+    @PostMapping("/register")
     public void  handle1(HttpServletRequest request,HttpServletResponse response)throws IOException{
         String userName = request.getParameter("userName");
         String userPwd = request.getParameter("userPwd");
@@ -57,7 +56,7 @@ public class UserController extends HttpServlet {
         long count = 0;
         int result = 0;
         if(user!=null){
-            result = 3;
+            result = 2;
         }else if(userPwd.equals(userPwd1)){
                 count = this.userServiceImpl.count()+1;
                 SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd  HH-mm-ss");
@@ -73,11 +72,11 @@ public class UserController extends HttpServlet {
                 this.userServiceImpl.insertUser(user);
                 result = 1;
         }else{
-               result = 2;
+               result = 3;
         }
-        if(result==1)response.sendRedirect("注册成功");
-        else if(result==2)response.sendRedirect("用户已存在");
-        else response.sendRedirect("密码不相同");
+        if(result==1)response.sendRedirect("login.html");
+        else if(result==2)response.sendRedirect("userExisted.html");
+        else response.sendRedirect("userPwdNotSame.html");
     }
 
 

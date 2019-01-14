@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 public abstract class UserService {
     public User selectUserByuserName(String userName){return null;}
     public User selectUserBytelephoneNum(String telephoneNum){return null;}
-    public void insertUser(long userNum, String userName, String userPwd, String registerTime, String userRight){}
+    public void addUser(User users){}
     public long count(){return 0;}
 }

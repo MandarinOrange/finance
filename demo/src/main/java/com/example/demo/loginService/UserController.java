@@ -69,7 +69,7 @@ public class UserController extends HttpServlet {
                 user.setRegisterTime(registerTime);
                 user.setUserRight(userRight);
                 //System.out.println(user);
-                this.userServiceImpl.insertUser(user);
+                this.userServiceImpl.addUser(user);
                 result = 1;
         }else{
                result = 3;

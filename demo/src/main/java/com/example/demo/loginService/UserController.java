@@ -46,13 +46,14 @@ public class UserController extends HttpServlet {
     }
 
 
+
+
     @PostMapping("/register")
     public void  handle1(HttpServletRequest request,HttpServletResponse response)throws IOException{
         String userName = request.getParameter("userName");
         String userPwd = request.getParameter("userPwd");
         String userPwd1=request.getParameter("userPwd1");
-        User user=new User();
-        user = this.userServiceImpl.selectUserByuserName(userName);
+        User user = this.userServiceImpl.selectUserByuserName(userName);
         long count = 0;
         int result = 0;
         if(user!=null){
@@ -68,13 +69,12 @@ public class UserController extends HttpServlet {
                 user.setUserPwd(userPwd);
                 user.setRegisterTime(registerTime);
                 user.setUserRight(userRight);
-                //System.out.println(user);
                 this.userServiceImpl.addUser(user);
                 result = 1;
         }else{
                result = 3;
         }
-        if(result==1)response.sendRedirect("login.html");
+        if(result==1)response.sendRedirect("RegisterSuccess.html");
         else if(result==2)response.sendRedirect("userExisted.html");
         else response.sendRedirect("userPwdNotSame.html");
     }

@@ -6,9 +6,10 @@ import com.example.demo.bean.Product;
 import com.example.demo.searchService.service.ProductSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,18 +19,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
-public class SearchServiceController extends HttpServlet {
+//@Controller
+@RestController
+@RequestMapping("/search")
+public class SearchServiceController{
     @Autowired
     private ProductSearchService productSearchService;
 
-    @RequestMapping("/search")
-    public void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+    @RequestMapping(value = "/show",method = RequestMethod.POST)
+    public List<Product> search(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
         List<Product> list = new ArrayList<Product>();
         String productName = request.getParameter("productName");
         String category = request.getParameter("category");
-        float intrate = Integer.parseInt(request.getParameter("intrate"));
+        //float intrate = Float.parseFloat(request.getParameter("intrate"));
         if(productName!=null){
             list = productSearchService.findByNameLike(productName);
 
@@ -37,25 +40,22 @@ public class SearchServiceController extends HttpServlet {
         }else if(category!=null){
             list = productSearchService.findByCategory(category);
             //按产品类别搜索
-        }else if(intrate!=0){
-            list = productSearchService.findByIntrate(intrate);
-            //按利率排序由低到高
+//        }else if(intrate!=0){
+//            list = productSearchService.findByIntrate(intrate);
+//            //按利率排序由低到高
         }else{
             list = productSearchService.findByCount();
             //默认按产品使用的产品的数量由高到低排序
         }
-        String json = JSONObject.toJSONString(list);
-        response.getWriter().print(json);
-
+        return list;
     }
 
-    @PostMapping("/showIndex")
-    public void showPro(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+    @RequestMapping(value = "/showIndex",method = RequestMethod.POST)
+    public List<Product> showPro(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         List<Product> products = productSearchService.findByCount();
-        System.out.println(products);
-        String json = JSONObject.toJSONString(products);
-        System.out.println(json);
         response.setCharacterEncoding("utf-8");
-        response.getWriter().print(json);
+        return products;
+        //String json = JSONObject.toJSONString(list);
+        // response.getWriter().print(json);
     }
 }

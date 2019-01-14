@@ -16,7 +16,7 @@ public interface usageDateMapper {
 
 
     @Select("select productNum from usageDate group by productNum order by count(productNum) DESC")
-    public List<Integer> selectByCount();
+    public List<Long> selectByCount();
 
     @Insert("insert into usagedate(checkNum, productNum, userNum," +
             " bankAccount, bankNum, year, amount, startTime)" +

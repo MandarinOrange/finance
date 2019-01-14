@@ -36,8 +36,8 @@ public class ProductSearchServiceImpl implements ProductSearchService {
     public List<Product> findByCount(){
         Product product = new Product();
         List<Product> productList = new ArrayList<Product>();
-        List<Integer> listusage = usageDateMapper.selectByCount();
-        int[] arr = listusage.stream().mapToInt(Integer::valueOf).toArray();
+        List<Long> listusage = usageDateMapper.selectByCount();
+        long [] arr = listusage.stream().mapToLong(t->t.longValue()).toArray();
         for(int i=0;i<arr.length;i++){
             product = productMapper.selectProductByProductNum(arr[i]);
             productList.add(product);

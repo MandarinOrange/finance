@@ -51,8 +51,7 @@ public class UserController extends HttpServlet {
         String userName = request.getParameter("userName");
         String userPwd = request.getParameter("userPwd");
         String userPwd1=request.getParameter("userPwd1");
-        User user=new User();
-        user = this.userServiceImpl.selectUserByuserName(userName);
+        User user = this.userServiceImpl.selectUserByuserName(userName);
         long count = 0;
         int result = 0;
         if(user!=null){
@@ -74,7 +73,7 @@ public class UserController extends HttpServlet {
         }else{
                result = 3;
         }
-        if(result==1)response.sendRedirect("Register.html");
+        if(result==1)response.sendRedirect("RegisterSuccess.html");
         else if(result==2)response.sendRedirect("userExisted.html");
         else response.sendRedirect("userPwdNotSame.html");
     }

@@ -178,9 +178,9 @@
                 setInterval('AutoScroll("#aui-show")', 3000)
             });
 
-            window.onload(function requestData(){
+            $(function () {
                 $.ajax({
-                    url: "/showIndex",
+                    url: "/search/showIndex",
                     type: "post",
                     dataType: "json",
                     success: function(data){

@@ -22,7 +22,7 @@ import java.util.List;
 //@Controller
 @RestController
 @RequestMapping("/search")
-public class SearchServiceController extends HttpServlet {
+public class SearchServiceController{
     @Autowired
     private ProductSearchService productSearchService;
 
@@ -32,7 +32,7 @@ public class SearchServiceController extends HttpServlet {
         List<Product> list = new ArrayList<Product>();
         String productName = request.getParameter("productName");
         String category = request.getParameter("category");
-        float intrate = Float.parseFloat(request.getParameter("intrate"));
+        //float intrate = Float.parseFloat(request.getParameter("intrate"));
         if(productName!=null){
             list = productSearchService.findByNameLike(productName);
 
@@ -40,24 +40,22 @@ public class SearchServiceController extends HttpServlet {
         }else if(category!=null){
             list = productSearchService.findByCategory(category);
             //按产品类别搜索
-        }else if(intrate!=0){
-            list = productSearchService.findByIntrate(intrate);
-            //按利率排序由低到高
+//        }else if(intrate!=0){
+//            list = productSearchService.findByIntrate(intrate);
+//            //按利率排序由低到高
         }else{
             list = productSearchService.findByCount();
             //默认按产品使用的产品的数量由高到低排序
         }
-//        String json = JSONObject.toJSONString(list);
-//        response.getWriter().print(json);
         return list;
     }
 
-    @PostMapping("/showIndex")
-    public void showPro(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
+    @RequestMapping(value = "/showIndex",method = RequestMethod.POST)
+    public List<Product> showPro(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         List<Product> products = productSearchService.findByCount();
-        String json = JSONObject.toJSONString(products);
-        System.out.println(json);
         response.setCharacterEncoding("utf-8");
-        response.getWriter().print(json);
+        return products;
+        //String json = JSONObject.toJSONString(list);
+        // response.getWriter().print(json);
     }
 }

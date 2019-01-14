@@ -3,9 +3,9 @@ package com.example.demo.loginService;
 import com.example.demo.bean.User;
 import com.example.demo.loginService.API.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,31 +22,33 @@ public class UserController extends HttpServlet {
     @Autowired
     private UserServiceImpl userServiceImpl;
 
-    @GetMapping("/login")
-    public String  handle(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
+    @PostMapping("/login")
+    //@ResponseBody
+    public void  handle( HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
         //System.out.println("_______________");
         String userName = request.getParameter("userName");
         String userPwd = request.getParameter("userPwd");
         User user = this.userServiceImpl.selectUserByuserName(userName);
+        int result = 0;
         if(user!=null){
             if(user.getUserPwd().equals(userPwd)){
                 HttpSession session=request.getSession();
                 session.setAttribute("user",user);
-                //request.getRequestDispatcher("index.html").forward(request,response);
-                return "/index";
-            }
-            else{
-                return "/userPwdError";
-                //response.sendRedirect("userPwdError.jsp");
+                result = 1;
+            } else{
+                result = 2;
             }
         }else{
-            return "userNotExist";
-            //response.sendRedirect("notexit.jsp");
+            result = 3;
         }
+        if(result==1)response.sendRedirect("index.html");
+        else if(result==2)response.sendRedirect("login.html");
+        else response.sendRedirect("login.html");
     }
 
 
-    @GetMapping("/login1")
+    @PostMapping("/login1")
+    @ResponseBody
     public String  handle1(HttpServletRequest request,HttpServletResponse response){
         String userName = request.getParameter("userName");
         String userPwd = request.getParameter("userPwd");
@@ -55,7 +57,7 @@ public class UserController extends HttpServlet {
         user = this.userServiceImpl.selectUserByuserName(userName);
         long count = 0;
         if(user!=null){
-            return "已有该用户名";
+            return "/已有该用户名";
         }else if(userPwd.equals(userPwd1)){
                 count = this.userServiceImpl.count()+1;
                 SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd  HH-mm-ss");

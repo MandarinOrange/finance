@@ -23,7 +23,7 @@ public class addController extends HttpServlet {
             product.setProductNum(Long.parseLong(request.getParameter("productNum")));
             product.setProductName(request.getParameter("productName"));
             product.setBankNum(Integer.parseInt(request.getParameter("bankNum")));
-            product.setCategory(request.getParameter("productName"));
+            product.setCategory(request.getParameter("category"));
             product.setIntrate(Float.parseFloat(request.getParameter("intrate")));
             product.setProductDescription(request.getParameter("description"));
             product.setPictureAddress(request.getParameter("address"));

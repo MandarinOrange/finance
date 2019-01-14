@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Controller
 public class SumCirController {
@@ -19,8 +20,8 @@ public class SumCirController {
     @Autowired
     private EPAIR_CirService epair_cirService;
 
-    @GetMapping("/cir/sum")
-    public String SumCirculator(HttpServletRequest request, HttpServletResponse response){
+    @GetMapping("/cirsum")
+    public String SumCirculator(HttpServletRequest request, HttpServletResponse response)throws IOException {
         long productNum = Long.parseLong(request.getParameter("productNum"));
         double amount = Double.parseDouble(request.getParameter("amount"));
         int year = Integer.parseInt(request.getParameter("year"));
@@ -50,6 +51,7 @@ public class SumCirController {
         }
 
         System.out.println(sum_principal_and_intrate);
+        response.sendRedirect("countCenter.html");
         return "/circulator";
     }
 

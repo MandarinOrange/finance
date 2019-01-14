@@ -4,26 +4,28 @@ package com.example.demo.loanService.controller;
 import com.example.demo.Dao.auditMapper;
 import com.example.demo.bean.Audit;
 import com.example.demo.bean.User;
-import com.example.demo.loanService.service.message;
+import com.example.demo.loanService.service.messageService;
 import com.example.demo.util.nowTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @Controller
 public class messageController extends HttpServlet {
     @Autowired
     auditMapper auditMapper;
     private nowTime nowTime=new nowTime();
-    private message message=new message();
+    private messageService message=new messageService();
 
-    @RequestMapping("/借款/index.html")//填写贷款基本信息的界面
-    public String doPost(HttpServletResponse response, HttpServletRequest request){
+    @RequestMapping(value = "/loan",method = RequestMethod.POST)//填写贷款基本信息的界面
+    public void doPost(HttpServletResponse response, HttpServletRequest request)throws IOException {
         HttpSession session=request.getSession();
         User user=new User();
         user=(User)session.getAttribute("user");
@@ -35,9 +37,9 @@ public class messageController extends HttpServlet {
         audit.setBankAccount(request.getParameter("bankAccount"));
         audit.setEquation(Integer.parseInt(request.getParameter("equation")));
         audit.setApplyTime(nowTime.nowTime());
-        audit.setUserNum(Long.parseLong("d"));
+        //audit.setUserNum(num);
         message.message(audit);
-        return "";//审核界面
+        response.sendRedirect("waitAuditing.html");
     }
 
 }

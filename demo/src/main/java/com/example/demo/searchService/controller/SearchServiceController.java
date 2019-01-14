@@ -6,6 +6,7 @@ import com.example.demo.bean.Product;
 import com.example.demo.searchService.service.ProductSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -51,6 +52,7 @@ public class SearchServiceController extends HttpServlet {
     @PostMapping("/showIndex")
     public void showPro(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         List<Product> products = productSearchService.findByCount();
+        System.out.println(products);
         String json = JSONObject.toJSONString(products);
         System.out.println(json);
         response.setCharacterEncoding("utf-8");

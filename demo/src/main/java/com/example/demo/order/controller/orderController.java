@@ -23,13 +23,13 @@ public class orderController extends HttpServlet {
     @RequestMapping("/orderlist")
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
-        List<Audit> list = new ArrayList<Audit>();
         HttpSession session = request.getSession();
         User user = new User();
         user = (User) session.getAttribute("user");
         long userNum = user.getUserNum();
-        list = orderService.selectAudioByUserNum(userNum);
+        List<Audit> list = orderService.selectAuditByUserNum(userNum);
         String json = JSONObject.toJSONString(list);
+        System.out.println(json);
         response.getWriter().print(json);
     }
 }

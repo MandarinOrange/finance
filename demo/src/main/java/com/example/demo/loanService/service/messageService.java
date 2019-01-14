@@ -4,7 +4,7 @@ import com.example.demo.Dao.auditMapper;
 import com.example.demo.bean.Audit;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class message {
+public class messageService {
     @Autowired
     auditMapper auditMapper;
 

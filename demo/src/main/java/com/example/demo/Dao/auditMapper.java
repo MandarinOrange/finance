@@ -11,7 +11,7 @@ public interface auditMapper {
     public Audit selectAudioByCheckNum(long checkNum);
 
     @Select("select * from audit where userNum = #{userNum}")
-    public List<Audit> selectAudioByUserNum(long userNum);
+    public List<Audit> selectAuditByUserNum(long userNum);
 
     @Select("select * from audit")
     public List<Audit> select();

@@ -10,7 +10,7 @@ import java.util.List;
 public class orderServiceImpl implements orderService {
     @Autowired
     public auditMapper auditMapper;
-    public List<Audit> selectAudioByUserNum(long userNum){
-        return auditMapper.selectAudioByUserNum(userNum);
+    public List<Audit> selectAuditByUserNum(long userNum){
+        return auditMapper.selectAuditByUserNum(userNum);
     }
 }

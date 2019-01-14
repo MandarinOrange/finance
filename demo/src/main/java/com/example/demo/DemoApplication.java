@@ -7,7 +7,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-//@ServletComponentScan()
+@ServletComponentScan()
 //@ComponentScan()
 //@MapperScan("com.example.demo.Dao")
 public class DemoApplication extends SpringBootServletInitializer {

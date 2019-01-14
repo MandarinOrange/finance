@@ -33,7 +33,7 @@
                             <h3>3分钟申请，5秒审批</h3>
                         </div>
                         <div class="aui-borrow-flex-bd">
-                            <button>我要借钱</button>
+                            <button onclick="location.href='loanInformation.html'">我要借钱</button>
                         </div>
                     </div>
                 </div>
@@ -77,12 +77,12 @@
                         <div class="slider-wrapper">
                             <div class="slider-item">
                                 <a href="javascript:;">
-                                    <img src="ad-001.jpg" >
+                                    <!--<img src="ad-001.jpg" >-->
                                 </a>
                             </div>
                             <div class="slider-item">
                                 <a href="javascript:;">
-                                    <img src="ad-001.jpg" >
+                                    <!--<img src="ad-001.jpg" >-->
                                 </a>
                             </div>
                         </div>
@@ -193,6 +193,7 @@
                 });
             });
 
+
             //展示数据
             function showData(data) {
                 var str = "";//定义用于拼接的字符串
@@ -200,7 +201,7 @@
 
                     str=   "                <div class=\"aui-borrow-head\">\n" +
                         "                    <div class=\"aui-borrow-head-title\">\n" +
-                        "                        <h2>"+data[i].productNum+""</h2>\n" +
+                        "                        <h2>"+data[i].productNum+"</h2>\n" +
                         "                    </div>\n" +
                         "                    <div class=\"aui-borrow-head-ad\">\n" +
                         "                        <img src=\"\">\n" +

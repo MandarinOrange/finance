@@ -74,7 +74,7 @@ public class UserController extends HttpServlet {
         }else{
                result = 3;
         }
-        if(result==1)response.sendRedirect("login.html");
+        if(result==1)response.sendRedirect("Register.html");
         else if(result==2)response.sendRedirect("userExisted.html");
         else response.sendRedirect("userPwdNotSame.html");
     }

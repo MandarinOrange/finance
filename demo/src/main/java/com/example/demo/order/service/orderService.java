@@ -5,5 +5,5 @@ import com.example.demo.bean.Audit;
 import java.util.List;
 
 public interface orderService {
-    public List<Audit> selectAudioByUserNum(long userNum);
+    public List<Audit> selectAuditByUserNum(long userNum);
 }

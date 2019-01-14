@@ -25,25 +25,20 @@ public interface userMapper {
     @Select("select count(*) from user where userNum = #{userNum} and userPwd = #{userPwd}")
     public int selectPwd(long userNum,String userPwd);
 
-    @Select("select isIdentify fron user where userNum = #{userNum}")
+    @Select("select isIdentify from user where userNum = #{userNum}")
     public short selectIsId(long userNum);
-
-//    @Insert("insert into user(userNum, userName, userPwd,userRight,registerTime)" +
-//            " values (#{userNum},#{userName},#{userPwd},#{userRight},#{registerTime})")
-//    public void insertUser(long userNum,String userName,String userPwd,String registerTime,String userRight);
-//
 
     @Insert("insert into user(userNum, userName, userPwd, userRight," +
             " telephoneNum, address, isIdentify, registerTime)" +
             " values (#{userNum},#{userName},#{userPwd},#{userRight}," +
             "#{telephoneNum},#{address},#{isIdentify},#{registerTime})")
-    public void addUser(User users);
+    public void addUser(User user);
 
     @Update("update user set userNum=#{userNum},userName=#{userName}" +
             ",userPwd=#{userPwd},userRight=#{userRight}," +
             "telephoneNum=#{telephoneNum},address=#{address}," +
             "isIdentify=#{isIdentify},registerTime=#{registerTime}where userNum=#{userNum}")
-    public void updateUser(User users);
+    public void updateUser(User user);
 
     @Delete("delete from user where userNum=#{userNum}")
     public void deleteUser(long userNum);

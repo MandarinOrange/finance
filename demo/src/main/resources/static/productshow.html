@@ -8,8 +8,38 @@
         <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
         <meta content="telephone=no" name="format-detection"/>
         <link href="css/show.css" rel="stylesheet" type="text/css"/>
-        <script type="js/jquery-1.8.3.min.js"></script>
-        <script type="js/productshow.js"></script>
+        <!--<script type="js/jquery-1.8.3.min.js"></script>-->
+        <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" ></script>
+        <script type="text/javascript" src="js/slider.js" ></script>
+        <script type="text/javascript">
+            $(function(){
+                $.ajax({
+                    url: "/search/count",
+                    type: "post",
+                    dataType: "json",
+                    success: function(data){
+                        // console.log(data);//查看从后台传值内容
+                        /*这个方法里是ajax发送请求成功之后执行的代码*/
+                        showData(data);//我们仅做数据展示
+                    },
+                    error: function(msg){
+                        alert("ajax连接异常："+msg);
+                    }
+                });
+            });
+
+            //展示数据
+            function showData(data) {
+                //var str = "";//定义用于拼接的字符串
+                $("#content").empty();
+                for (var i = 0; i <data.length; i++) {
+                    var pro = data[i];
+                    var str = "<a href=\"javascript:;\" class=\"aui-list-item\"><div class=\"aui-right-top\"></div><div class=\"aui-list-head\" id=\"proname\">"+pro.productName+"</div><div class=\"aui-flex\"><div class=\"aui-flex-box\"><h4>"+pro.productNum+"</h4></div><div class=\"aui-text-time\"></div><div class=\"aui-button-get\"><button id=\"apply\", onclick=\"location=\'apply.html\'\">申请</button> </div></div><div class=\"aui-dotted\"></div></a>";
+                    $("#content").append(str);
+                }
+
+            }
+        </script>
     </head>
     <body>
 
@@ -28,89 +58,89 @@
                 </a>
             </header>
             <section class="aui-scrollView">
-                <div class="aui-pri-box">
-                    <div class="aui-flex">
-                        <div class="aui-pri-img">
-                            <img src="images/show.png">
-                        </div>
-                        <div class="aui-flex-box">
-                            <h2><em>李**</em></h2>
-</div>
-                        <div class="aui-pri-button"> </div>
-                    </div>
-                </div>
+                <!--<div class="aui-pri-box">-->
+                    <!--<div class="aui-flex">-->
+                        <!--<div class="aui-pri-img">-->
+                            <!--<img src="images/show.png">-->
+                        <!--</div>-->
+                        <!--<div class="aui-flex-box">-->
+                            <!--<h2><em>李**</em></h2>-->
+<!--</div>-->
+                        <!--<div class="aui-pri-button"> </div>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <div class="aui-list-box" id="content">
-                    <a href="javascript:;" class="aui-list-item">
-                        <div class="aui-right-top"> </div>
-                        <div class="aui-list-head" id="proname">产品1</div>
-                        <div class="aui-flex">
-                            <div class="aui-flex-box">
-                                <h4 >1111</h4>
-                               
-                            </div>
-                            <div class="aui-text-time"> </div>
-                            <div class="aui-button-get">
-                                <button id="apply", onclick="location='loanInformation.html'">申请</button>
-                            </div>
-                        </div>
-                        <div class="aui-dotted"> </div>
-                    </a>
-                    <a href="javascript:;" class="aui-list-item">
-                        <div class="aui-right-top"> </div>
-                        <div class="aui-list-head">产品2</div>
-                        <div class="aui-flex">
-                            <div class="aui-flex-box">
-                                <h4>2222</h4>
-</div>
-                            <div class="aui-text-time"> </div>
-                            <div class="aui-button-get">
-                                <button>详情</button>
-                            </div>
-                        </div>
-                        <div class="aui-dotted"> </div>
-                    </a>
-                    <a href="javascript:;" class="aui-list-item">
-                        <div class="aui-right-top"> </div>
-                        <div class="aui-list-head">产品3</div>
-                        <div class="aui-flex">
-                            <div class="aui-flex-box">
-                                <h4>3333</h4>
-</div>
-                            <div class="aui-text-time"> </div>
-                            <div class="aui-button-get">
-                                <button>详情</button>
-                            </div>
-                        </div>
-                        <div class="aui-dotted"> </div>
-                    </a>
-                    <a href="javascript:;" class="aui-list-item">
-                        <div class="aui-right-top"> </div>
-                        <div class="aui-list-head">产品4</div>
-                        <div class="aui-flex">
-                            <div class="aui-flex-box">
-                                <h4>4444</h4>
-</div>
-                            <div class="aui-text-time"> </div>
-                            <div class="aui-button-get">
-                                <button>详情</button>
-                            </div>
-                        </div>
-                        <div class="aui-dotted"> </div>
-                    </a>
-                    <a href="javascript:;" class="aui-list-item">
-                        <div class="aui-right-top"> </div>
-                        <div class="aui-list-head">产品5</div>
-                        <div class="aui-flex">
-                            <div class="aui-flex-box">
-                                <h4>55555</h4>
-</div>
-                            <div class="aui-text-time"> </div>
-                            <div class="aui-button-get">
-                                <button>详情</button>
-                            </div>
-                        </div>
-                        <div class="aui-dotted"> </div>
-                    </a>
+                    <!--<a href="javascript:;" class="aui-list-item">-->
+                        <!--<div class="aui-right-top"> </div>-->
+                        <!--<div class="aui-list-head" id="proname">产品1</div>-->
+                        <!--<div class="aui-flex">-->
+                            <!--<div class="aui-flex-box">-->
+                                <!--<h4 >1111</h4>-->
+                               <!---->
+                            <!--</div>-->
+                            <!--<div class="aui-text-time"> </div>-->
+                            <!--<div class="aui-button-get">-->
+                                <!--<button id="apply", onclick="location='loanInformation.html'">申请</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="aui-dotted"> </div>-->
+                    <!--</a>-->
+                    <!--<a href="javascript:;" class="aui-list-item">-->
+                        <!--<div class="aui-right-top"> </div>-->
+                        <!--<div class="aui-list-head">产品2</div>-->
+                        <!--<div class="aui-flex">-->
+                            <!--<div class="aui-flex-box">-->
+                                <!--<h4>2222</h4>-->
+<!--</div>-->
+                            <!--<div class="aui-text-time"> </div>-->
+                            <!--<div class="aui-button-get">-->
+                                <!--<button>详情</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="aui-dotted"> </div>-->
+                    <!--</a>-->
+                    <!--<a href="javascript:;" class="aui-list-item">-->
+                        <!--<div class="aui-right-top"> </div>-->
+                        <!--<div class="aui-list-head">产品3</div>-->
+                        <!--<div class="aui-flex">-->
+                            <!--<div class="aui-flex-box">-->
+                                <!--<h4>3333</h4>-->
+<!--</div>-->
+                            <!--<div class="aui-text-time"> </div>-->
+                            <!--<div class="aui-button-get">-->
+                                <!--<button>详情</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="aui-dotted"> </div>-->
+                    <!--</a>-->
+                    <!--<a href="javascript:;" class="aui-list-item">-->
+                        <!--<div class="aui-right-top"> </div>-->
+                        <!--<div class="aui-list-head">产品4</div>-->
+                        <!--<div class="aui-flex">-->
+                            <!--<div class="aui-flex-box">-->
+                                <!--<h4>4444</h4>-->
+<!--</div>-->
+                            <!--<div class="aui-text-time"> </div>-->
+                            <!--<div class="aui-button-get">-->
+                                <!--<button>详情</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="aui-dotted"> </div>-->
+                    <!--</a>-->
+                    <!--<a href="javascript:;" class="aui-list-item">-->
+                        <!--<div class="aui-right-top"> </div>-->
+                        <!--<div class="aui-list-head">产品5</div>-->
+                        <!--<div class="aui-flex">-->
+                            <!--<div class="aui-flex-box">-->
+                                <!--<h4>55555</h4>-->
+<!--</div>-->
+                            <!--<div class="aui-text-time"> </div>-->
+                            <!--<div class="aui-button-get">-->
+                                <!--<button>详情</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="aui-dotted"> </div>-->
+                    <!--</a>-->
                     
                 </div>
             </section>

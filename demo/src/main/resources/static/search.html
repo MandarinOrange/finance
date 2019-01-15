@@ -5,7 +5,55 @@
 		<meta charset="UTF-8">
 		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
 		<title>产品展示</title>
-		<link rel="stylesheet" href="css/search.css"  />
+		<link rel="stylesheet" href="css/search.css"/>
+		<link rel="stylesheet" href="css/show.css" type="text/css"/>
+		<script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/slider.js" ></script>
+		<script type="text/javascript">
+            $(document).ready(function () {
+                $.ajax({
+                    url: "/search/key",
+                    type: "post",
+                    dataType: "json",
+                    success: function(data){
+                        /*这个方法里是ajax发送请求成功之后执行的代码*/
+                        showData(data);//我们仅做数据展示
+                    },
+                    error: function(msg){
+                        alert("ajax连接异常："+msg);
+                    }
+                });
+            });
+
+
+            //展示数据
+            function showData(data) {
+                alert(data);
+                $("#content").empty();
+                for (var i = 0; i < data.length; i++) {
+                    var p = obj[i];
+                    //var str = "<h2>"+p.productName+"</h2>"
+                    var str="<a href=\"javascript:;\" class=\"aui-list-item\">\n" +
+                        "\t\t\t\t<div class=\"aui-right-top\"> </div>\n" +
+                        "\t\t\t\t<div class=\"aui-list-head\" id=\"proname\">"+p.productName+"</div>\n" +
+                        "\t\t\t\t<div class=\"aui-flex\">\n" +
+                        "\t\t\t\t\t<div class=\"aui-flex-box\">\n" +
+                        "\t\t\t\t\t\t<h4 >"+p.productDescription+"</h4>\n" +
+                        "\n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t<div class=\"aui-text-time\"> </div>\n" +
+                        "\t\t\t\t\t<div class=\"aui-button-get\">\n" +
+                        "\t\t\t\t\t\t<button id=\"apply\", onclick=\"location='loanInformation.html'\">申请</button>\n" +
+                        "\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t\t<div class=\"aui-dotted\"> </div>\n" +
+                        "\t\t\t</a>";
+                    //var $h2 =$(str);
+
+                    $("#content").append(str);
+                }
+            }
+		</script>
 	</head>
 
 	<body>
@@ -13,24 +61,41 @@
 		<div class="headBox">
 			<h2 class="titHead">产品搜索</h2>
 			<!--<h3 class="titNeck">内容简介</h3>-->
-			<form action="/search/show" method="post">
+			<form action="/search/key" method="post">
 			<div class="search">
 
 					<input name="productName" type="text" placeholder="搜索">
-					<button name="btn" type="button"></button>
+					<button name="btn" id="btn" type="submit"></button>
 			</div>
 			</form>
 		</div>
-			<div class="content">
+		<div class="aui-list-box" id="content">
+			<!--<a href="javascript:;" class="aui-list-item">-->
+				<!--<div class="aui-right-top"> </div>-->
+				<!--<div class="aui-list-head" id="proname">产品1</div>-->
+				<!--<div class="aui-flex">-->
+					<!--<div class="aui-flex-box">-->
+						<!--<h4 >1111</h4>-->
 
-			</div>
-			<div class="footBox">
-				<input type="submit" name="action" id="btn2" value="确&nbsp;&nbsp;定" />
+					<!--</div>-->
+					<!--<div class="aui-text-time"> </div>-->
+					<!--<div class="aui-button-get">-->
+						<!--<button id="apply", onclick="location='loanInformation.html'">申请</button>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div class="aui-dotted"> </div>-->
+			<!--</a>-->
+		</div>
+		<!--<div class="content">-->
 
-			</div>
+			<!--</div>-->
+			<!--<div class="footBox">-->
+				<!--<input type="submit" name="action" id="btn2" value="确&nbsp;&nbsp;定" />-->
+
+			<!--</div>-->
 
 
-		<script type="text/javascript" src="js/search.js"></script>
+		<!--<script type="text/javascript" src="js/search.js"></script>-->
 	</body>
 
 </html>

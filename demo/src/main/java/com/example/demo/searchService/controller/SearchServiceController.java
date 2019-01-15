@@ -26,7 +26,7 @@ public class SearchServiceController{
     @Autowired
     private ProductSearchService productSearchService;
 
-    @RequestMapping(value = "/show",method = RequestMethod.POST)
+    @RequestMapping(value = "/search/show",method = RequestMethod.POST)
     public List<Product> search(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
         List<Product> list = new ArrayList<Product>();

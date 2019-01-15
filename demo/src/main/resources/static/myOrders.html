@@ -8,8 +8,56 @@
         <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
         <meta content="telephone=no" name="format-detection"/>
         <link href="css/myOrders.css" rel="stylesheet" type="text/css"/>
-        <script type="text/javascript" src="js/myorder.js"></script>
-        <script type="text/javascript" src="js/jquery.min.js" ></script>
+        <!--<script type="text/javascript" src="js/myorder.js"></script>-->
+        <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" ></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $.ajax({
+                    url: "/orderlist",
+                    type: "post",
+                    dataType: "json",
+                    success: function(data){
+                        /*这个方法里是ajax发送请求成功之后执行的代码*/
+                        alert(data);
+                        showData(data);//我们仅做数据展示
+                    },
+                    error: function(msg){
+                        alert("ajax连接异常："+msg);
+                    }
+                });
+            });
+
+
+            //展示数据
+            function showData(data) {
+                $("#num").empty();
+                for (var i = 0; i < data.length; i++) {
+                    var audit = data[i];
+                    var str = "<a href=\"javascript:;\" class=\"aui-list-item\">\n" +
+                        "                        <div class=\"aui-right-top\"> </div>\n" +
+                        "                        <div class=\"aui-list-head\">"+audit.applyTime+"</div>\n" +
+                        "                        <div class=\"aui-flex\">\n" +
+                        "                            <div class=\"aui-flex-box\">\n" +
+                        "                                <h4>"+audit.checkNum+"</h4>\n" +
+                        "                               \n" +
+                        "                            </div>\n" +
+                        "                            <div class=\"aui-text-time\"> </div>\n" +
+                        "                            <div class=\"aui-button-get\">\n" +
+                        "                                <button>详情</button>\n" +
+                        "                            </div>\n" +
+                        "                        </div>\n" +
+                        "                        <div class=\"aui-dotted\"> </div>\n" +
+                        "                    </a>";
+                    //var str=" <h2 >"+data[i].productName+"</h2>"
+                    //var $h2 =$(str);
+
+                    $("#num").append(str);
+                }
+            }
+
+
+
+        </script>
     </head>
     <body>
 
@@ -39,78 +87,78 @@
                         <div class="aui-pri-button"> </div>
                     </div>
                 </div>
-                <div class="aui-list-box">
-                    <a href="javascript:;" class="aui-list-item">
-                        <div class="aui-right-top"> </div>
-                        <div class="aui-list-head">订单1</div>
-                        <div class="aui-flex">
-                            <div class="aui-flex-box">
-                                <h4>1111</h4>
-                               
-                            </div>
-                            <div class="aui-text-time"> </div>
-                            <div class="aui-button-get">
-                                <button>详情</button>
-                            </div>
-                        </div>
-                        <div class="aui-dotted"> </div>
-                    </a>
-                    <a href="javascript:;" class="aui-list-item">
-                        <div class="aui-right-top"> </div>
-                        <div class="aui-list-head">订单2</div>
-                        <div class="aui-flex">
-                            <div class="aui-flex-box">
-                                <h4>2222</h4>
-</div>
-                            <div class="aui-text-time"> </div>
-                            <div class="aui-button-get">
-                                <button>详情</button>
-                            </div>
-                        </div>
-                        <div class="aui-dotted"> </div>
-                    </a>
-                    <a href="javascript:;" class="aui-list-item">
-                        <div class="aui-right-top"> </div>
-                        <div class="aui-list-head">订单3</div>
-                        <div class="aui-flex">
-                            <div class="aui-flex-box">
-                                <h4>3333</h4>
-</div>
-                            <div class="aui-text-time"> </div>
-                            <div class="aui-button-get">
-                                <button>详情</button>
-                            </div>
-                        </div>
-                        <div class="aui-dotted"> </div>
-                    </a>
-                    <a href="javascript:;" class="aui-list-item">
-                        <div class="aui-right-top"> </div>
-                        <div class="aui-list-head">订单4</div>
-                        <div class="aui-flex">
-                            <div class="aui-flex-box">
-                                <h4>4444</h4>
-</div>
-                            <div class="aui-text-time"> </div>
-                            <div class="aui-button-get">
-                                <button>详情</button>
-                            </div>
-                        </div>
-                        <div class="aui-dotted"> </div>
-                    </a>
-                    <a href="javascript:;" class="aui-list-item">
-                        <div class="aui-right-top"> </div>
-                        <div class="aui-list-head">订单5</div>
-                        <div class="aui-flex">
-                            <div class="aui-flex-box">
-                                <h4>55555</h4>
-</div>
-                            <div class="aui-text-time"> </div>
-                            <div class="aui-button-get">
-                                <button>详情</button>
-                            </div>
-                        </div>
-                        <div class="aui-dotted"> </div>
-                    </a>
+                <div class="aui-list-box" id="num">
+                    <!--<a href="javascript:;" class="aui-list-item">-->
+                        <!--<div class="aui-right-top"> </div>-->
+                        <!--<div class="aui-list-head">订单1</div>-->
+                        <!--<div class="aui-flex">-->
+                            <!--<div class="aui-flex-box">-->
+                                <!--<h4>1111</h4>-->
+                               <!---->
+                            <!--</div>-->
+                            <!--<div class="aui-text-time"> </div>-->
+                            <!--<div class="aui-button-get">-->
+                                <!--<button>详情</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="aui-dotted"> </div>-->
+                    <!--</a>-->
+                    <!--<a href="javascript:;" class="aui-list-item">-->
+                        <!--<div class="aui-right-top"> </div>-->
+                        <!--<div class="aui-list-head">订单2</div>-->
+                        <!--<div class="aui-flex">-->
+                            <!--<div class="aui-flex-box">-->
+                                <!--<h4>2222</h4>-->
+<!--</div>-->
+                            <!--<div class="aui-text-time"> </div>-->
+                            <!--<div class="aui-button-get">-->
+                                <!--<button>详情</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="aui-dotted"> </div>-->
+                    <!--</a>-->
+                    <!--<a href="javascript:;" class="aui-list-item">-->
+                        <!--<div class="aui-right-top"> </div>-->
+                        <!--<div class="aui-list-head">订单3</div>-->
+                        <!--<div class="aui-flex">-->
+                            <!--<div class="aui-flex-box">-->
+                                <!--<h4>3333</h4>-->
+<!--</div>-->
+                            <!--<div class="aui-text-time"> </div>-->
+                            <!--<div class="aui-button-get">-->
+                                <!--<button>详情</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="aui-dotted"> </div>-->
+                    <!--</a>-->
+                    <!--<a href="javascript:;" class="aui-list-item">-->
+                        <!--<div class="aui-right-top"> </div>-->
+                        <!--<div class="aui-list-head">订单4</div>-->
+                        <!--<div class="aui-flex">-->
+                            <!--<div class="aui-flex-box">-->
+                                <!--<h4>4444</h4>-->
+<!--</div>-->
+                            <!--<div class="aui-text-time"> </div>-->
+                            <!--<div class="aui-button-get">-->
+                                <!--<button>详情</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="aui-dotted"> </div>-->
+                    <!--</a>-->
+                    <!--<a href="javascript:;" class="aui-list-item">-->
+                        <!--<div class="aui-right-top"> </div>-->
+                        <!--<div class="aui-list-head">订单5</div>-->
+                        <!--<div class="aui-flex">-->
+                            <!--<div class="aui-flex-box">-->
+                                <!--<h4>55555</h4>-->
+<!--</div>-->
+                            <!--<div class="aui-text-time"> </div>-->
+                            <!--<div class="aui-button-get">-->
+                                <!--<button>详情</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="aui-dotted"> </div>-->
+                    <!--</a>-->
                     
                 </div>
             </section>

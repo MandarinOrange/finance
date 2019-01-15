@@ -1,16 +1,22 @@
 package com.example.demo.circulator.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.circulator.service.CirService;
 import com.example.demo.circulator.service.EPAIR_CirService;
 import com.example.demo.circulator.service.EPR_CirService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class SumCirController {
@@ -57,11 +63,35 @@ public class SumCirController {
 
 
     @GetMapping("/sum")
-    public String SumCir(HttpServletRequest request, HttpServletResponse response){
-        double amount = Double.parseDouble(request.getParameter("amount"));
-        float intrate = Float.parseFloat(request.getParameter("intrate"));
-        int year = Integer.parseInt(request.getParameter("year"));
-        int equation = Integer.parseInt(request.getParameter("equation"));
+    //@ResponseBody
+    public void SumCir(HttpServletRequest request, HttpServletResponse response)throws IOException{
+        double amount =0;
+        float intrate = 0;
+        int year = 0;
+        int equation = 0;
+        Map map = new HashMap();
+        try{
+            amount = Double.parseDouble(request.getParameter("amount"));
+            intrate = Float.parseFloat(request.getParameter("intrate"));
+            year = Integer.parseInt(request.getParameter("year"));
+            equation = Integer.parseInt(request.getParameter("equation"));
+        }catch (Exception e){
+            map.put("value",0);
+            String json = JSONObject.toJSONString(map);
+            //System.out.println(json);
+            response.getWriter().print(json);
+            return;
+        }finally {
+
+        }
+
+        if(amount<0||intrate<0||year<0||equation<0){
+            map.put("value",-1);
+            String json = JSONObject.toJSONString(map);
+            //System.out.println(json);
+            response.getWriter().print(json);
+            return;
+        }
 
         double sum_principal_and_intrate = 0;
         switch (equation){
@@ -81,10 +111,18 @@ public class SumCirController {
         if(sum_principal_and_intrate>=0) {
             request.setAttribute("sum", sum_principal_and_intrate);
         }else{
-            return "计算失败!";
+            map.put("value",-2);
+            String json = JSONObject.toJSONString(map);
+            //System.out.println(json);
+            response.getWriter().print(json);
+            return;
         }
 
-        System.out.println(sum_principal_and_intrate);
-        return "/circulator";
+        //System.out.println(sum_principal_and_intrate);
+        map.put("value",sum_principal_and_intrate);
+        String json = JSONObject.toJSONString(map);
+        //System.out.println(json);
+        response.getWriter().print(json);
+        return;
     }
 }

@@ -13,7 +13,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
                     $.ajax({
-                        url: "http://localhost:8080/search/count",
+                        url: "/search/count",
                         type: "post",
                         dataType: "json",
                         success: function(data){
@@ -31,8 +31,15 @@
             function showData(data) {
                 $("#num").empty();
                 for (var i = 0; i < data.length; i++) {
-
-                    var str=" <h2 >"+data[i].productName+"</h2>"
+                    var str ="<div class=\"aui-borrow-head\">\n" +
+                        "                    <div class=\"aui-borrow-head-title\">\n" +
+                        "                        <h2>"+data[i].productName+"</h2>\n" +
+                        "                    </div>\n" +
+                        "                    <div class=\"aui-borrow-head-ad\">\n" +
+                        "                       <img src=\"\">\n" +
+                        "                    </div>\n" +
+                        "                </div>;"
+                    //var str=" <h2 >"+data[i].productName+"</h2>"
                     //var $h2 =$(str);
 
                     $("#num").append(str);
@@ -78,9 +85,9 @@
                             <h2>50,000.00</h2>
                             <h3>3分钟申请，5秒审批</h3>
                         </div>
-                        <form action="/start">
+                        <form action="/start" method="post">
                         <div class="aui-borrow-flex-bd">
-                            <input typy="submit" value="我要借钱" name="su">
+                            <input type="submit" value="我要借钱" name="su">
                         </div>
                         </form>
                     </div>
@@ -163,14 +170,15 @@
                     </div>
                 </div>
                 <div class="divHeight" ></div>
-                <div class="aui-borrow-head">
-                    <div class="aui-borrow-head-title">
-                        <div id="num"></div>
-                    </div>
-                    <div class="aui-borrow-head-ad">
-                       <img src="">
-                    </div>
-                </div>;
+                <div id ="num"></div>
+                <!--<div class="aui-borrow-head">-->
+                    <!--<div class="aui-borrow-head-title">-->
+                        <!--<div id="num"></div>-->
+                    <!--</div>-->
+                    <!--<div class="aui-borrow-head-ad">-->
+                       <!--<img src="">-->
+                    <!--</div>-->
+                <!--</div>;-->
                     <!--<div class="aui-borrow-head-title">-->
                         <!--<h2>标题1</h2>-->
                     <!--</div>-->

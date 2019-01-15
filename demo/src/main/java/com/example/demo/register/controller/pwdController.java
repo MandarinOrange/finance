@@ -16,7 +16,7 @@ public class pwdController extends HttpServlet {
     @Autowired
     userMapper userMapper;
 
-    @RequestMapping("/")//再一次确认密码界面
+    @RequestMapping("/pwd")//再一次确认密码界面
     public String doPost(HttpServletResponse response, HttpServletRequest request){
         HttpSession session=request.getSession();
         User user=new User();

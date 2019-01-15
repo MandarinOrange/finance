@@ -16,7 +16,7 @@ public class compController {
     @Autowired
     com.example.demo.Dao.auditMapper auditMapper;
 
-    @RequestMapping("")//已经完成的订单浏览的界面
+    @RequestMapping("/comp")//已经完成的订单浏览的界面
     public List<Audit> doPost(HttpServletResponse response, HttpServletRequest request){
         HttpSession session=request.getSession();
         User user=new User();

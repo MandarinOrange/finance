@@ -432,3 +432,16 @@ a {
     border-radius: 5px;
     border: none;
 }
+
+.tab-input input {
+    width: 92%;
+    margin: 0 auto;
+    display: block;
+    background: #fa623d;
+    color: #fff;
+    height: 3rem;
+    line-height: 3rem;
+    box-shadow: 0 3px 9px #d0d0d0;
+    border-radius: 5px;
+    border: none;
+}

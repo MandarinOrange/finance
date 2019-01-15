@@ -8,9 +8,48 @@
         <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
         <meta content="telephone=no" name="format-detection"/>
         <link href="css/countCenter.css" rel="stylesheet" type="text/css"/>
-        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="js/tab.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var amount = decument.getElementsByName("amount").value;
+                var year = decument.getElementsByName("year").value;
+                var select = decument.getElementsByName("intrate");
+                var intrate = select.value;
+                var equ = decument.getElementsByName("equation");
+                var equation = equ.value();
 
+                // if(amount=""){
+                //     alert("金额不能为空");
+                //     return;
+                // }
+                // if(year==""){
+                //     alert("年限不能为空");
+                //     return;
+                // }
+                $.ajax({
+                    type: "GET",
+                    url: "/sum",
+                    data: {
+                        amount: amount,
+                        year: year,
+                        intrate: intrate,
+                        equation: equation
+                    },
+                    async: true,
+                    dataType:"json",
+                    success: function (data) {
+                        var str = "<h2>"+data.value+"</h2>";
+                        $("#sum").append(str);
+                        //console.log(data);
+                        //alert("结果为：" + data.value);
+                    },
+                    error: function (data) {
+                        alert("提交失败" + data.value);
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
 
@@ -28,6 +67,7 @@
                     <i class="icon icon-sys"></i>
                 </a>
             </header>
+            <form id="form2"action="/sum" method="get">
             <section class="aui-scrollView">
                 <div class="aui-tab" data-ydui-tab>
                     <ul class="tab-nav b-line">
@@ -42,7 +82,7 @@
                                     <h2>贷款金额</h2>
                                 </div>
                                 <div class="aui-flex-box aui-flex-box-right">
-                                    <input type="text" name="amount" placeholder="请输入贷款金额">
+                                    <input type="text" name="amount" value =""placeholder="请输入贷款金额">
                                     <span></span>
                                 </div>
                             </a>
@@ -51,8 +91,8 @@
                                     <h2>贷款期限</h2>
                                 </div>
                                 <div class="aui-flex-box aui-flex-box-right">
-                                    <input type="text" name="year"placeholder="请输入贷款期限">
-                                    <span>日</span>
+                                    <input type="text" name="year" value=""placeholder="请输入贷款期限">
+                                    <span>年</span>
                                 </div>
                             </a>
                             <a href="javascript:;" class="aui-flex b-line">
@@ -60,11 +100,11 @@
                                     <h2>贷款利率</h2>
                                 </div>
                                 <div class="aui-flex-box aui-flex-box-right aui-flex-box-dow">
-                                    <select name = "intrate"class="cell-select">
-                                        <option value="">4.90%</option>
-                                        <option value="1">3.80%</option>
-                                        <option value="2">3.90%</option>
-                                        <option value="3">1.90%</option>
+                                    <select name = "intrate" value="" class="cell-select">
+                                        <option value="0.049">4.90%</option>
+                                        <option value="0.038">3.80%</option>
+                                        <option value="0.039">3.90%</option>
+                                        <option value="0.019">1.90%</option>
                                     </select>
                                 </div>
                             </a>
@@ -72,148 +112,26 @@
                                 <div class="aui-calc-title">
                                     <h2>还款方式</h2>
                                 </div>
-                                <div class="aui-flex-box aui-flex-box-right">
-                                    <button name = "button1"onclick="equ(1)">等额本息</button>
-                                    <button name = "button2"onclick="equ(2)">等额本金</button>
+                                <div class="aui-flex-box aui-flex-box-right aui-flex-box-dow">
+                                    <select name = "equation" value="" class="cell-select">
+                                        <option value="1">等额本息</option>
+                                        <option value="2">等额本金</option>
+                                    </select>
                                 </div>
                             </a>
                         </div>
-                        <!--<div class="tab-panel-item">-->
-                            <!--<a href="javascript:;" class="aui-flex b-line">-->
-                                <!--<div class="aui-calc-title">-->
-                                    <!--<h2>贷款金额</h2>-->
-                                <!--</div>-->
-                                <!--<div class="aui-flex-box aui-flex-box-right">-->
-                                    <!--<input type="text" placeholder="请输入贷款金额">-->
-                                    <!--<span></span>-->
-                                <!--</div>-->
-                            <!--</a>-->
-                            <!--<a href="javascript:;" class="aui-flex b-line">-->
-                                <!--<div class="aui-calc-title">-->
-                                    <!--<h2>贷款期限</h2>-->
-                                <!--</div>-->
-                                <!--<div class="aui-flex-box aui-flex-box-right">-->
-                                    <!--<input type="text" placeholder="请输入贷款期限">-->
-                                    <!--<span>年</span>-->
-                                <!--</div>-->
-                            <!--</a>-->
-                            <!--<a href="javascript:;" class="aui-flex b-line">-->
-                                <!--<div class="aui-calc-title">-->
-                                    <!--<h2>贷款利率</h2>-->
-                                <!--</div>-->
-                                <!--<div class="aui-flex-box aui-flex-box-right aui-flex-box-dow">-->
-                                    <!--<select class="cell-select">-->
-                                        <!--<option value="">4.90%</option>-->
-                                        <!--<option value="1">3.80%</option>-->
-                                        <!--<option value="2">3.90%</option>-->
-                                        <!--<option value="3">1.90%</option>-->
-                                    <!--</select>-->
-                                <!--</div>-->
-                            <!--</a>-->
-                            <!--<a href="javascript:;" class="aui-flex b-line">-->
-                                <!--<div class="aui-calc-title">-->
-                                    <!--<h2>还款方式</h2>-->
-                                <!--</div>-->
-                                <!--<div class="aui-flex-box aui-flex-box-right">-->
-                                    <!--<button>等额本息</button>-->
-                                    <!--<button>等额本金</button>-->
-                                <!--</div>-->
-                            <!--</a>-->
-                        <!--</div>-->
-                        <!--<div class="tab-panel-item">-->
-                            <!--<a href="javascript:;" class="aui-flex b-line">-->
-                                <!--<div class="aui-calc-title">-->
-                                    <!--<h2>贷款金额</h2>-->
-                                <!--</div>-->
-                                <!--<div class="aui-flex-box aui-flex-box-right">-->
-                                    <!--<input type="text" placeholder="请输入贷款金额">-->
-                                    <!--<span>万</span>-->
-                                <!--</div>-->
-                            <!--</a>-->
-                            <!--<a href="javascript:;" class="aui-flex b-line">-->
-                                <!--<div class="aui-calc-title">-->
-                                    <!--<h2>贷款期限</h2>-->
-                                <!--</div>-->
-                                <!--<div class="aui-flex-box aui-flex-box-right">-->
-                                    <!--<input type="text" placeholder="请输入贷款期限">-->
-                                    <!--<span>年</span>-->
-                                <!--</div>-->
-                            <!--</a>-->
-                            <!--<a href="javascript:;" class="aui-flex b-line">-->
-                                <!--<div class="aui-calc-title">-->
-                                    <!--<h2>贷款利率</h2>-->
-                                <!--</div>-->
-                                <!--<div class="aui-flex-box aui-flex-box-right aui-flex-box-dow">-->
-                                    <!--<select class="cell-select">-->
-                                        <!--<option value="">4.90%</option>-->
-                                        <!--<option value="1">3.80%</option>-->
-                                        <!--<option value="2">3.90%</option>-->
-                                        <!--<option value="3">1.90%</option>-->
-                                    <!--</select>-->
-                                <!--</div>-->
-                            <!--</a>-->
-                            <!--<a href="javascript:;" class="aui-flex b-line">-->
-                                <!--<div class="aui-calc-title">-->
-                                    <!--<h2>还款方式</h2>-->
-                                <!--</div>-->
-                                <!--<div class="aui-flex-box aui-flex-box-right">-->
-                                    <!--<button name="equation"value ="1">等额本息</button>-->
-                                    <!--<button name ="equation" value="2">等额本金</button>-->
-                                <!--</div>-->
-                            <!--</a>-->
-                        <!--</div>-->
-                        <div class="tab-button">
-                            <button>开始计算</button>
+                        <div class="tab-input">
+                            <!--<button onclick="btnNotForm()">开始计算</button>-->
+                            <input type="submit" value="开始计算" onclick="btnNotForm()">
                         </div>
+                        <div id="sum"></div>
                     </div>
                 </div>
             </section>
+            </form>
         </section>
 
-        <script type="text/javascript">
-            function equ(obj){
-                var equation=1;
-                if(obj==1){
-                    equation=1;
-                    button1.style.backgroundColor="#fa623d";
-                    button1.style.color="#f5f5f5";
-                    button2.style.backgroundColor="#f5f5f5";
-                    button2.style.color="#fa623d";
-                }else if(obj==2){
-                    equation=2;
-                    button1.style.backgroundColor="#f5f5f5";
-                    button1.style.color="#fa623d";
-                    button2.style.backgroundColor="#fa623d";
-                    button2.style.color="#f5f5f5";
-                }
-                //document.getElementsByTagName("equation").value=equation;
-                global.equation = equation;
-            }
 
-
-            $(".btnNotForm").click(function(){
-                var amount =decument.getElementsByName("amount").value;
-                var year = decument.getElementsByName("year").value;
-                var select = decument.getElementsByName("intrate");
-                var intrate = select.value;
-
-                $.ajax({
-
-                    type:"get",
-                    url:"/sum",
-                    data:{
-                        amount:amount,
-                        year:year,
-                        intrate:intrate,
-                        equation:equation
-                    },
-                    async:true,
-                    success:function(data){
-                        console.log(data);
-                    }
-                });
-            });
-        </script>
 
     </body>
 </html>

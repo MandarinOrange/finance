@@ -63,7 +63,6 @@ public class SumCirController {
 
 
     @GetMapping("/sum")
-    //@ResponseBody
     public void SumCir(HttpServletRequest request, HttpServletResponse response)throws IOException{
         double amount =0;
         float intrate = 0;
@@ -122,7 +121,7 @@ public class SumCirController {
         map.put("value",sum_principal_and_intrate);
         String json = JSONObject.toJSONString(map);
         //System.out.println(json);
-        response.getWriter().print(json);
+        response.getWriter().print(sum_principal_and_intrate);
         return;
     }
 }

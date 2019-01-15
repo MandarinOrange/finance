@@ -11,13 +11,13 @@
         <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="js/tab.js"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                var amount = decument.getElementsByName("amount").value;
-                var year = decument.getElementsByName("year").value;
-                var select = decument.getElementsByName("intrate");
-                var intrate = select.value;
-                var equ = decument.getElementsByName("equation");
-                var equation = equ.value();
+            function btnNotForm(){
+                // var amount = decument.getElementsByName("amount").value;
+                // var year = decument.getElementsByName("year").value;
+                // var select = decument.getElementsByName("intrate");
+                // var intrate = select.value;
+                // var equ = decument.getElementsByName("equation");
+                // var equation = equ.value();
 
                 // if(amount=""){
                 //     alert("金额不能为空");
@@ -28,27 +28,29 @@
                 //     return;
                 // }
                 $.ajax({
-                    type: "GET",
                     url: "/sum",
-                    data: {
-                        amount: amount,
-                        year: year,
-                        intrate: intrate,
-                        equation: equation
-                    },
-                    async: true,
+                    type: "get",
                     dataType:"json",
+                    // data: {
+                    //     amount: amount,
+                    //     year: year,
+                    //     intrate: intrate,
+                    //     equation: equation
+                    // },
+                    data:$("#form2").serialize(),
+                    async: false,
                     success: function (data) {
-                        var str = "<h2>"+data.value+"</h2>";
+                        var str = "<span class=\"aui-center-title\">计算应还款总金额为："+data+"元</span>";
                         $("#sum").append(str);
                         //console.log(data);
                         //alert("结果为：" + data.value);
                     },
-                    error: function (data) {
-                        alert("提交失败" + data.value);
+                    error: function (msg) {
+                        alert("提交失败" + msg);
                     }
                 });
-            });
+            }
+
         </script>
     </head>
     <body>
@@ -120,15 +122,17 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="tab-input">
-                            <!--<button onclick="btnNotForm()">开始计算</button>-->
-                            <input type="submit" value="开始计算" onclick="btnNotForm()">
+                        <div class="tab-button">
+                            <button onclick="btnNotForm()">开始计算</button>
+                            <!--<input type="button" value="开始计算" onclick="btnNotForm()">-->
                         </div>
-                        <div id="sum"></div>
                     </div>
                 </div>
             </section>
             </form>
+            <div class="tab-button" id = "sum">
+
+            </div>
         </section>
 
 

@@ -10,12 +10,15 @@
 		<script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" ></script>
 		<script type="text/javascript" src="js/slider.js" ></script>
 		<script type="text/javascript">
-            $(document).ready(function () {
+            function search(){
                 $.ajax({
                     url: "/search/key",
                     type: "post",
                     dataType: "json",
+                    data: $("#form1").serialize(),
+					async:false,
                     success: function(data){
+                        //console.log(data);
                         /*这个方法里是ajax发送请求成功之后执行的代码*/
                         showData(data);//我们仅做数据展示
                     },
@@ -23,15 +26,15 @@
                         alert("ajax连接异常："+msg);
                     }
                 });
-            });
+            };
 
 
             //展示数据
             function showData(data) {
-                alert(data);
+                //alert(data);
                 $("#content").empty();
                 for (var i = 0; i < data.length; i++) {
-                    var p = obj[i];
+                    var p = data[i];
                     //var str = "<h2>"+p.productName+"</h2>"
                     var str="<a href=\"javascript:;\" class=\"aui-list-item\">\n" +
                         "\t\t\t\t<div class=\"aui-right-top\"> </div>\n" +
@@ -61,11 +64,11 @@
 		<div class="headBox">
 			<h2 class="titHead">产品搜索</h2>
 			<!--<h3 class="titNeck">内容简介</h3>-->
-			<form action="/search/key" method="post">
+			<form id="form1" action="/search/key" method="post">
 			<div class="search">
 
 					<input name="productName" type="text" placeholder="搜索">
-					<button name="btn" id="btn" type="submit"></button>
+					<button name="btn" id="btn" type="button" onclick="search()"></button>
 			</div>
 			</form>
 		</div>

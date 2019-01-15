@@ -8,8 +8,11 @@ import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface managerMapper {
-    @Select("select * from manager where managerNum = #{managerName}")
-    public Manager selectManagerByManagerName(String managerName);
+    @Select("select managerNum from manager where managerNum = #{managerName}")
+    public long selectManagerByManagerName(String managerName);
+
+    @Select("select count(*) from manager where managerNum = #{managerNum},managerPwd = #{managerPwd}")
+    public int selectPwd(long managerNum,String managerPwd);
 
     @Insert("insert into manager(managerNum, managerName, managerPwd, " +
             "managerRight, telephoneNum) values (#{managerNum},#{managerName}," +

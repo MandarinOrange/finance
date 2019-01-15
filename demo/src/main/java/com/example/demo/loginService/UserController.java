@@ -1,5 +1,7 @@
 package com.example.demo.loginService;
 
+import com.example.demo.Dao.managerMapper;
+import com.example.demo.Dao.userMapper;
 import com.example.demo.bean.User;
 import com.example.demo.loginService.API.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,10 @@ import java.util.Date;
 public class UserController extends HttpServlet {
     @Autowired
     private UserServiceImpl userServiceImpl;
+    @Autowired
+    private userMapper userMapper;
+    @Autowired
+    private managerMapper managerMapper;
 
     @PostMapping("/login")
     //@ResponseBody
@@ -27,12 +33,12 @@ public class UserController extends HttpServlet {
         //System.out.println("_______________");
         String userName = request.getParameter("userName");
         String userPwd = request.getParameter("userPwd");
-        User user = this.userServiceImpl.selectUserByuserName(userName);
+        long usernum = this.userServiceImpl.selectUserByuserName(userName);
         int result = 0;
-        if(user!=null){
-            if(user.getUserPwd().equals(userPwd)){
+        if(usernum!=1){
+            if(userMapper.selectPwd(usernum,userPwd)==1){
                 HttpSession session=request.getSession();
-                session.setAttribute("user",user);
+                session.setAttribute("user",usernum);
                 result = 1;
             } else{
                 result = 2;
@@ -51,10 +57,11 @@ public class UserController extends HttpServlet {
         String userName = request.getParameter("userName");
         String userPwd = request.getParameter("userPwd");
         String userPwd1=request.getParameter("userPwd1");
-        User user = this.userServiceImpl.selectUserByuserName(userName);
+        long usernum = this.userServiceImpl.selectUserByuserName(userName);
+        User user=new User();
         long count = 0;
         int result = 0;
-        if(user!=null){
+        if(usernum!=1){
             result = 2;
         }else if(userPwd.equals(userPwd1)){
                 count = this.userServiceImpl.count()+1;
@@ -97,4 +104,22 @@ public class UserController extends HttpServlet {
         return "/login2";
     }
 }**/
+   @RequestMapping("")//管理员登陆的界面
+    public String doPost3(HttpServletRequest request,HttpServletResponse response){
+       String managerName = request.getParameter("managerName");
+       String managerPwd = request.getParameter("managerPwd");
+       long managerNum = managerMapper.selectManagerByManagerName(managerName);
+       int result = 0;
+       if(managerNum!=1){
+           if(managerMapper.selectPwd(managerNum,managerPwd)==1){
+               HttpSession session=request.getSession();
+               session.setAttribute("managerNum",managerNum);
+               return "";
+           } else{
+               return "密码不存在";
+           }
+       }else{
+           return "用户不存在";
+       }
+   }
 }

@@ -1,5 +1,6 @@
 package com.example.demo.searchService.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.bean.Product;
 import com.example.demo.searchService.service.ProductSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class SearchController {
         List<Product> list = new ArrayList<Product>();
         String productName = request.getParameter("productName");
         list = productSearchService.findByNameLike(productName);
+//        String data = JSONObject.toJSONString(list);
+//        response.getWriter().print(data);
+        System.out.println(list);
         return list;
     }
 
@@ -56,6 +60,8 @@ public class SearchController {
         response.setContentType("text/html;charset=utf-8");
         List<Product> list = new ArrayList<Product>();
         list = productSearchService.findByCount();
+//        String data = JSONObject.toJSONString(list);
+//        response.getWriter().print(data);
         return list;
     }
 }

@@ -22,7 +22,7 @@ public class showController extends HttpServlet {
     @Autowired
     com.example.demo.Dao.auditMapper auditMapper;
 
-    @RequestMapping("")//订单浏览的界面
+    @RequestMapping("/order")//订单浏览的界面
     public List<Audit> doPost(HttpServletResponse response, HttpServletRequest request){
         HttpSession session=request.getSession();
         User user=new User();

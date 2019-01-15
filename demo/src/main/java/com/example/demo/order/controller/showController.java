@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /*
-打印出所以的订单
+打印出所有的订单
  */
 
 //@Controller

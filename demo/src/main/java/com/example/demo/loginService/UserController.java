@@ -1,5 +1,6 @@
 package com.example.demo.loginService;
 
+import com.example.demo.Dao.managerMapper;
 import com.example.demo.Dao.userMapper;
 import com.example.demo.bean.User;
 import com.example.demo.loginService.API.impl.UserServiceImpl;
@@ -23,6 +24,8 @@ public class UserController extends HttpServlet {
     private UserServiceImpl userServiceImpl;
     @Autowired
     private userMapper userMapper;
+    @Autowired
+    private managerMapper managerMapper;
 
     @PostMapping("/login")
     //@ResponseBody
@@ -101,4 +104,22 @@ public class UserController extends HttpServlet {
         return "/login2";
     }
 }**/
+   @RequestMapping("")//管理员登陆的界面
+    public String doPost3(HttpServletRequest request,HttpServletResponse response){
+       String managerName = request.getParameter("managerName");
+       String managerPwd = request.getParameter("managerPwd");
+       long managerNum = managerMapper.selectManagerByManagerName(managerName);
+       int result = 0;
+       if(managerNum!=1){
+           if(managerMapper.selectPwd(managerNum,managerPwd)==1){
+               HttpSession session=request.getSession();
+               session.setAttribute("managerNum",managerNum);
+               return "";
+           } else{
+               return "密码不存在";
+           }
+       }else{
+           return "用户不存在";
+       }
+   }
 }

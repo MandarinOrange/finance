@@ -54,8 +54,9 @@ public class SearchServiceController{
     public List<Product> showPro(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
         List<Product> products = productSearchService.findByCount();
         response.setCharacterEncoding("utf-8");
+        System.out.println(products);
         return products;
         //String json = JSONObject.toJSONString(list);
-        // response.getWriter().print(json);
+        //response.getWriter().print(json);
     }
 }

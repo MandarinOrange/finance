@@ -13,13 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-//@Controller
-@RestController
+@Controller
 public class compController {
     @Autowired
     com.example.demo.Dao.auditMapper auditMapper;
 
-    @RequestMapping(value="/finished",method = RequestMethod.POST)//已经完成的订单浏览的界面
+    @RequestMapping("/finished")//已经完成的订单浏览的界面
     public List<Audit> doPost(HttpServletResponse response, HttpServletRequest request){
         HttpSession session=request.getSession();
         User user=new User();

@@ -19,13 +19,12 @@ import java.util.List;
 打印出所有的订单
  */
 
-//@Controller
-@RestController
+@Controller
 public class showController extends HttpServlet {
     @Autowired
     com.example.demo.Dao.auditMapper auditMapper;
 
-    @RequestMapping(value="/order",method = RequestMethod.POST)//订单浏览的界面
+    @RequestMapping("/order")//订单浏览的界面
     public List<Audit> doPost(HttpServletResponse response, HttpServletRequest request){
         HttpSession session=request.getSession();
         User user=new User();

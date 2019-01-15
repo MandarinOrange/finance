@@ -8,42 +8,70 @@
         <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
         <meta content="telephone=no" name="format-detection"/>
         <link href="css/index.css" rel="stylesheet" type="text/css"/>
+        <link href="css/show.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" ></script>
         <script type="text/javascript" src="js/slider.js" ></script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                    $.ajax({
-                        url: "/search/count",
-                        type: "post",
-                        dataType: "json",
-                        success: function(data){
-                            /*这个方法里是ajax发送请求成功之后执行的代码*/
-                             showData(data);//我们仅做数据展示
-                        },
-                        error: function(msg){
-                            alert("ajax连接异常："+msg);
-                        }
-                    });
+            // $(document).ready(function () {
+            //         $.ajax({
+            //             url: "/search/count",
+            //             type: "post",
+            //             dataType: "json",
+            //             success: function(data){
+            //                 /*这个方法里是ajax发送请求成功之后执行的代码*/
+            //                  showData(data);//我们仅做数据展示
+            //             },
+            //             error: function(msg){
+            //                 alert("ajax连接异常："+msg);
+            //             }
+            //         });
+            //     });
+            //
+            //
+            // //展示数据
+            // function showData(data) {
+            //     $("#num").empty();
+            //     for (var i = 0; i < data.length; i++) {
+            //         var str ="<div class=\"aui-borrow-head\">\n" +
+            //             "                    <div class=\"aui-borrow-head-title\">\n" +
+            //             "                        <h2>"+data[i].productName+"</h2>\n" +
+            //             "                    </div>\n" +
+            //             "                    <div class=\"aui-borrow-head-ad\">\n" +
+            //             "                       <img src=\"\">\n" +
+            //             "                    </div>\n" +
+            //             "                </div>;"
+            //         //var str=" <h2 >"+data[i].productName+"</h2>"
+            //         //var $h2 =$(str);
+            //
+            //         $("#num").append(str);
+            //     }
+            // }
+            $(function(){
+                $.ajax({
+                    url: "/search/count",
+                    type: "post",
+                    dataType: "json",
+                    success: function(data){
+                        // console.log(data);//查看从后台传值内容
+                        /*这个方法里是ajax发送请求成功之后执行的代码*/
+                        showData(data);//我们仅做数据展示
+                    },
+                    error: function(msg){
+                        alert("ajax连接异常："+msg);
+                    }
                 });
-
+            });
 
             //展示数据
             function showData(data) {
-                $("#num").empty();
-                for (var i = 0; i < data.length; i++) {
-                    var str ="<div class=\"aui-borrow-head\">\n" +
-                        "                    <div class=\"aui-borrow-head-title\">\n" +
-                        "                        <h2>"+data[i].productName+"</h2>\n" +
-                        "                    </div>\n" +
-                        "                    <div class=\"aui-borrow-head-ad\">\n" +
-                        "                       <img src=\"\">\n" +
-                        "                    </div>\n" +
-                        "                </div>;"
-                    //var str=" <h2 >"+data[i].productName+"</h2>"
-                    //var $h2 =$(str);
-
-                    $("#num").append(str);
+                //var str = "";//定义用于拼接的字符串
+                $("#content").empty();
+                for (var i = 0; i <data.length; i++) {
+                    var pro = data[i];
+                    var str = "<a href=\"javascript:;\" class=\"aui-list-item\"><div class=\"aui-right-top\"></div><div class=\"aui-list-head\" id=\"proname\">"+pro.productName+"</div><div class=\"aui-flex\"><div class=\"aui-flex-box\"><h4>"+pro.productNum+"</h4></div><div class=\"aui-text-time\"></div><div class=\"aui-button-get\"><button id=\"apply\", onclick=\"location=\'apply.html\'\">申请</button> </div></div><div class=\"aui-dotted\"></div></a>";
+                    $("#content").append(str);
                 }
+
             }
 
             function AutoScroll(obj) {
@@ -170,7 +198,9 @@
                     </div>
                 </div>
                 <div class="divHeight" ></div>
-                <div id ="num"></div>
+                <div class="aui-list-box" id="content">
+
+                </div>
                 <!--<div class="aui-borrow-head">-->
                     <!--<div class="aui-borrow-head-title">-->
                         <!--<div id="num"></div>-->

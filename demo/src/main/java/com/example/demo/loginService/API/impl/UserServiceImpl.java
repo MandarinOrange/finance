@@ -13,7 +13,7 @@ public class UserServiceImpl extends UserService{
     private userMapper UserMapper;
 
     @Transactional(propagation=Propagation.REQUIRED,readOnly = true)
-    public User selectUserByuserName(String userName){
+    public long selectUserByuserName(String userName){
         return this.UserMapper.selectUserByuserName(userName);
     }
     @Transactional(propagation=Propagation.REQUIRED,readOnly = true)

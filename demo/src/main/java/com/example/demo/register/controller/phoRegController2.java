@@ -15,21 +15,21 @@ public class phoRegController2 {
     phone phone=new phone();
 
     @RequestMapping("/phoreg2")//第二个手机验证界面
-    public String doPost(HttpServletRequest request, HttpServletResponse response){
+    public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException{
         PrintWriter writer=null;
         try{
             int num=Integer.parseInt(request.getParameter("phoneNum"));
             response.setContentType("text/hmtl;charset=utf-8");
             writer=response.getWriter();
             if(phone.phoneRegister(num)==1){
-                return "";//跳转到Loan界面
+                response.sendRedirect("loanInformation.html");//跳转到Loan界面
             }else{
                 writer.write("验证失败");
-                return "";//跳转到第二个手机验证界面
+                response.sendRedirect("checkPhoneNum2.html");//跳转到第二个手机验证界面
             }
         }catch (IOException e){
             e.printStackTrace();
         }
-        return "页面出错";
+        response.sendRedirect("");
     }
 }

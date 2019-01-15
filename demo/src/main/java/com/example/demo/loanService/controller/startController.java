@@ -26,7 +26,7 @@ public class startController extends HttpServlet {
         user=(User)session.getAttribute("user");
         short num=userMapper.selectIsId(user.getUserNum());
         if(num==1){
-            response.sendRedirect("loanInformation.html");//贷款的界面
+            response.sendRedirect("checkPhoneNum2.html");
         }if(num==0){
             response.sendRedirect("checkPhoneNum.html");//认证的界面
         }else{

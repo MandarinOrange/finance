@@ -8,6 +8,8 @@ import com.example.demo.order.service.orderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,12 +19,12 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+@RestController
 public class orderController extends HttpServlet {
     @Autowired
     private orderServiceImpl orderService;
 
-    @PostMapping("/orderlist")
+    @RequestMapping(value = "/orderlist",method = RequestMethod.POST)
     public void orderList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=utf-8");
         HttpSession session = request.getSession();

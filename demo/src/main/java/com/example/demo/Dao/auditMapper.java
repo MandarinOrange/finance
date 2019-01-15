@@ -7,6 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface auditMapper {
+
     @Select("select * from audit where checkNum = #{checkNum}")
     public Audit selectAudioByCheckNum(long checkNum);
 
@@ -24,7 +25,11 @@ public interface auditMapper {
 
     @Select("select * from audit where userNum = #{userNum} and checkState=1" +
             "order by applyTime")
-    public List<Audit> selectByNum(long userNum);
+    public List<Audit> selectByNumFinshed(long userNum);
+
+    @Select("select * from audit where userNum = #{userNum} and checkState=0" +
+            "order by applyTime")
+    public List<Audit> selectByNumUnfinshed(long userNum);
 
     @Insert("insert into audit(checkNum, userNum, productNum, " +
             "bankAccount, checkState, contractNum, " +

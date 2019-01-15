@@ -1,4 +1,4 @@
-package com.example.demo.productService.service;
+package com.example.demo.back.productService.service;
 
 import com.example.demo.Dao.productHistroyMapper;
 import com.example.demo.Dao.productMapper;

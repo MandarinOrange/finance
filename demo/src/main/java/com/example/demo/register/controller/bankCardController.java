@@ -21,17 +21,15 @@ public class bankCardController extends HttpServlet {
     @RequestMapping("/binding")//卡号绑定界面
     public void doPost(HttpServletResponse response, HttpServletRequest request)throws IOException {
         HttpSession session=request.getSession();
-        User user=new User();
-        user=(User)session.getAttribute("user");
+        long userNum=(long)session.getAttribute("user");
         try{
-            long num=user.getUserNum();
             short result=0;
             UserBankIdentify userBankIdentify=new UserBankIdentify();
             userBankIdentify.setBankAccount(request.getParameter("bankAccount"));
             userBankIdentify.setTrueName(request.getParameter("realname"));
             userBankIdentify.setIdNum(request.getParameter("idNum"));
             userBankIdentify.setTelephoneNum(request.getParameter("phoneNum"));
-            userBankIdentify.setUserNum(num);
+            userBankIdentify.setUserNum(userNum);
             userBankIdentify.setBankAccountIdentify(result);
             identify.identify(userBankIdentify);
         }catch (Exception e){

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @Controller
 public class bankCardController extends HttpServlet {
@@ -18,7 +19,7 @@ public class bankCardController extends HttpServlet {
     private identify identify=new identify();
 
     @RequestMapping("/binding")//卡号绑定界面
-    public String doPost(HttpServletResponse response, HttpServletRequest request){
+    public void doPost(HttpServletResponse response, HttpServletRequest request)throws IOException {
         HttpSession session=request.getSession();
         User user=new User();
         user=(User)session.getAttribute("user");
@@ -36,6 +37,6 @@ public class bankCardController extends HttpServlet {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "../首页/index.html";//返回首页
+        response.sendRedirect("index.html");//返回首页
     }
 }

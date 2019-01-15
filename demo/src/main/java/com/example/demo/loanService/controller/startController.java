@@ -28,7 +28,7 @@ public class startController extends HttpServlet {
         if(num==1){
             response.sendRedirect("loanInformation.html");//贷款的界面
         }if(num==0){
-            response.sendRedirect("Register.html");//认证的界面
+            response.sendRedirect("checkPhoneNum.html");//认证的界面
         }else{
             response.sendRedirect("");//页面出错的界面
         }

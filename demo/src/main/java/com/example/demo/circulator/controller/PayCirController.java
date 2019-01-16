@@ -34,11 +34,9 @@ public class PayCirController {
             String json = JSONObject.toJSONString(map);
             response.getWriter().print(json);
         }else if(result==-2){
-            //return"/未贷款该业务!";
+//            return;
         }else if(result==-3){
-            //return "/无此业务";
+//            return;
         }
-
-            //return "/还款失败";
     }
 }

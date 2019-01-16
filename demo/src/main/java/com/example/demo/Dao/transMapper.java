@@ -10,6 +10,8 @@ public interface transMapper {
     @Select("select * from transaction where transactionNum = #{transactionNum}")
     public Transaction selectAudioByCheckNum(long transactionNum);
 
+    @Select("select count(*) from transaction")
+    public int selectCount();
     @Select("select * from transaction")
     public List<Transaction> select();
 

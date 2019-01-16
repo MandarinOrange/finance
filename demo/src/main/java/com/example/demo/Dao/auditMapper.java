@@ -8,8 +8,8 @@ import java.util.List;
 @Mapper
 public interface auditMapper {
 
-//    @Select("select * from audit where checkNum = #{checkNum}")
-//    public Audit selectAudioByCheckNum(long checkNum);
+    @Select("select * from audit where checkNum = #{checkNum}")
+    public Audit selectAudioByCheckNum(long checkNum);
 
     @Select("select * from audit where userNum = #{userNum}")
     public List<Audit> selectAuditByUserNum(long userNum);

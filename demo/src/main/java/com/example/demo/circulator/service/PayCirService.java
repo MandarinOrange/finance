@@ -1,20 +1,14 @@
 package com.example.demo.circulator.service;
 
-import com.example.demo.Dao.paymentMapper;
-import com.example.demo.Dao.productMapper;
-import com.example.demo.Dao.transMapper;
-import com.example.demo.Dao.usageDateMapper;
-import com.example.demo.bean.Product;
-import com.example.demo.bean.Repayment;
-import com.example.demo.bean.Transaction;
-import com.example.demo.bean.UsageDate;
+import com.example.demo.Dao.*;
+import com.example.demo.bean.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PayCirService {
     @Autowired
-    private usageDateMapper usageDateMapper;
+    private auditMapper auditMapper;
     @Autowired
     private paymentMapper paymentMapper;
     @Autowired
@@ -26,12 +20,11 @@ public class PayCirService {
     public int pay_EPR_AmountCirculator(long checkNum,long userNum,double pay) {
         try {
             Repayment repayment = paymentMapper.selectPepaymentBycheckNum(checkNum);
-            UsageDate usageDate = usageDateMapper.selectUsageDateByCheckNum(checkNum);
+            Audit audit = auditMapper.selectAudioByCheckNum(checkNum);
             double repamount = 0;
-            long productNum = usageDate.getProductNum();
-            long userNum2 = usageDate.getUserNum();
-            long bankNum = usageDate.getBankNum();
-            double amount = usageDate.getAmount();
+            long productNum = audit.getProductNum();
+            long userNum2 = audit.getUserNum();
+            double amount = audit.getAmount();
 
             if(userNum2!=userNum)return -1;
             if (repayment != null)
@@ -39,14 +32,21 @@ public class PayCirService {
             Product product = productMapper.selectProductByProductNum(productNum);
             if (product == null)
                 return -3;
-
-            Transaction transaction = new Transaction(checkNum, userNum, bankNum, pay);
+            long bankNum = product.getBankNum();
+            int count = transMapper.selectCount()+1;
+            Transaction transaction = new Transaction();
+            transaction.setCheckNum(checkNum);
+            transaction.setTransactionNum(count);
+            transaction.setPayer(userNum);
+            transaction.setPayee(bankNum);
+            transaction.setTransactionAmount(pay);
             transMapper.addTransaction(transaction);
 
             double intrate = product.getIntrate();
             double rep_amount = repayment.getRepSum();
             repamount = pay - (amount - repamount) * intrate;
             repayment.setRepAmount(repamount);
+            repayment.setCheckNum(checkNum);
             repayment.setRepSum(pay + rep_amount);
             if (repayment != null) {
                 paymentMapper.updateRepayment(repayment);
@@ -63,10 +63,10 @@ public class PayCirService {
 
     public int pay_EPAIR_AmountCirculator(long checkNum,long userNum,double pay){
         try{
-            UsageDate usageDate = usageDateMapper.selectUsageDateByCheckNum(checkNum);
-            int year = usageDate.getYear();
-            double amount = usageDate.getAmount();
-            long productNum = usageDate.getProductNum();
+            Audit audit= auditMapper.selectAudioByCheckNum(checkNum);
+            int year = audit.getYear();
+            double amount = audit.getAmount();
+            long productNum = audit.getProductNum();
 
             Product product = productMapper.selectProductByProductNum(productNum);
             if(product==null)return -3;
@@ -79,11 +79,17 @@ public class PayCirService {
             double rep = Math.pow((1+intrate),month)/(Math.pow((1+intrate),month)-1);
             double next_principal_and_interest = rep * intrate * amount;
 
-            long userNum2 = usageDate.getUserNum();
-            long bankNum = usageDate.getBankNum();
+            long userNum2 = audit.getUserNum();
+            long bankNum = product.getBankNum();
 
             if(userNum2!=userNum)return -1;
-            Transaction transaction = new Transaction(checkNum,userNum,bankNum,next_principal_and_interest);
+            int count = transMapper.selectCount()+1;
+            Transaction transaction = new Transaction();
+            transaction.setCheckNum(checkNum);
+            transaction.setTransactionNum(count);
+            transaction.setPayer(userNum);
+            transaction.setPayee(bankNum);
+            transaction.setTransactionAmount(pay);
             transMapper.addTransaction(transaction);
 
             Repayment repayment = paymentMapper.selectPepaymentBycheckNum(checkNum);
@@ -91,9 +97,13 @@ public class PayCirService {
             if(repayment!=null){
                 repSum += repayment.getRepSum();
                 repayment.setRepSum(repSum);
+                repayment.setCheckNum(checkNum);
                 paymentMapper.updateRepayment(repayment);
             }else{
-                paymentMapper.addRepayment(repayment);
+                Repayment repayment1 = new Repayment();
+                repayment1.setRepSum(repSum);
+                repayment1.setCheckNum(checkNum);
+                paymentMapper.addRepayment(repayment1);
             }
             return 1;
         }catch(Exception e){
@@ -106,9 +116,9 @@ public class PayCirService {
 
     public  int payAmountCirculator(long checkNum,long userNum,double pay){
         try{
-            UsageDate usageDate = usageDateMapper.selectUsageDateByCheckNum(checkNum);
-            if(usageDate==null){return  -2;}
-            int equation = usageDate.getEquation();
+            Audit audit = auditMapper.selectAudioByCheckNum(checkNum);
+            if(audit==null){return  -2;}
+            int equation = audit.getEquation();
             if(equation == 1){
                 return pay_EPAIR_AmountCirculator(checkNum,userNum,pay);
             }else if(equation == 2){

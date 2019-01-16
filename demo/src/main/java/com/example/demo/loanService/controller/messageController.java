@@ -37,6 +37,7 @@ public class messageController extends HttpServlet {
         Audit audit=new Audit();
         audit.setUserNum(num);
         audit.setAmount(Double.parseDouble(request.getParameter("amount")));
+        audit.setProductNum(Long.parseLong(request.getParameter("productNum")));
         audit.setYear(Integer.parseInt(request.getParameter("year")));
         audit.setBankAccount(request.getParameter("bankAccount"));
         audit.setEquation(Integer.parseInt(request.getParameter("equation")));

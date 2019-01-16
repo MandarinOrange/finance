@@ -27,8 +27,6 @@ public class PayCirService {
             double amount = audit.getAmount();
 
             if(userNum2!=userNum)return -1;
-            if (repayment != null)
-                repamount = repayment.getRepAmount();
             Product product = productMapper.selectProductByProductNum(productNum);
             if (product == null)
                 return -3;
@@ -43,14 +41,20 @@ public class PayCirService {
             transMapper.addTransaction(transaction);
 
             double intrate = product.getIntrate();
-            double rep_amount = repayment.getRepSum();
-            repamount = pay - (amount - repamount) * intrate;
-            repayment.setRepAmount(repamount);
-            repayment.setCheckNum(checkNum);
-            repayment.setRepSum(pay + rep_amount);
+
             if (repayment != null) {
+                double rep_amount = repayment.getRepSum();
+                repamount = pay - (amount - repamount) * intrate;
+                repayment.setRepAmount(repamount);
+                repayment.setCheckNum(checkNum);
+                repayment.setRepSum(pay + rep_amount);
                 paymentMapper.updateRepayment(repayment);
             } else {
+                repayment = new Repayment();
+                //repamount = pay - amount * intrate;
+                repayment.setRepAmount(repamount);
+                repayment.setCheckNum(checkNum);
+                repayment.setRepSum(pay);
                 paymentMapper.addRepayment(repayment);
             }
             return 1;

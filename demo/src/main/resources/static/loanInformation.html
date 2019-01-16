@@ -220,11 +220,30 @@ box-shadow:inset 0px 1px 1px rgba(0,0,0,0.5);*/
 }
 </style>
 
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="js/tab.js"></script>
+	<script type="text/javascript">
+        function btnNotForm(){
 
+            $.ajax({
+                url: "/loan",
+                type: "post",
+                dataType:"json",
+                data:$("#form1").serialize(),
+                async: false,
+                success: function (data) {
+                    alert("结果为：" + data.value);
+                },
+                error: function (msg) {
+                    alert("提交失败" );
+                }
+            });
+        };
+     </script>
 </head>
 
 <body sroll="no" onclick="onload">
-<form name="form1" onSubmit="return checkreg()" action="/loan" method="post">
+<form id="form1" onSubmit="return checkreg()" action="/loan" method="post">
 	<div class="div_f">
 		<div class="div_col" id="wegb">
 			<div class="div_c_l"><span> 贷款金额</span>
@@ -288,13 +307,12 @@ box-shadow:inset 0px 1px 1px rgba(0,0,0,0.5);*/
 		</div>
 		<div style="clear:both"></div>
 	</div>
-	<button id="submit" class="btn_1">确定贷款</button>
+	<button name="submit" class="btn_1" onclick="">确定贷款</button>
 </form>
 
 
-<script type="text/javascript">
 
-</script>
+
 
 </body>
 </html>

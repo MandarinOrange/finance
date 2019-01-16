@@ -20,12 +20,11 @@ import java.io.IOException;
 @Controller
 public class messageController extends HttpServlet {
     @Autowired
-    auditMapper auditMapper;
-    private nowTime nowTime=new nowTime();
-    private messageService message=new messageService();
+    private messageService message;
 
     @RequestMapping(value = "/loan",method = RequestMethod.POST)//填写贷款基本信息的界面
     public void doPost(HttpServletResponse response, HttpServletRequest request)throws IOException {
+        nowTime nowTime=new nowTime();
         HttpSession session=request.getSession();
         User user=new User();
         user=(User)session.getAttribute("user");

@@ -9,9 +9,9 @@
         <meta content="telephone=no" name="format-detection"/>
         <link href="css/myOrders.css" rel="stylesheet" type="text/css"/>
         <!--<script type="text/javascript" src="js/myorder.js"></script>-->
-        <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js" ></script>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" ></script>
         <script type="text/javascript">
-            $(document).ready(function () {
+            $(function () {
                 $.ajax({
                     url: "/order",
                     type: "post",
@@ -22,7 +22,7 @@
                         showData(data);//我们仅做数据展示
                     },
                     error: function(msg){
-                        alert("ajax连接异常："+msg);
+                        alert("连接异常："+msg);
                     }
                 });
             });

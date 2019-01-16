@@ -44,13 +44,11 @@
                     success: function (data) {
                         var str = "<span class=\"aui-center-title\">应还款总金额为："+data.value+"元</span>";
                         $("#sum").append(str);
-
-
                         //console.log(data);
                         //alert("结果为：" + data.value);
                     },
                     error: function (msg) {
-                        alert("提交失败" + msg);
+                        alert("提交失败" );
                     }
                 });
             }

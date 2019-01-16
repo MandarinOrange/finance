@@ -3,7 +3,9 @@ package com.example.demo.register;
 import com.example.demo.Dao.userBankIdMapper;
 import com.example.demo.bean.UserBankIdentify;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class identify {
     @Autowired
     userBankIdMapper userBankIdMapper;

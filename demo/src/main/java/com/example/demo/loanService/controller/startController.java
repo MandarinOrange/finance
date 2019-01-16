@@ -27,10 +27,13 @@ public class startController extends HttpServlet {
         short num=userMapper.selectIsId(user.getUserNum());
         if(num==1){
             response.sendRedirect("checkPhoneNum2.html");
-        }if(num==0){
+            return;
+        }else if(num==0){
             response.sendRedirect("checkPhoneNum.html");//认证的界面
+            return;
         }else{
-            response.sendRedirect("");//页面出错的界面
+            response.sendRedirect("Untitled-1.html");//页面出错的界面
+            return;
         }
     }
 }

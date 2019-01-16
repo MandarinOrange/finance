@@ -1,7 +1,9 @@
 package com.example.demo.order.controller;
 
+import com.example.demo.Dao.auditMapper;
 import com.example.demo.bean.Audit;
 import com.example.demo.bean.User;
+import com.example.demo.order.service.impl.orderServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,14 +21,15 @@ import java.util.List;
 @Controller
 public class showController extends HttpServlet {
     @Autowired
-    com.example.demo.Dao.auditMapper auditMapper;
+    orderServiceImpl orderService;
 
     @PostMapping("/order")//订单浏览的界面
     public List<Audit> doPost(HttpServletResponse response, HttpServletRequest request){
         HttpSession session=request.getSession();
         User user=new User();
         user=(User)session.getAttribute("user");
-        List<Audit> audits = auditMapper.selectAudByNum(user.getUserNum());
+        long userNum = user.getUserNum();
+        List<Audit> audits = orderService.selectAuditByUserNum(userNum);
         return audits;
     }
 }

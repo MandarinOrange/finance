@@ -1,6 +1,7 @@
 package com.example.demo.register.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.Dao.userMapper;
 import com.example.demo.bean.User;
 import com.example.demo.bean.UserBankIdentify;
@@ -14,11 +15,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class bankCardController extends HttpServlet {
 
-    private identify identify=new identify();
+    @Autowired
+    private identify identify;
     @Autowired
     private userMapper userMapper;
 
@@ -42,6 +46,10 @@ public class bankCardController extends HttpServlet {
         }catch (Exception e){
             e.printStackTrace();
         }
-        response.sendRedirect("index.html");//返回首页
+        Map map = new HashMap();
+        map.put("value","认证成功");
+        String json = JSONObject.toJSONString(map);
+        response.getWriter().print(json);
+        //response.sendRedirect("index.html");//返回首页
     }
 }

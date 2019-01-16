@@ -41,6 +41,7 @@
     <div class="right"><img src="images/cardNumberBinding1.png"></div>
 </div>
 <!--中间内容部分-->
+<form id="form" action="/binding" method="post">
 <div id="content">
 	<div class="txt01">银行卡号<input type="number" id="bankAccount" name="bankAccount" class="text" value="" pattern="[0-9]*" tabindex="10" onChange="check_for_btn()" /></div>
     <div class="txt01">真实姓名<input type="text" id="realname" name="realname" class="text" tabindex="7" onChange="check_for_btn()" /></div>
@@ -50,8 +51,8 @@
     <div class="txt01">预留手机号<input type="number" id="phoneNum" pattern="[0-9]*" name="phoneNum" class="text1" tabindex="6"/></div>
 </div>
 <button id="btn" class="r_but" onclick="check()">确定</button>
-
-<script type="text/javascript" src="js/jquery-1.8.3.min.js" tppabs="http://www.17sucai.com/preview/1089623/2018-06-08/form/js/jquery-1.8.3.min.js"></script>
+</form>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" tppabs="http://www.17sucai.com/preview/1089623/2018-06-08/form/js/jquery-1.8.3.min.js"></script>
 
 <script type="text/javascript">
 //弹出框
@@ -110,6 +111,20 @@ function check() {
 	}
 
 	$(".r_but").css("background", "#49b9eb");
+
+    $.ajax({
+        url: "/binding",
+        type: "post",
+        dataType:"json",
+        data:$("#form").serialize(),
+        async: false,
+        success: function (data) {
+            alert("认证成功");
+        },
+        error: function (msg) {
+            alert("认证失败" );
+        }
+    });
 
 }
 

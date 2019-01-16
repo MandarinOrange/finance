@@ -23,16 +23,17 @@ public class PayCirService {
     private productMapper productMapper;
 
 
-    public int pay_EPR_AmountCirculator(long checkNum,double pay) {
+    public int pay_EPR_AmountCirculator(long checkNum,long userNum,double pay) {
         try {
             Repayment repayment = paymentMapper.selectPepaymentBycheckNum(checkNum);
             UsageDate usageDate = usageDateMapper.selectUsageDateByCheckNum(checkNum);
             double repamount = 0;
             long productNum = usageDate.getProductNum();
-            long userNum = usageDate.getUserNum();
+            long userNum2 = usageDate.getUserNum();
             long bankNum = usageDate.getBankNum();
             double amount = usageDate.getAmount();
 
+            if(userNum2!=userNum)return -1;
             if (repayment != null)
                 repamount = repayment.getRepAmount();
             Product product = productMapper.selectProductByProductNum(productNum);
@@ -60,7 +61,7 @@ public class PayCirService {
         return 0;
     }
 
-    public int pay_EPAIR_AmountCirculator(long checkNum,double pay){
+    public int pay_EPAIR_AmountCirculator(long checkNum,long userNum,double pay){
         try{
             UsageDate usageDate = usageDateMapper.selectUsageDateByCheckNum(checkNum);
             int year = usageDate.getYear();
@@ -78,9 +79,10 @@ public class PayCirService {
             double rep = Math.pow((1+intrate),month)/(Math.pow((1+intrate),month)-1);
             double next_principal_and_interest = rep * intrate * amount;
 
-            long userNum = usageDate.getUserNum();
+            long userNum2 = usageDate.getUserNum();
             long bankNum = usageDate.getBankNum();
 
+            if(userNum2!=userNum)return -1;
             Transaction transaction = new Transaction(checkNum,userNum,bankNum,next_principal_and_interest);
             transMapper.addTransaction(transaction);
 
@@ -102,15 +104,15 @@ public class PayCirService {
     }
 
 
-    public  int payAmountCirculator(long checkNum,double pay){
+    public  int payAmountCirculator(long checkNum,long userNum,double pay){
         try{
             UsageDate usageDate = usageDateMapper.selectUsageDateByCheckNum(checkNum);
             if(usageDate==null){return  -2;}
             int equation = usageDate.getEquation();
             if(equation == 1){
-                return pay_EPAIR_AmountCirculator(checkNum,pay);
+                return pay_EPAIR_AmountCirculator(checkNum,userNum,pay);
             }else if(equation == 2){
-                return pay_EPR_AmountCirculator(checkNum,pay);
+                return pay_EPR_AmountCirculator(checkNum,userNum,pay);
             }
         }catch (Exception e){
             e.printStackTrace();

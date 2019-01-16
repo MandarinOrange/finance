@@ -70,10 +70,10 @@ public class SumCirController {
         int equation = 0;
         Map map = new HashMap();
         try{
+            equation = Integer.parseInt(request.getParameter("equation"));
             amount = Double.parseDouble(request.getParameter("amount"));
             intrate = Float.parseFloat(request.getParameter("intrate"));
             year = Integer.parseInt(request.getParameter("year"));
-            equation = Integer.parseInt(request.getParameter("equation"));
         }catch (Exception e){
             map.put("value",0);
             String json = JSONObject.toJSONString(map);
@@ -83,15 +83,6 @@ public class SumCirController {
         }finally {
 
         }
-
-        if(amount<0||intrate<0||year<0||equation<0){
-            map.put("value",-1);
-            String json = JSONObject.toJSONString(map);
-            //System.out.println(json);
-            response.getWriter().print(json);
-            //return json;
-        }
-
         double sum_principal_and_intrate = 0;
         switch (equation){
             case 1:
@@ -120,7 +111,7 @@ public class SumCirController {
         //System.out.println(sum_principal_and_intrate);
         map.put("value",sum_principal_and_intrate);
         String json = JSONObject.toJSONString(map);
-        System.out.println(json);
+        //System.out.println(json);
         response.getWriter().print(json);
 
 

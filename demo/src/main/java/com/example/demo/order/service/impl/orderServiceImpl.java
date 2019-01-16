@@ -15,4 +15,7 @@ public class orderServiceImpl implements orderService {
     public List<Audit> selectAuditByUserNum(long userNum){
         return auditMapper.selectAuditByUserNum(userNum);
     }
+    public List<Audit> selectAudByName(long userNum){
+        return auditMapper.selectAudByNum(userNum);
+    }
 }

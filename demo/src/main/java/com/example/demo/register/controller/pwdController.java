@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @Controller
 public class pwdController extends HttpServlet {
@@ -17,15 +18,15 @@ public class pwdController extends HttpServlet {
     userMapper userMapper;
 
     @RequestMapping("/pwd")//再一次确认密码界面
-    public String doPost(HttpServletResponse response, HttpServletRequest request){
+    public void doPost(HttpServletResponse response, HttpServletRequest request)throws IOException {
         HttpSession session=request.getSession();
         User user=new User();
         user=(User)session.getAttribute("user");
         String pwd=request.getParameter("userPwd");
         if(userMapper.selectPwd(user.getUserNum(),pwd)==1){
-            return "";//银行卡验证的界面
+            response.sendRedirect("cardNumberBinding.html");//银行卡验证的界面
         }else{
-            return "";//登陆失败
+            response.sendRedirect("Untitled-1.html");//登陆失败
         }
     }
 

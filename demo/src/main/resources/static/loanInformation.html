@@ -231,12 +231,12 @@ box-shadow:inset 0px 1px 1px rgba(0,0,0,0.5);*/
                 dataType:"json",
                 data:$("#form1").serialize(),
                 async: false,
-                success: function (data) {
-                    alert("结果为：" + data.value);
-                },
-                error: function (msg) {
-                    alert("提交失败" );
-                }
+                // success: function (data) {
+                //     alert("贷款成功");
+                // },
+                // error: function (msg) {
+                //     alert("提交失败" );
+                // }
             });
         };
      </script>
@@ -291,14 +291,14 @@ box-shadow:inset 0px 1px 1px rgba(0,0,0,0.5);*/
 			<div class="div_c_r" style="padding: 0;">
 				<div style="margin-left: 28px;" class="inp_radio">
 					<div class="checkboxforget1">
-						<input type="radio" id="way1" name="equation" value="0"  />
+						<input type="radio" id="way1" name="equation" value="1" checked />
 						<label for="way1"></label>
 					</div>
 					等额本息
 				</div>
 				<div style="margin-left: 8px;" class="inp_radio">
 					<div class="checkboxforget1">
-						<input type="radio" id="way2" name="equation"  value="1" />
+						<input type="radio" id="way2" name="equation"  value="2" />
 						<label for="way2"></label>
 					</div>
 					等额本金
@@ -307,7 +307,7 @@ box-shadow:inset 0px 1px 1px rgba(0,0,0,0.5);*/
 		</div>
 		<div style="clear:both"></div>
 	</div>
-	<button name="submit" class="btn_1" onclick="">确定贷款</button>
+	<button name="submit" class="btn_1" onclick="btnNotForm()">确定贷款</button>
 </form>
 
 

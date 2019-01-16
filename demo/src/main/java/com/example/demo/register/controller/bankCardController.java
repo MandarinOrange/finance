@@ -31,6 +31,7 @@ public class bankCardController extends HttpServlet {
         HttpSession session=request.getSession();
         User user=new User();
         user=(User)session.getAttribute("user");
+        long userNum = user.getUserNum();
         try{
             long num=user.getUserNum();
             short result=0;
@@ -46,9 +47,8 @@ public class bankCardController extends HttpServlet {
         }catch (Exception e){
             e.printStackTrace();
         }
-        Map map = new HashMap();
-        map.put("value","认证成功");
-        String json = JSONObject.toJSONString(map);
+        UserBankIdentify userBI = identify.selectUBIByuserNum(userNum);
+        String json = JSONObject.toJSONString(userBI);
         response.getWriter().print(json);
         //response.sendRedirect("index.html");//返回首页
     }

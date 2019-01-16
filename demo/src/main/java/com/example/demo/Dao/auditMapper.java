@@ -17,8 +17,8 @@ public interface auditMapper {
     @Select("select * from audit")
     public List<Audit> select();
 
-    @Select("select top 1 checkNum from audit order by checkNum DESC")
-    public Long selectBigCheckNum();
+//    @Select("select top 1 checkNum from audit order by checkNum DESC")
+//    public Long selectBigCheckNum();
 
     @Select("select * from audit where userNum = #{userNum} order by applyTime")
     public List<Audit> selectAudByNum(long userNum);
@@ -33,11 +33,13 @@ public interface auditMapper {
 
     @Insert("insert into audit(checkNum, userNum, productNum, " +
             "bankAccount, checkState, contractNum, " +
-            "isSignContract, year, amount, applyTime)" +
+            "isSignContract, year, amount, applyTime,equation)" +
             " values (#{checkNum},#{userNum},#{productNum},#{bankAccount},#{checkState}," +
-            "#{contractNum},#{isSignContract},#{year},#{amount},#{applyTime})")
+            "#{contractNum},#{isSignContract},#{year},#{amount},#{applyTime},#{equation})")
     public void addAudit(Audit audits);
 
+    @Select("select count(*) from audit")
+    public long selectCount();
 //    @Update("update audit set checkNum=#{checkNum},userNum=#{userNum}" +
 //            ",productNum=#{productNum},checkState=#{checkState},contractNum=#{contractNum}," +
 //            "isSignContract=#{isSignContract},year=#{year},amount=#{amount}," +

@@ -119,7 +119,7 @@ function check() {
         data:$("#form").serialize(),
         async: false,
         success: function (data) {
-            alert("认证成功");
+            alert(data.userName+" 认证成功！！");
         },
         error: function (msg) {
             alert("认证失败" );

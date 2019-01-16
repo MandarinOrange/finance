@@ -1,6 +1,7 @@
 package com.example.demo.loanService.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.Dao.auditMapper;
 import com.example.demo.bean.Audit;
 import com.example.demo.bean.User;
@@ -23,8 +24,12 @@ public class messageController extends HttpServlet {
     private messageService message;
 
     @RequestMapping(value = "/loan",method = RequestMethod.POST)//填写贷款基本信息的界面
+
+    //判断填写银行卡号是否是已认证
+
     public void doPost(HttpServletResponse response, HttpServletRequest request)throws IOException {
         nowTime nowTime=new nowTime();
+        int equation = 1;
         HttpSession session=request.getSession();
         User user=new User();
         user=(User)session.getAttribute("user");

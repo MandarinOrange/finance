@@ -14,9 +14,11 @@ public class messageService {
         long contractNum=0;
         short isSignContrat=0;
         int checkState=0;
+        long count = auditMapper.selectCount()+1;
+        audit.setCheckNum(count);
         audit.setContractNum(contractNum);
         audit.setIsSignContract(isSignContrat);
-        audit.setCheckNum(auditMapper.selectBigCheckNum());
+        //audit.setCheckNum(auditMapper.selectBigCheckNum());
         audit.setCheckState(checkState);
         auditMapper.addAudit(audit);
     }

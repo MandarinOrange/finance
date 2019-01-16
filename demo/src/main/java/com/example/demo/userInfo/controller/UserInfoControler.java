@@ -30,7 +30,7 @@ public class UserInfoControler {
         User user2 =userService.selectUserByuserName(user1.getUserName());
         String data = JSONObject.toJSONString(user2);
         response.getWriter().print(data);
-        System.out.println(data);
+        //System.out.println(data);
     }
 
 }

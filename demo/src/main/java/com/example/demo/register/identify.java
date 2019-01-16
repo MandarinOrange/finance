@@ -14,4 +14,7 @@ public class identify {
         userBankIdMapper.addUserBankIdentify(userBankIdentify);
         //调用银行的接口，将银行卡认证信息传过去
     }
+    public  UserBankIdentify selectUBIByuserNum(long userNum){
+        return userBankIdMapper.selectUsageDateByCheckNum(userNum);
+    }
 }

@@ -11,6 +11,7 @@
 
 
 <title>卡号绑定</title>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" ></script>
 
 <script>
 (function (doc, win) {
@@ -119,7 +120,7 @@ function check() {
         data:$("#form").serialize(),
         async: false,
         success: function (data) {
-            alert(data.userName+" 认证成功！！");
+            alert(" 认证成功！！");
         },
         error: function (msg) {
             alert("认证失败" );

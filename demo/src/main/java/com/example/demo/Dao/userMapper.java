@@ -11,7 +11,7 @@ public interface userMapper {
     public User selectUserByuserNum(long userNum);
 
     @Select("select * from user where userName = #{userName}")
-    public User selectUserByuserName(String  userName);
+    public User selectUserByuserName(String userName);
 
     @Select("select * from user where telephoneNum = #{telephoneNum}")
     public User selectUserBytelephoneNum(String telephoneNum);

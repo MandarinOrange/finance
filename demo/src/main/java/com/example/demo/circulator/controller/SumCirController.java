@@ -79,7 +79,7 @@ public class SumCirController {
             String json = JSONObject.toJSONString(map);
             //System.out.println(json);
             response.getWriter().print(json);
-            return;
+            //return json;
         }finally {
 
         }
@@ -89,7 +89,7 @@ public class SumCirController {
             String json = JSONObject.toJSONString(map);
             //System.out.println(json);
             response.getWriter().print(json);
-            return;
+            //return json;
         }
 
         double sum_principal_and_intrate = 0;
@@ -114,14 +114,15 @@ public class SumCirController {
             String json = JSONObject.toJSONString(map);
             //System.out.println(json);
             response.getWriter().print(json);
-            return;
+            //return json;
         }
 
         //System.out.println(sum_principal_and_intrate);
         map.put("value",sum_principal_and_intrate);
         String json = JSONObject.toJSONString(map);
-        //System.out.println(json);
-        response.getWriter().print(sum_principal_and_intrate);
-        return;
+        System.out.println(json);
+        response.getWriter().print(json);
+
+
     }
 }

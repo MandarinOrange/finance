@@ -35,7 +35,7 @@ public class UserController extends HttpServlet {
         String userPwd = request.getParameter("userPwd");
         long usernum = this.userServiceImpl.selectUserByuserName(userName);
         int result = 0;
-        if(usernum!=1){
+        if(usernum==1){
             if(userMapper.selectPwd(usernum,userPwd)==1){
                 HttpSession session=request.getSession();
                 session.setAttribute("user",usernum);

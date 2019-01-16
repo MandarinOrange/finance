@@ -34,23 +34,22 @@ public class bankCardController extends HttpServlet {
         User user=new User();
         user=(User)session.getAttribute("user");
         long userNum = user.getUserNum();
+        UserBankIdentify userBankIdentify = new UserBankIdentify();
         try{
             long num=user.getUserNum();
             short result=0;
-            UserBankIdentify userBankIdentify=new UserBankIdentify();
+            userBankIdentify.setUserNum(num);
             userBankIdentify.setBankAccount(request.getParameter("bankAccount"));
             userBankIdentify.setTrueName(request.getParameter("realname"));
             userBankIdentify.setIdNum(request.getParameter("idNum"));
             userBankIdentify.setTelephoneNum(request.getParameter("phoneNum"));
-            userBankIdentify.setUserNum(num);
             userBankIdentify.setBankAccountIdentify(result);
             identify.identify(userBankIdentify);
             userMapper.updateIsId(user.getUserNum());
         }catch (Exception e){
             e.printStackTrace();
         }
-        UserBankIdentify userBI = identify.selectUBIByuserNum(userNum);
-        String json = JSONObject.toJSONString(userBI);
+        String json = JSONObject.toJSONString(userBankIdentify);
         response.getWriter().print(json);
         //response.sendRedirect("index.html");//返回首页
     }

@@ -92,24 +92,29 @@ function clearmsg() {
 //提交后的check
 function check() {
 
-
+    var count = $("#bankAccount").val();
     var phoneNum = $("#phoneNum").val();
 	var realname = $("#realname").val();
 
-	if(phoneNum == "") {
+    if(count == null) {
+        alert1("请输入身份证号");
+        clearmsg();
+        window.location.href="cardNumberBinding.html";
+    }
+	if(phoneNum == null) {
 		alert1("请输入手机号");
 		clearmsg();
-		return false;
+        window.location.href="cardNumberBinding.html";
 	}
-	if(!(/^1[34578]\d{9}$/.test(phoneNum))) {
-		alert1("请输入正确的手机号");
-		clearmsg();
-		return false;
-	}
-	if(realname == "") {
+	// if(!(/^1[34578]\d{9}$/.test(phoneNum))) {
+	// 	alert1("请输入正确的手机号");
+	// 	clearmsg();
+	// 	return false;
+	// }
+	if(realname == null) {
 		alert1("请输入姓名");
 		clearmsg();
-		return false;
+        window.location.href="cardNumberBinding.html";
 	}
 
 	$(".r_but").css("background", "#49b9eb");
@@ -121,10 +126,12 @@ function check() {
         data:$("#form").serialize(),
         async: false,
         success: function (data) {
-            alert(" 认证成功！！");
+            alert(data.trueName+"用户  认证成功！！");
+            window.location.href="index.html";
         },
         error: function (msg) {
             alert("认证失败" );
+            window.location.href="index.html";
         }
     });
 

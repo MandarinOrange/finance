@@ -9,6 +9,8 @@ import com.example.demo.register.identify;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +20,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@Controller
+//@Controller
+@RestController
 public class bankCardController extends HttpServlet {
 
     @Autowired
@@ -26,7 +29,7 @@ public class bankCardController extends HttpServlet {
     @Autowired
     private userMapper userMapper;
 
-    @RequestMapping("/binding")//卡号绑定界面
+    @RequestMapping(value = "/binding",method = RequestMethod.POST)//卡号绑定界面
     public void doPost(HttpServletResponse response, HttpServletRequest request)throws IOException {
         HttpSession session=request.getSession();
         User user=new User();

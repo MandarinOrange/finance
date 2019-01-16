@@ -104,7 +104,7 @@ public class UserController extends HttpServlet {
         return "/login2";
     }
 }**/
-   @RequestMapping("")//管理员登陆的界面
+   @RequestMapping("/managerLogin")//管理员登陆的界面
     public String doPost3(HttpServletRequest request,HttpServletResponse response){
        String managerName = request.getParameter("managerName");
        String managerPwd = request.getParameter("managerPwd");

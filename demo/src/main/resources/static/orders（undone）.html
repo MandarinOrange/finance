@@ -10,6 +10,54 @@
 <style type="text/css">
 .tb960x90 {display:none!important;display:none}
 </style>
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" ></script>
+	<script type="text/javascript">
+        $(function(){
+            $.ajax({
+                url: "/unfinished",
+                type: "post",
+                dataType: "json",
+                success: function(data){
+                    // console.log(data);//查看从后台传值内容
+                    /*这个方法里是ajax发送请求成功之后执行的代码*/
+                    showData(data);//我们仅做数据展示
+                },
+                error: function(msg){
+                    alert("ajax连接异常："+msg);
+                }
+            });
+        });
+
+        //展示数据
+        function showData(data) {
+            //var str = "";//定义用于拼接的字符串
+            $("#content").empty();
+            for (var i = 0; i <data.length; i++) {
+                var aud = data[i];
+                var str = "<div class=\"on_d\">\n" +
+                    "\t\t<div class=\"sp_pr\">\n" +
+                    "\t\t\t<img src=>\n" +
+                    "\t\t\t<div class=\"text_p\">\n" +
+                    "\t\t\t\t<p>\n" +
+                    "\t\t\t\t\t"+aud.amount+"元<span>银行转账</span>\n" +
+                    "\t\t\t\t</p>\n" +
+                    "\t\t\t\t<span class=\"yue\">"+aud.productNum+"</span>\n" +
+                    "\t\t\t\t<span class=\"yue\">"+aud.bankAccount+"</span>\n" +
+                    "\t\t\t</div>\n" +
+                    "\t\t\t<div class=\"button\">\n" +
+                    "\t\t\t\t<p>\n" +
+                    "\t\t\t\t\t<span>"+aud.checkNum+"</span>\n" +
+                    "\t\t\t\t</p>\n" +
+                    "\t\t\t\t<a href=\"#\" class=\"liji\">详情</a>\n" +
+                    "\t\t\t</div>\n" +
+                    "\t\t</div>\n" +
+                    "\t</div>";
+                $("#content").append(str);
+            }
+
+        }
+
+	</script>
 </head>
 <body>
 <!--top-->
@@ -28,115 +76,115 @@
 	</div>
 </div>
 <!--列表-->
-<div class="ding_d">
-	<div class="on_d">
-		<div class="sp_pr">
-			<img src=>
-			<div class="text_p">
-				<p>
-					订单 <span>银行转账</span>
-				</p>
-				<span class="yue">123456</span>
-				<span class="yue">123456</span>
-			</div>
-			<div class="button">
-				<p>
-					<span>123456</span>
-				</p>
-				<a href="#" class="liji">详情</a>
-			</div>
-		</div>
-	</div>
-	<div class="on_d">
-		<div class="sp_pr">
-			<img src=>
-			<div class="text_p">
-				<p>
-					订单 <span>银行转账</span>
-				</p>
-				<span class="yue">123456</span>
-				<span class="yue">123456</span>
-			</div>
-			<div class="button">
-				<p>
-					<span>123456</span>
-				</p>
-				<a href="#" class="liji">详情</a>
-			</div>
-		</div>
-	</div>
-	<div class="on_d">
-		<div class="sp_pr">
-			<img src=>
-			<div class="text_p">
-				<p>
-					订单 <span>银行转账</span>
-				</p>
-				<span class="yue">123456</span>
-				<span class="yue">123456</span>
-			</div>
-			<div class="button">
-				<p>
-					<span>123456</span>
-				</p>
-				<a href="#" class="liji">详情</a>
-			</div>
-		</div>
-	</div>
-	<div class="on_d">
-		<div class="sp_pr">
-			<img src=>
-			<div class="text_p">
-				<p>
-					订单 <span>银行转账</span>
-				</p>
-				<span class="yue">123456</span>
-				<span class="yue">123456</span>
-			</div>
-			<div class="button">
-				<p>
-					<span>123456</span>
-				</p>
-				<a href="#" class="liji">详情</a>
-			</div>
-		</div>
-	</div>
-	<div class="on_d">
-		<div class="sp_pr">
-			<img src=>
-			<div class="text_p">
-				<p>
-					订单 <span>银行转账</span>
-				</p>
-				<span class="yue">123456</span>
-				<span class="yue">123456</span>
-			</div>
-			<div class="button">
-				<p>
-					<span>123456</span>
-				</p>
-				<a href="#" class="liji">详情</a>
-			</div>
-		</div>
-	</div>
-	<div class="on_d">
-		<div class="sp_pr">
-			<img src=>
-			<div class="text_p">
-				<p>
-					订单 <span>银行转账</span>
-				</p>
-				<span class="yue">123456</span>
-				<span class="yue">123456</span>
-			</div>
-			<div class="button">
-				<p>
-					<span>123456</span>
-				</p>
-				<a href="#" class="liji">详情</a>
-			</div>
-		</div>
-	</div>
+<div class="ding_d" id="content">
+	<!--<div class="on_d">-->
+		<!--<div class="sp_pr">-->
+			<!--<img src=>-->
+			<!--<div class="text_p">-->
+				<!--<p>-->
+					<!--订单 <span>银行转账</span>-->
+				<!--</p>-->
+				<!--<span class="yue">123456</span>-->
+				<!--<span class="yue">123456</span>-->
+			<!--</div>-->
+			<!--<div class="button">-->
+				<!--<p>-->
+					<!--<span>123456</span>-->
+				<!--</p>-->
+				<!--<a href="#" class="liji">详情</a>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+	<!--<div class="on_d">-->
+		<!--<div class="sp_pr">-->
+			<!--<img src=>-->
+			<!--<div class="text_p">-->
+				<!--<p>-->
+					<!--订单 <span>银行转账</span>-->
+				<!--</p>-->
+				<!--<span class="yue">123456</span>-->
+				<!--<span class="yue">123456</span>-->
+			<!--</div>-->
+			<!--<div class="button">-->
+				<!--<p>-->
+					<!--<span>123456</span>-->
+				<!--</p>-->
+				<!--<a href="#" class="liji">详情</a>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+	<!--<div class="on_d">-->
+		<!--<div class="sp_pr">-->
+			<!--<img src=>-->
+			<!--<div class="text_p">-->
+				<!--<p>-->
+					<!--订单 <span>银行转账</span>-->
+				<!--</p>-->
+				<!--<span class="yue">123456</span>-->
+				<!--<span class="yue">123456</span>-->
+			<!--</div>-->
+			<!--<div class="button">-->
+				<!--<p>-->
+					<!--<span>123456</span>-->
+				<!--</p>-->
+				<!--<a href="#" class="liji">详情</a>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+	<!--<div class="on_d">-->
+		<!--<div class="sp_pr">-->
+			<!--<img src=>-->
+			<!--<div class="text_p">-->
+				<!--<p>-->
+					<!--订单 <span>银行转账</span>-->
+				<!--</p>-->
+				<!--<span class="yue">123456</span>-->
+				<!--<span class="yue">123456</span>-->
+			<!--</div>-->
+			<!--<div class="button">-->
+				<!--<p>-->
+					<!--<span>123456</span>-->
+				<!--</p>-->
+				<!--<a href="#" class="liji">详情</a>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+	<!--<div class="on_d">-->
+		<!--<div class="sp_pr">-->
+			<!--<img src=>-->
+			<!--<div class="text_p">-->
+				<!--<p>-->
+					<!--订单 <span>银行转账</span>-->
+				<!--</p>-->
+				<!--<span class="yue">123456</span>-->
+				<!--<span class="yue">123456</span>-->
+			<!--</div>-->
+			<!--<div class="button">-->
+				<!--<p>-->
+					<!--<span>123456</span>-->
+				<!--</p>-->
+				<!--<a href="#" class="liji">详情</a>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+	<!--<div class="on_d">-->
+		<!--<div class="sp_pr">-->
+			<!--<img src=>-->
+			<!--<div class="text_p">-->
+				<!--<p>-->
+					<!--订单 <span>银行转账</span>-->
+				<!--</p>-->
+				<!--<span class="yue">123456</span>-->
+				<!--<span class="yue">123456</span>-->
+			<!--</div>-->
+			<!--<div class="button">-->
+				<!--<p>-->
+					<!--<span>123456</span>-->
+				<!--</p>-->
+				<!--<a href="#" class="liji">详情</a>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
 </div>
 </body>
 </html>

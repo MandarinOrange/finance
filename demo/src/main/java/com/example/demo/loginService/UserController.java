@@ -1,5 +1,7 @@
 package com.example.demo.loginService;
 
+import com.example.demo.Dao.managerMapper;
+import com.example.demo.Dao.userMapper;
 import com.example.demo.bean.User;
 import com.example.demo.loginService.API.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

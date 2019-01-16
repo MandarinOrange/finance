@@ -17,6 +17,8 @@ public class UserServiceImpl extends UserService{
         return this.UserMapper.selectUserByuserName(userName);
     }
     @Transactional(propagation=Propagation.REQUIRED,readOnly = true)
+    public int selectUserCountByNameAndPwd(long userNum,String userPwd){return this.UserMapper.selectPwd(userNum,userPwd);}
+    @Transactional(propagation=Propagation.REQUIRED,readOnly = true)
     public User selectUserBytelephoneNum(String telephoneNum){
         return this.UserMapper.selectUserBytelephoneNum(telephoneNum);
     }

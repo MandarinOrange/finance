@@ -23,10 +23,9 @@ public class messageController extends HttpServlet {
     @Autowired
     private messageService message;
 
-    @RequestMapping(value = "/loan",method = RequestMethod.POST)//填写贷款基本信息的界面
-
     //判断填写银行卡号是否是已认证
 
+    @RequestMapping(value = "/loan",method = RequestMethod.POST)//填写贷款基本信息的界面
     public void doPost(HttpServletResponse response, HttpServletRequest request)throws IOException {
         nowTime nowTime=new nowTime();
         int equation = 1;

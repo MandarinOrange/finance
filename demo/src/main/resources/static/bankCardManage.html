@@ -8,7 +8,44 @@
         <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
         <meta content="telephone=no" name="format-detection"/>
         <link type="text/css" rel="stylesheet" href="css/bankCardManage.css" >
+        <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" ></script>
+        <script type="text/javascript">
+            $(function(){
+                $.ajax({
+                    url: "/card",
+                    type: "post",
+                    dataType: "json",
+                    success: function(data){
+                        // console.log(data);//查看从后台传值内容
+                        /*这个方法里是ajax发送请求成功之后执行的代码*/
+                        showData(data);//我们仅做数据展示
+                    },
+                    error: function(msg){
+                        alert("ajax连接异常："+msg);
+                    }
+                });
+            });
 
+            //展示数据
+            function showData(data) {
+                //var str = "";//定义用于拼接的字符串
+                $("#content").empty();
+                for (var i = 0; i <data.length; i++) {
+                    var card = data[i];
+                    var str = "<div class=\"aui-card-list\">\n" +
+                        "                        <div class=\"aui-card-list-bg\">\n" +
+                        "                            <h2>卡号："+card.bankAccount+"</h2>\n" +
+                        "                            <a href=\"javascript:;\" class=\"aui-card-list-link\">\n" +
+                        "                                <i class=\"icon icon-arrow\"></i>详情\n" +
+                        "                            </a>\n" +
+                        "                        </div>\n" +
+                        "                    </div>";
+                    $("#content").append(str);
+                }
+
+            }
+
+        </script>
     </head>
     <body>
 
@@ -24,39 +61,39 @@
                 </div>
             </header>
             <section class="aui-scrollView">
-                <div class="aui-box-item">
-                    <div class="aui-card-list">
-                        <div class="aui-card-list-bg">
-                            <h2>银行卡1</h2>
-                            <a href="javascript:;" class="aui-card-list-link">
-                                <i class="icon icon-arrow"></i>详情
-                            </a>
-                        </div>
-                    </div>
-					<div class="aui-card-list">
-                        <div class="aui-card-list-bg">
-                            <h2>银行卡1</h2>
-                            <a href="javascript:;" class="aui-card-list-link">
-                                <i class="icon icon-arrow"></i>详情
-                            </a>
-                        </div>
-                    </div>
-                    <div class="aui-card-list aui-card-blue">
-                        <div class="aui-card-list-bg aui-card-list-loan">
-                            <h2>银行卡2</h2>
-                            <a href="javascript:;" class="aui-card-list-link">
-                                <i class="icon icon-arrow"></i>详情
-                            </a>
-                        </div>
-                    </div>
-					<div class="aui-card-list aui-card-blue">
-                        <div class="aui-card-list-bg aui-card-list-loan">
-                            <h2>银行卡2</h2>
-                            <a href="javascript:;" class="aui-card-list-link">
-                                <i class="icon icon-arrow"></i>详情
-                            </a>
-                        </div>
-                    </div>
+                <div class="aui-box-item" id="content">
+                    <!--<div class="aui-card-list">-->
+                        <!--<div class="aui-card-list-bg">-->
+                            <!--<h2>银行卡1</h2>-->
+                            <!--<a href="javascript:;" class="aui-card-list-link">-->
+                                <!--<i class="icon icon-arrow"></i>详情-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+					<!--<div class="aui-card-list">-->
+                        <!--<div class="aui-card-list-bg">-->
+                            <!--<h2>银行卡1</h2>-->
+                            <!--<a href="javascript:;" class="aui-card-list-link">-->
+                                <!--<i class="icon icon-arrow"></i>详情-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="aui-card-list aui-card-blue">-->
+                        <!--<div class="aui-card-list-bg aui-card-list-loan">-->
+                            <!--<h2>银行卡2</h2>-->
+                            <!--<a href="javascript:;" class="aui-card-list-link">-->
+                                <!--<i class="icon icon-arrow"></i>详情-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+					<!--<div class="aui-card-list aui-card-blue">-->
+                        <!--<div class="aui-card-list-bg aui-card-list-loan">-->
+                            <!--<h2>银行卡2</h2>-->
+                            <!--<a href="javascript:;" class="aui-card-list-link">-->
+                                <!--<i class="icon icon-arrow"></i>详情-->
+                            <!--</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
                 </div>
             </section>
         </section>

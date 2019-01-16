@@ -10,6 +10,9 @@ public interface userBankIdMapper {
     @Select("select * from userBankIdentify where userNum = #{userNum}")
     public UserBankIdentify selectUsageDateByCheckNum(long userNum);
 
+    @Select("select * from userBankIdentify where userNum = #{userNum}")
+    public List<UserBankIdentify> selectUserBankByUserNum(long userNum);
+
     @Select("select * from userBankIdentify")
     public List<UserBankIdentify> select();
 

@@ -34,12 +34,15 @@ public interface userMapper {
             "#{telephoneNum},#{address},#{isIdentify},#{registerTime})")
     public void addUser(User user);
 
-    @Update("update user set userNum=#{userNum},userName=#{userName}" +
-            ",userPwd=#{userPwd},userRight=#{userRight}," +
-            "telephoneNum=#{telephoneNum},address=#{address}," +
-            "isIdentify=#{isIdentify},registerTime=#{registerTime}where userNum=#{userNum}")
-    public void updateUser(User user);
+    @Update("update user set isIdentify=#{isIdentify} where userNum=#{userNum}")
+    public void updateIsId(long userNum);
 
-    @Delete("delete from user where userNum=#{userNum}")
-    public void deleteUser(long userNum);
+//    @Update("update user set userNum=#{userNum},userName=#{userName}" +
+//            ",userPwd=#{userPwd},userRight=#{userRight}," +
+//            "telephoneNum=#{telephoneNum},address=#{address}," +
+//            "isIdentify=#{isIdentify},registerTime=#{registerTime}where userNum=#{userNum}")
+//    public void updateUser(User user);
+//
+//    @Delete("delete from user where userNum=#{userNum}")
+//    public void deleteUser(long userNum);
 }

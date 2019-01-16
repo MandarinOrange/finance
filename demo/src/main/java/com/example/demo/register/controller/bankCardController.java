@@ -1,9 +1,11 @@
 package com.example.demo.register.controller;
 
 
+import com.example.demo.Dao.userMapper;
 import com.example.demo.bean.User;
 import com.example.demo.bean.UserBankIdentify;
 import com.example.demo.register.identify;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,6 +19,8 @@ import java.io.IOException;
 public class bankCardController extends HttpServlet {
 
     private identify identify=new identify();
+    @Autowired
+    private userMapper userMapper;
 
     @RequestMapping("/binding")//卡号绑定界面
     public void doPost(HttpServletResponse response, HttpServletRequest request)throws IOException {
@@ -34,6 +38,7 @@ public class bankCardController extends HttpServlet {
             userBankIdentify.setUserNum(num);
             userBankIdentify.setBankAccountIdentify(result);
             identify.identify(userBankIdentify);
+            userMapper.updateIsId(user.getUserNum());
         }catch (Exception e){
             e.printStackTrace();
         }

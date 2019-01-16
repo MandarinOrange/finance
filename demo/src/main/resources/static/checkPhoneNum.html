@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="Pragma" content="no-cache">
@@ -119,26 +118,26 @@
 	</style>
 	</head>
 	<body>
-	<form name="form1"  action="/phoreg" method="post">
+	<form name="form1"  action="/pwd" method="post">
 		<div class="modal_content">		
 			<h5></h5>
 			<div>
-				<label for="phone1">手机号：</label><br />
-				<input id="phone1" type="text" autocomplete="off" placeholder="请输入已绑定的手机号"/>				
+				<label for="phone1">密码：</label><br />
+				<input id="phone1" name="userPwd"type="text" autocomplete="off" placeholder="请再次输入密码"/>
 			</div> 
 			<div>
-				<label for="code1">验证码：</label>
-				<div class="code1">
-					<input id="code1" type="text" autocomplete="off" placeholder="短信验证码"/>				
-					<input id="btnSendCode1" type="button" class="btn btn-default" value="获取验证码" onClick="sendMessage1()" />
-				</div>				
+				<!--<label for="code1">验证码：</label>-->
+				<!--<div class="code1">-->
+					<!--<input id="code1" type="text" autocomplete="off" placeholder="短信验证码"/>				-->
+					<!--<input id="btnSendCode1" type="button" class="btn btn-default" value="获取验证码" onClick="sendMessage1()" />-->
+				<!--</div>				-->
 			</div> 	
 			<div class="next">  			
 				<button onClick="binding()">确定</button>
 			</div>
-		</div>	 	
+		</div></form>
 		
-		<script type="text/javascript" src="js/jquery.min.js" tppabs="http://www.17sucai.com/preview/1266961/2018-07-11/sms/js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js" tppabs="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
 		<script type="text/javascript">
 			var phoneReg = /(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/;//手机号正则 
 			var count = 60; //间隔函数，1秒执行
@@ -173,9 +172,20 @@
 			
 			/*提交*/
 			function binding(){
-				alert(1)
+                $.ajax({
+                    url: "/pwd",
+                    type: "post",
+                    dataType: "json",
+                    data: $("#form1").serialize(),
+                    async: false,
+                    success: function (data) {
+                        alert(data[0].userName+" 验证成功");
+                    },
+                    error: function (msg) {
+                        alert("验证失败" + msg);
+                    }
+                });
 			}
 		</script>
-		
 	</body>
 </html>

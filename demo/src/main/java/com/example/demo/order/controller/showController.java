@@ -1,13 +1,10 @@
 package com.example.demo.order.controller;
 
-import com.example.demo.Dao.auditMapper;
 import com.example.demo.bean.Audit;
 import com.example.demo.bean.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,11 +21,12 @@ public class showController extends HttpServlet {
     @Autowired
     com.example.demo.Dao.auditMapper auditMapper;
 
-    @RequestMapping("/order")//订单浏览的界面
+    @PostMapping("/order")//订单浏览的界面
     public List<Audit> doPost(HttpServletResponse response, HttpServletRequest request){
         HttpSession session=request.getSession();
         User user=new User();
         user=(User)session.getAttribute("user");
-        return auditMapper.selectAudByNum(user.getUserNum());
+        List<Audit> audits = auditMapper.selectAudByNum(user.getUserNum());
+        return audits;
     }
 }

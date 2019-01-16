@@ -52,7 +52,8 @@
 </div>
 <button id="btn" class="r_but" onclick="check()">确定</button>
 </form>
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" tppabs="http://www.17sucai.com/preview/1089623/2018-06-08/form/js/jquery-1.8.3.min.js"></script>
+<!--<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" tppabs="http://www.17sucai.com/preview/1089623/2018-06-08/form/js/jquery-1.8.3.min.js"></script>-->
+<script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
 
 <script type="text/javascript">
 //弹出框
@@ -119,7 +120,7 @@ function check() {
         data:$("#form").serialize(),
         async: false,
         success: function (data) {
-            alert(data.userName+" 认证成功！！");
+            alert(" 认证成功！！");
         },
         error: function (msg) {
             alert("认证失败" );

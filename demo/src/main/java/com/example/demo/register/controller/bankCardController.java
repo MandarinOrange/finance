@@ -19,8 +19,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-//@Controller
-@RestController
+@Controller
 public class bankCardController extends HttpServlet {
 
     @Autowired
@@ -44,13 +43,13 @@ public class bankCardController extends HttpServlet {
             userBankIdentify.setIdNum(request.getParameter("idNum"));
             userBankIdentify.setTelephoneNum(request.getParameter("phoneNum"));
             userBankIdentify.setBankAccountIdentify(result);
+            userMapper.updateIsId(userNum);
             identify.identify(userBankIdentify);
-            userMapper.updateIsId(user.getUserNum());
         }catch (Exception e){
             e.printStackTrace();
         }
         String json = JSONObject.toJSONString(userBankIdentify);
         response.getWriter().print(json);
-        //response.sendRedirect("index.html");//返回首页
+        response.sendRedirect("index.html");//返回首页
     }
 }

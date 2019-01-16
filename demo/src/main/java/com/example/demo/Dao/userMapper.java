@@ -34,7 +34,7 @@ public interface userMapper {
             "#{telephoneNum},#{address},#{isIdentify},#{registerTime})")
     public void addUser(User user);
 
-    @Update("update user set isIdentify=#{isIdentify} where userNum=#{userNum}")
+    @Update("update user set isIdentify=1 where userNum=#{userNum}")
     public void updateIsId(long userNum);
 
 //    @Update("update user set userNum=#{userNum},userName=#{userName}" +

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class BankCardController {
+public class CardController {
     @Autowired
     private BankCardService bankCardService;
 

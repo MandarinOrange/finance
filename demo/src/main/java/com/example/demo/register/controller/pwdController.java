@@ -23,7 +23,7 @@ public class pwdController extends HttpServlet {
         User user=new User();
         user=(User)session.getAttribute("user");
         String pwd=request.getParameter("userPwd");
-        if(userMapper.selectPwd(user.getUserNum(),pwd)==1){
+        if(user.getUserPwd().equals(pwd)){
             response.sendRedirect("cardNumberBinding.html");//银行卡验证的界面
         }else{
             response.sendRedirect("Untitled-1.html");//登陆失败

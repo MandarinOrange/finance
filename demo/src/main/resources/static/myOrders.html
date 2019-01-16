@@ -53,6 +53,21 @@
                 }
 
             }
+            $(function(){
+                $.ajax({
+                    url: "/info",
+                    type: "post",
+                    dataType: "json",
+                    success: function(data){
+                        $("#username").empty();
+                        $("#username").html(data.userName);
+                    },
+                    error: function(msg){
+                        alert("ajax连接异常："+msg);
+                    }
+                });
+            });
+
         </script>
         <!--<script type="text/javascript">-->
             <!--$(document).ready(function () {-->
@@ -127,7 +142,7 @@
                             <img src="images/myOrders.png">
                         </div>
                         <div class="aui-flex-box">
-                            <h2>用户 <em id="userNum">XXX</em></h2>
+                            <h2><em id="username">XXX</em></h2>
 </div>
                         <div class="aui-pri-button"> </div>
                     </div>

@@ -9,37 +9,37 @@
         <meta content="telephone=no" name="format-detection"/>
         <link href="css/myOrders.css" rel="stylesheet" type="text/css"/>
         <!--<script type="text/javascript" src="js/myorder.js"></script>-->
-        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" ></script>
+        <!--<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js" ></script>-->
+        <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" ></script>
         <script type="text/javascript">
-            $(function () {
+            $(function(){
                 $.ajax({
                     url: "/order",
                     type: "post",
                     dataType: "json",
                     success: function(data){
+                        // console.log(data);//查看从后台传值内容
                         /*这个方法里是ajax发送请求成功之后执行的代码*/
-                        alert(data);
                         showData(data);//我们仅做数据展示
                     },
                     error: function(msg){
-                        alert("连接异常："+msg);
+                        alert("ajax连接异常："+msg);
                     }
                 });
             });
 
-
             //展示数据
             function showData(data) {
-                $("#userNum").html(data[1].userNum)
-                $("#num").empty();
-                for (var i = 0; i < data.length; i++) {
-                    var audit = data[i];
+                //var str = "";//定义用于拼接的字符串
+                $("#content").empty();
+                for (var i = 0; i <data.length; i++) {
+                    var aud = data[i];
                     var str = "<a href=\"javascript:;\" class=\"aui-list-item\">\n" +
                         "                        <div class=\"aui-right-top\"> </div>\n" +
-                        "                        <div class=\"aui-list-head\">"+audit.applyTime+"</div>\n" +
+                        "                        <div class=\"aui-list-head\">"+aud.applyTime+"</div>\n" +
                         "                        <div class=\"aui-flex\">\n" +
                         "                            <div class=\"aui-flex-box\">\n" +
-                        "                                <h4>"+audit.checkNum+"</h4>\n" +
+                        "                                <h4>"+aud.checkNum+"</h4>\n" +
                         "                               \n" +
                         "                            </div>\n" +
                         "                            <div class=\"aui-text-time\"> </div>\n" +
@@ -49,16 +49,75 @@
                         "                        </div>\n" +
                         "                        <div class=\"aui-dotted\"> </div>\n" +
                         "                    </a>";
-                    //var str=" <h2 >"+data[i].productName+"</h2>"
-                    //var $h2 =$(str);
-
-                    $("#num").append(str);
+                    $("#content").append(str);
                 }
+
             }
-
-
+            $(function(){
+                $.ajax({
+                    url: "/info",
+                    type: "post",
+                    dataType: "json",
+                    success: function(data){
+                        $("#username").empty();
+                        $("#username").html(data.userName);
+                    },
+                    error: function(msg){
+                        alert("ajax连接异常："+msg);
+                    }
+                });
+            });
 
         </script>
+        <!--<script type="text/javascript">-->
+            <!--$(document).ready(function () {-->
+                <!--$.ajax({-->
+                    <!--url: "/order",-->
+                    <!--type: "post",-->
+                    <!--dataType: "json",-->
+                    <!--success: function(data){-->
+                        <!--/*这个方法里是ajax发送请求成功之后执行的代码*/-->
+                        <!--alert(data);-->
+                        <!--showData(data);//我们仅做数据展示-->
+                    <!--},-->
+                    <!--error: function(msg){-->
+                        <!--alert("ajax连接异常："+msg);-->
+                    <!--}-->
+                <!--});-->
+            <!--});-->
+
+
+            <!--//展示数据-->
+            <!--function showData(data) {-->
+                <!--$("#userNum").html(data[1].userNum)-->
+                <!--$("#num").empty();-->
+                <!--for (var i = 0; i < data.length; i++) {-->
+                    <!--var audit = data[i];-->
+                    <!--var str = "<a href=\"javascript:;\" class=\"aui-list-item\">\n" +-->
+                        <!--"                        <div class=\"aui-right-top\"> </div>\n" +-->
+                        <!--"                        <div class=\"aui-list-head\">"+audit.applyTime+"</div>\n" +-->
+                        <!--"                        <div class=\"aui-flex\">\n" +-->
+                        <!--"                            <div class=\"aui-flex-box\">\n" +-->
+                        <!--"                                <h4>"+audit.checkNum+"</h4>\n" +-->
+                        <!--"                               \n" +-->
+                        <!--"                            </div>\n" +-->
+                        <!--"                            <div class=\"aui-text-time\"> </div>\n" +-->
+                        <!--"                            <div class=\"aui-button-get\">\n" +-->
+                        <!--"                                <button>详情</button>\n" +-->
+                        <!--"                            </div>\n" +-->
+                        <!--"                        </div>\n" +-->
+                        <!--"                        <div class=\"aui-dotted\"> </div>\n" +-->
+                        <!--"                    </a>";-->
+                    <!--//var str=" <h2 >"+data[i].productName+"</h2>"-->
+                    <!--//var $h2 =$(str);-->
+
+                    <!--$("#num").append(str);-->
+                <!--}-->
+            <!--}-->
+
+
+
+        <!--</script>-->
     </head>
     <body>
 
@@ -83,12 +142,12 @@
                             <img src="images/myOrders.png">
                         </div>
                         <div class="aui-flex-box">
-                            <h2>用户 <em id="userNum">XXX</em></h2>
+                            <h2><em id="username">XXX</em></h2>
 </div>
                         <div class="aui-pri-button"> </div>
                     </div>
                 </div>
-                <div class="aui-list-box" id="num">
+                <div class="aui-list-box" id="content">
                     <!--<a href="javascript:;" class="aui-list-item">-->
                         <!--<div class="aui-right-top"> </div>-->
                         <!--<div class="aui-list-head">订单1</div>-->

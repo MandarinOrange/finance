@@ -8,6 +8,33 @@
         <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
         <meta content="telephone=no" name="format-detection"/>
         <link href="css/personalCenter.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" ></script>
+        <script type="text/javascript">
+            $(function(){
+                $.ajax({
+                    url: "/info",
+                    type: "post",
+                    dataType: "json",
+                    success: function(data){
+                        // console.log(data);//查看从后台传值内容
+                        /*这个方法里是ajax发送请求成功之后执行的代码*/
+                        showData(data);//我们仅做数据展示
+                    },
+                    error: function(msg){
+                        alert("ajax连接异常："+msg);
+                    }
+                });
+            });
+
+            //展示数据
+            function showData(data) {
+                //var str = "";//定义用于拼接的字符串
+                $("#username").empty();
+                $("#username").html(data.userName);
+
+
+            }
+        </script>
     </head>
     <body>
 
@@ -33,7 +60,7 @@
                             <img src="images/personalCenter-user-logo.png" >
                         </div>
                       <div class="aui-flex-box">
-                        <h2>李同学</h2>
+                        <h2 id="username">***</h2>
 </div>
                         <div class="aui-account-arrow"></div>
                     </div>

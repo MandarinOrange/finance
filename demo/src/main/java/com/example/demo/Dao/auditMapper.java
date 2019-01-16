@@ -23,11 +23,11 @@ public interface auditMapper {
     @Select("select * from audit where userNum = #{userNum} order by applyTime")
     public List<Audit> selectAudByNum(long userNum);
 
-    @Select("select * from audit where userNum = #{userNum} and checkState=1" +
+    @Select("select * from audit where userNum = #{userNum} and checkState=1 " +
             "order by applyTime")
     public List<Audit> selectByNumFinshed(long userNum);
 
-    @Select("select * from audit where userNum = #{userNum} and checkState=0" +
+    @Select("select * from audit where userNum = #{userNum} and checkState=0 " +
             "order by applyTime")
     public List<Audit> selectByNumUnfinshed(long userNum);
 

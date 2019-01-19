@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Pragma" content="no-cache">
+<!--		pragma 清除缓存-->
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<link href="css/SYSFrame1.css"  rel="stylesheet" type="text/css" />
+		<link href="css/iconfont.css"  rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" ></script>
+		<script type="text/javascript">
+        $(function(){
+            $.ajax({
+                url: "/ix",
+                type: "post",
+                dataType: "json",
+                success: function(data){
+                    // console.log(data);//查看从后台传值内容
+                    /*这个方法里是ajax发送请求成功之后执行的代码*/
+                    showData(data);//我们仅做数据展示
+                },
+                error: function(msg){
+                    alert("ajax连接异常："+msg);
+                }
+            });
+        });
+
+        //展示数据
+        function showData(data) {
+            //var str = "";//定义用于拼接的字符串
+            var user = data;
+            $("#userName").empty();
+            $("#phoneNum").empty();
+            $("#address").empty();
+            $("#isIdentify").empty();
+            $("#userName").val(user.userName);
+            $("#phoneNum").val(user.phoneNum);
+            $("#address").val(user.address);
+            $("#register").val(user.isIdentify);
+        }
+	</script>
+		<style type="text/css">
+			.word_count {
+				padding: 0 10px;
+				color: #999999;
+			}
+			
+			.word_count .number {
+				color: #CB2D30
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="margin20"> </div>
+		<div class="height100b">
+			<div class="title-name text-left">个人详细资料</div>
+			<div id="pluginContent">
+				<ul class="info_list clearfix padding15" id="VerifyTips">
+					<li class=" clearfix content_look mb15">
+						<label class="label_name">昵称：</label>
+						<span class="info_data"><input type="text" name="userName" id="userName" data-name="userName" data-value="userName"/></span>
+					</li>
+					<li class=" clearfix content_look mb15">
+						<label class="label_name">电话号码：</label>
+						<span class="info_data"><input data-name="phoneNum" type="text" name="phoneNum" data-value="phoneNum"  id="phoneNum"/>
+							
+						</span>
+					</li>
+					<li class=" clearfix content_look mb15">
+						<label class="label_name">联系地址：</label>
+						<span class="info_data"><input data-name="address" type="text" name="address"  id="address"/>
+						</span>
+					</li>
+					<li class=" clearfix content_look mb15">
+						<label class="label_name">是否认证</label>
+						<div class="info_data">
+							<input data-name="简介" name="register" type="text"  id="register" readonly="true"/>
+						</div>
+					</li>
+					<li class="buttonstyle">
+						<button type="button" class="btn padding10 bg-deep-blue" id="modifybtn">添加产品</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+</body>
+</html>
+<script>
+	
+</script>

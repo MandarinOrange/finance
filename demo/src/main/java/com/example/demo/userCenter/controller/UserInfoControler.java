@@ -1,4 +1,4 @@
-package com.example.demo.userInfo.controller;
+package com.example.demo.userCenter.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.bean.User;

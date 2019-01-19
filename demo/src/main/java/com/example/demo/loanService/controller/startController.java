@@ -22,8 +22,7 @@ public class startController extends HttpServlet {
     @RequestMapping("/start")//浏览商品之后点击申请贷款的按钮之后跳到的界面
     public void doPost(HttpServletResponse response, HttpServletRequest request)throws ServletException, IOException {
         HttpSession session=request.getSession();
-        User user=new User();
-        user=(User)session.getAttribute("user");
+        User user=(User)session.getAttribute("user");
         short num=userMapper.selectIsId(user.getUserNum());
         if(num==1){
             response.sendRedirect("checkPhoneNum2.html");

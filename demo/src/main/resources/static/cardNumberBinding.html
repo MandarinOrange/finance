@@ -44,12 +44,12 @@
 <!--中间内容部分-->
 <form id="form" action="/binding" method="post">
 <div id="content">
-	<div class="txt01">银行卡号<input type="number" id="bankAccount" name="bankAccount" class="text" value="" pattern="[0-9]*" tabindex="10" onChange="check_for_btn()" /></div>
-    <div class="txt01">真实姓名<input type="text" id="realname" name="realname" class="text" tabindex="7" onChange="check_for_btn()" /></div>
-    <div class="txt01">身份证号
-        <input type="text" id="idNum" pattern="[0-9]*" name="idNum" class="text" tabindex="6"/>
+	<div class="txt01">银行卡号<em style="color:Red;">*</em><input type="number" id="bankAccount" name="bankAccount" class="text" value="" pattern="[0-9]*" tabindex="10" onChange="check_for_btn()" required></div>
+    <div class="txt01">真实姓名<em style="color:Red;">*</em><input type="text" id="realname" name="realname" class="text" tabindex="7" onChange="check_for_btn()" required></div>
+    <div class="txt01">身份证号<em style="color:Red;">*</em>
+        <input type="text" id="idNum" pattern="[0-9]*" name="idNum" class="text" tabindex="6"required>
     </div>
-    <div class="txt01">预留手机号<input type="number" id="phoneNum" pattern="[0-9]*" name="phoneNum" class="text1" tabindex="6"/></div>
+    <div class="txt01">预留手机号<em style="color:Red;">*</em><input type="number" id="phoneNum" pattern="[0-9]*" name="phoneNum" class="text1" tabindex="6" required></div>
 </div>
 <button id="btn" class="r_but" onclick="check()">确定</button>
 </form>
@@ -130,7 +130,7 @@ function check() {
             window.location.href="index.html";
         },
         error: function (msg) {
-            alert("认证成功" );
+            alert("请认真填写" );
             //window.location.href="index.html";
         }
     });

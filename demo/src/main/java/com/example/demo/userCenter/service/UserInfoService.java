@@ -1,4 +1,4 @@
-package com.example.demo.userInfo.service;
+package com.example.demo.userCenter.service;
 
 import com.example.demo.bean.User;
 

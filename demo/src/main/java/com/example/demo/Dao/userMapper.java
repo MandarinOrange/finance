@@ -37,11 +37,10 @@ public interface userMapper {
     @Update("update user set isIdentify=1 where userNum=#{userNum}")
     public void updateIsId(long userNum);
 
-//    @Update("update user set userNum=#{userNum},userName=#{userName}" +
-//            ",userPwd=#{userPwd},userRight=#{userRight}," +
-//            "telephoneNum=#{telephoneNum},address=#{address}," +
-//            "isIdentify=#{isIdentify},registerTime=#{registerTime}where userNum=#{userNum}")
-//    public void updateUser(User user);
+    @Update("update user set userName=#{userName}" +
+            ",telephoneNum=#{telephoneNum},address=#{address}," +
+            "where userNum=#{userNum}")
+    public void updateUser(User user);
 //
 //    @Delete("delete from user where userNum=#{userNum}")
 //    public void deleteUser(long userNum);

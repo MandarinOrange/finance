@@ -623,7 +623,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
 	border-color: #438EB9
 }
 .hover-deep-gray:hover, .bg-deep-gray{
-	color: #33333;
+	color:#6C7B8B;
     background: #DDDDDD!important;
 	border-color: #DEDEDE
 }

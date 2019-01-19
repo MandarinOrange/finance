@@ -29,7 +29,7 @@ public class startController extends HttpServlet {
             response.sendRedirect("checkPhoneNum2.html");
             return;
         }else if(num==0){
-            response.sendRedirect("checkPhoneNum.html");//认证的界面
+            response.sendRedirect("startRegister.html");//认证的界面
             return;
         }else{
             response.sendRedirect("Untitled-1.html");//页面出错的界面

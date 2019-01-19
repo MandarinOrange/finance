@@ -89,15 +89,15 @@
             <optional>true</optional>
         </dependency>
         <!-- servlet依赖. -->
-        <!-- <dependency>
-             <groupId>javax.servlet</groupId>
-             <artifactId>javax.servlet-api</artifactId>
-             <scope>provided</scope>
-         </dependency>-->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-        </dependency>
+       <!--<dependency>-->
+             <!--<groupId>javax.servlet</groupId>-->
+             <!--<artifactId>javax.servlet-api</artifactId>-->
+             <!--<scope>provided</scope>-->
+         <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>javax.servlet</groupId>-->
+            <!--<artifactId>jstl</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
@@ -106,8 +106,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>RELEASE</version>
+            <!--<version>RELEASE</version>-->
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session</artifactId>
+            <!--<version>RELEASE</version>-->
         </dependency>
     </dependencies>
 

@@ -1,8 +1,8 @@
 package com.example.demo.loanService.controller;
 
 
-import com.example.demo.Dao.userMapper;
 import com.example.demo.bean.User;
+import com.example.demo.Dao.userMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

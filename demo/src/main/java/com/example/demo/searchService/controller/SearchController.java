@@ -1,6 +1,5 @@
 package com.example.demo.searchService.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.example.demo.bean.Product;
 import com.example.demo.searchService.service.ProductSearchService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,18 +1,19 @@
-package com.example.demo.back.productService.service;
+package com.example.demo.come.back.productService.service;
 
-import com.example.demo.Dao.productHistroyMapper;
-import com.example.demo.Dao.productMapper;
-import com.example.demo.bean.Product;
-import com.example.demo.bean.ProductHistroy;
-import com.example.demo.util.nowTime;
+
+import com.example.demo.come.back.Dao.productHistroyMapper;
+import com.example.demo.come.back.Dao.productMapper;
+import com.example.demo.come.back.bean.Product;
+import com.example.demo.come.back.bean.ProductHistroy;
+import com.example.demo.come.back.util.nowTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class updatePro {
-    private com.example.demo.util.nowTime nowTime=new nowTime();
+    private com.example.demo.come.back.util.nowTime nowTime=new nowTime();
     @Autowired
-    private productMapper productMapper;
+    private com.example.demo.come.back.Dao.productMapper productMapper;
     @Autowired
     private productHistroyMapper proHisMapper;
 

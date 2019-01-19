@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.demo.bean.User;
 import com.example.demo.circulator.service.PayCirService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 

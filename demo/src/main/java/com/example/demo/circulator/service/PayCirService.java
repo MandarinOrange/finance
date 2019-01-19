@@ -1,20 +1,22 @@
 package com.example.demo.circulator.service;
 
-import com.example.demo.Dao.*;
-import com.example.demo.bean.*;
+import com.example.demo.bean.Audit;
+import com.example.demo.bean.Product;
+import com.example.demo.bean.Repayment;
+import com.example.demo.bean.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PayCirService {
     @Autowired
-    private auditMapper auditMapper;
+    private com.example.demo.Dao.auditMapper auditMapper;
     @Autowired
-    private paymentMapper paymentMapper;
+    private com.example.demo.Dao.paymentMapper paymentMapper;
     @Autowired
-    private transMapper transMapper;
+    private com.example.demo.Dao.transMapper transMapper;
     @Autowired
-    private productMapper productMapper;
+    private com.example.demo.Dao.productMapper productMapper;
 
 
     public int pay_EPR_AmountCirculator(long checkNum,long userNum,double pay) {

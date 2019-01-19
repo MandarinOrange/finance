@@ -1,7 +1,6 @@
-package com.example.demo.back.productService.controller;
+package com.example.demo.come.back.productService.controller;
 
-import com.example.demo.bean.Product;
-import com.example.demo.back.productService.service.addPro;
+import com.example.demo.come.back.bean.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,7 @@ import java.io.PrintWriter;
 @Controller
 public class addController extends HttpServlet {
     @Autowired
-    private addPro addPro;
+    private com.example.demo.come.back.productService.service.addPro addPro;
     @RequestMapping("/addproduct")
     public String doPost(HttpServletResponse response,HttpServletRequest request){
         Product product=new Product();

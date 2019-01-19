@@ -1,7 +1,7 @@
 package com.example.demo.loginService.API.impl;
 
-import com.example.demo.Dao.userMapper;
 import com.example.demo.bean.User;
+import com.example.demo.Dao.userMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

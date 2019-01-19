@@ -2,7 +2,6 @@ package com.example.demo.loginService;
 
 import com.example.demo.bean.User;
 
-import javax.jws.soap.SOAPBinding;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;

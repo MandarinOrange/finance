@@ -1,7 +1,7 @@
 package com.example.demo.register;
 
-import com.example.demo.Dao.userBankIdMapper;
 import com.example.demo.bean.UserBankIdentify;
+import com.example.demo.Dao.userBankIdMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

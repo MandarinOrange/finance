@@ -1,23 +1,18 @@
 package com.example.demo.order.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.example.demo.bean.Audit;
 import com.example.demo.bean.User;
 import com.example.demo.order.service.impl.orderServiceImpl;
-import com.example.demo.order.service.orderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 @RestController
 public class orderController{

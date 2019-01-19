@@ -2,9 +2,9 @@ package com.example.demo.register.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.Dao.userMapper;
 import com.example.demo.bean.User;
 import com.example.demo.bean.UserBankIdentify;
+import com.example.demo.Dao.userMapper;
 import com.example.demo.register.identify;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -34,7 +34,6 @@
 
         //展示数据
         function showData(data) {
-            //var str = "";//定义用于拼接的字符串
             var user = data;
             $("#userName").empty();
             $("#phoneNum").empty();
@@ -44,6 +43,23 @@
             $("#phoneNum").val(user.phoneNum);
             $("#address").val(user.address);
             $("#register").val(user.isIdentify);
+        }
+
+        function check1(){
+            $.ajax({
+                url: "/iy",
+                type: "get",
+                dataType:"json",
+                data:$("#daf").serialize(),
+                async: false,
+                success: function (data) {
+                    window.location.href("/personalCenter.html");
+                },
+                error: function (msg) {
+                    alert("提交失败" );
+                    window.location.href("/personalCenter.html")
+                }
+            });
         }
 	</script>
 		<style type="text/css">
@@ -62,42 +78,37 @@
 		<div class="margin20"> </div>
 		<div class="height100b">
 			<div class="title-name text-left">个人详细资料</div>
-			<div id="pluginContent">
-				<ul class="info_list clearfix padding15" id="VerifyTips">
-					<li class=" clearfix content_look mb15">
+				<div id="pluginContent">
+				<div class="info_list clearfix padding15" id="VerifyTips">
+					<form id="daf" method="get" action="/iy">
+					<div class=" clearfix content_look mb15">
 						<label class="label_name">昵称：</label>
-						<span class="info_data"><input type="text" name="userName" id="userName" data-name="userName" data-value="userName"/></span>
-					</li>
-					<li class=" clearfix content_look mb15">
+						<span class="info_data"><input type="text" name="userName" id="userName" /></span>
+					</div>
+					<div class=" clearfix content_look mb15">
 						<label class="label_name">电话号码：</label>
-						<span class="info_data"><input data-name="phoneNum" type="text" name="phoneNum" data-value="phoneNum"  id="phoneNum"/>
-							
+						<span class="info_data"><input type="text" name="phoneNum"   id="phoneNum"/>
+
 						</span>
-					</li>
-					<li class=" clearfix content_look mb15">
+					</div>
+					<div class=" clearfix content_look mb15">
 						<label class="label_name">联系地址：</label>
-						<span class="info_data"><input data-name="address" type="text" name="address"  id="address"/>
+						<span class="info_data"><input  type="text" name="address"  id="address"/>
 						</span>
-					</li>
-					<li class=" clearfix content_look mb15">
+					</div>
+					<div class=" clearfix content_look mb15">
 						<label class="label_name">是否认证</label>
 						<div class="info_data">
 							<input data-name="简介" name="register" type="text"  id="register" readonly="true"/>
 						</div>
-					</li>
-					<div>
-						<form action="/iy" method="post">
-							<div>
-							<!--<div class="buttonstyle">-->
-								<input type="submit" class="btn padding10 bg-deep-blue" id="modifybtn" value="确认修改"></input>
-							</div>
-						</form>
 					</div>
-				</ul>
+						   <button  type="button" onclick="check1()">点击前往修改</button>
+					</form>
+				</div>
 			</div>
 		</div>
-</body>
-</html>
-<script>
-	
+<script type="text/javascript">
+
 </script>
+	</body>
+</html>

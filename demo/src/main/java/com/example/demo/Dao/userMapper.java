@@ -38,9 +38,16 @@ public interface userMapper {
     public void updateIsId(long userNum);
 
     @Update("update user set userName=#{userName}" +
-            ",telephoneNum=#{telephoneNum},address=#{address}," +
             "where userNum=#{userNum}")
-    public void updateUser(User user);
+    public void updateUserName(long userNum,String userName);
+
+    @Update("update user set telephoneNum=#{telephoneNum}" +
+            "where userNum=#{userNum}")
+    public void updatePhoneNum(long userNum,String phoneNum);
+
+    @Update("update user set address=#{address}," +
+            "where userNum=#{userNum}")
+    public void updateAddress(long userNum,String address);
 //
 //    @Delete("delete from user where userNum=#{userNum}")
 //    public void deleteUser(long userNum);

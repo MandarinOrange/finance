@@ -2,8 +2,13 @@ package com.example.demo.userCenter.controller;
 
 import com.example.demo.Dao.userMapper;
 import com.example.demo.bean.User;
+import com.example.demo.loginService.API.impl.UserService;
+import com.example.demo.userCenter.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,8 +20,10 @@ import java.io.IOException;
 public class personInforController2 {
     @Autowired
     userMapper userMapper;
+    @Autowired
+    private UserInfoService userInfoService;
 
-    @RequestMapping("/iy")
+    @GetMapping("/iy")
     public String doPost(HttpServletRequest request, HttpServletResponse response)throws IOException {
         HttpSession session=request.getSession();
         User user=new User();
@@ -24,7 +31,7 @@ public class personInforController2 {
         user.setUserName(request.getParameter("userName"));
         user.setTelephoneNum(request.getParameter("phoneNum"));
         user.setAddress(request.getParameter("address"));
-        userMapper.updateUser(user);
-        return "index.html";
+        userInfoService.updateUser(user);
+        return "";
     }
 }

@@ -14,4 +14,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     public User selectUserByuserName(String userName) {
         return userMapper.selectUserByuserName(userName);
     }
+
+    @Override
+    public void updateUser(User user){
+        userMapper.updateUserName(user.getUserNum(),user.getUserName());
+        userMapper.updatePhoneNum(user.getUserNum(),user.getTelephoneNum());
+        userMapper.updateAddress(user.getUserNum(),user.getAddress());
+    }
 }

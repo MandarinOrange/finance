@@ -3,13 +3,10 @@ package com.example.demo.userCenter.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.Dao.userMapper;
 import com.example.demo.bean.User;
-import com.example.demo.loginService.API.impl.UserService;
 import com.example.demo.userCenter.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

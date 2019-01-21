@@ -1,11 +1,11 @@
 package com.example.demo.userCenter.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.demo.Dao.userMapper;
 import com.example.demo.bean.User;
 import com.example.demo.loginService.API.impl.UserService;
 import com.example.demo.userCenter.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +24,7 @@ public class personInforController2 {
     private UserInfoService userInfoService;
 
     @GetMapping("/iy")
-    public String doPost(HttpServletRequest request, HttpServletResponse response)throws IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response)throws IOException {
         HttpSession session=request.getSession();
         User user=new User();
         user=(User)session.getAttribute("user");
@@ -32,6 +32,7 @@ public class personInforController2 {
         user.setTelephoneNum(request.getParameter("phoneNum"));
         user.setAddress(request.getParameter("address"));
         userInfoService.updateUser(user);
-        return "";
+        String data = JSONObject.toJSONString(user);
+        response.getWriter().print(data);
     }
 }

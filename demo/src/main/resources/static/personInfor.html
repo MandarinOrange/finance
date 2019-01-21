@@ -25,6 +25,7 @@
                     // console.log(data);//查看从后台传值内容
                     /*这个方法里是ajax发送请求成功之后执行的代码*/
                     showData(data);//我们仅做数据展示
+					//alert("个人中心")
                 },
                 error: function(msg){
                     alert("ajax连接异常："+msg);
@@ -48,11 +49,12 @@
         function check1(){
             $.ajax({
                 url: "/iy",
-                type: "get",
+                type: "post",
                 dataType:"json",
                 data:$("#daf").serialize(),
                 async: false,
                 success: function (data) {
+                    alert("修改成功")
                     window.location.href("/personalCenter.html");
                 },
                 error: function (msg) {

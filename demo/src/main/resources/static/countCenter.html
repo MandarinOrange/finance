@@ -42,6 +42,7 @@
                     data:$("#form2").serialize(),
                     async: false,
                     success: function (data) {
+                        $("#sum").empty();
                         var str = "<span class=\"aui-center-title\">应还款总金额为："+data.value+"元</span>";
                         $("#sum").append(str);
                         //console.log(data);

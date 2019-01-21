@@ -46,6 +46,6 @@ public class bankCardController extends HttpServlet {
         }
         String json = JSONObject.toJSONString(userBankIdentify);
         response.getWriter().print(json);
-        response.sendRedirect("index.html");//返回首页
+        //response.sendRedirect("index.html");//返回首页
     }
 }

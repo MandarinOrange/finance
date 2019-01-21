@@ -16,8 +16,8 @@ public interface userBankIdMapper {
     @Select("select * from userBankIdentify")
     public List<UserBankIdentify> select();
 
-    @Insert("insert into userBankIdentify(userNum, bankAccount,trueName," +
-            "idNum,telephoneNum, bankAccountIdentify)" +
+    @Insert("insert into userBankIdentify(userNum, bankAccount,bankAccountIdentify,trueName," +
+            "idNum,telephoneNum )" +
             " values (#{userNum},#{bankAccount},#{trueName}," +
             "#{idNum},#{telephoneNum},#{bankAccountIdentify})")
     public void addUserBankIdentify(UserBankIdentify userBankIdentifys);

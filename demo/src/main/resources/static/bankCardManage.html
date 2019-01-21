@@ -8,6 +8,8 @@
         <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
         <meta content="telephone=no" name="format-detection"/>
         <link type="text/css" rel="stylesheet" href="css/bankCardManage.css" >
+        <link href="css/index.css" rel="stylesheet" type="text/css"/>
+        <link href="css/show.css" rel="stylesheet" type="text/css"/>
         <script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" ></script>
         <script type="text/javascript">
             $(function(){
@@ -46,7 +48,12 @@
             }
 
         </script>
-    </head>
+        <style type="text/css">
+<!--
+.STYLE1 {color: #FFFFFF}
+-->
+        </style>
+</head>
     <body>
 
        
@@ -54,47 +61,19 @@
         <section class="aui-flexView">
             <header class="aui-navBar">
                 <a href="personalCenter.html" class="aui-navBar-item">
-                    <i class="icon icon-return"></i>
-                </a>
+                    <i class="icon icon-return"></i>                </a>
                 <div class="aui-center">
-                    <span class="aui-center-title">银行卡管理</span>
-                </div>
+                    <div align="right"><span class="aui-center-title">银行卡管理</span></div>
+              </div>
             </header>
-            <section class="aui-scrollView">
-                <div class="aui-box-item" id="content">
-                    <!--<div class="aui-card-list">-->
-                        <!--<div class="aui-card-list-bg">-->
-                            <!--<h2>银行卡1</h2>-->
-                            <!--<a href="javascript:;" class="aui-card-list-link">-->
-                                <!--<i class="icon icon-arrow"></i>详情-->
-                            <!--</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-					<!--<div class="aui-card-list">-->
-                        <!--<div class="aui-card-list-bg">-->
-                            <!--<h2>银行卡1</h2>-->
-                            <!--<a href="javascript:;" class="aui-card-list-link">-->
-                                <!--<i class="icon icon-arrow"></i>详情-->
-                            <!--</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="aui-card-list aui-card-blue">-->
-                        <!--<div class="aui-card-list-bg aui-card-list-loan">-->
-                            <!--<h2>银行卡2</h2>-->
-                            <!--<a href="javascript:;" class="aui-card-list-link">-->
-                                <!--<i class="icon icon-arrow"></i>详情-->
-                            <!--</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-					<!--<div class="aui-card-list aui-card-blue">-->
-                        <!--<div class="aui-card-list-bg aui-card-list-loan">-->
-                            <!--<h2>银行卡2</h2>-->
-                            <!--<a href="javascript:;" class="aui-card-list-link">-->
-                                <!--<i class="icon icon-arrow"></i>详情-->
-                            <!--</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
+
+            <form name="form1" method="post" action="/start">
+              <div align="right">
+                <input type="submit" name="Submit" value="添加银行卡">
                 </div>
+            </form>
+            <section class="aui-scrollView">
+                <div class="aui-box-item" id="content">                </div>
             </section>
         </section>
 

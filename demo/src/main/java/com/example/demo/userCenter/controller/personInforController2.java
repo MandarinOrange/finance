@@ -29,7 +29,6 @@ public class personInforController2 {
         user.setTelephoneNum(request.getParameter("phoneNum"));
         user.setAddress(request.getParameter("address"));
         userInfoService.updateUser(user);
-        String data = JSONObject.toJSONString(user);
-        response.getWriter().print(data);
+        response.sendRedirect("personalCenter.html");
     }
 }

@@ -11,7 +11,8 @@ import java.io.IOException;
 @WebFilter(filterName = "sessionFilter",urlPatterns = {"/*"})
 public class SessionFilter implements Filter {
     String NO_LOGIN="/Login.html";
-    String[] includeUrls=new String[]{"/Login.html","/Register.html","/login","/register","/userExisted.html","/userPwdError.html","/userNotExist.html","/userPwdNotSame.html"};
+    String[] includeUrls=new String[]{"/Login.html","/Register.html","/login","/register","/userExisted.html","/userPwdError.html","/userNotExist.html","/userPwdNotSame.html",
+            "/wechat","/access","/wechat/access"};
 //    @Override
 //    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws ServletException,IOException{
 //        HttpServletRequest request=(HttpServletRequest) servletRequest;

@@ -2,6 +2,8 @@ package com.example.demo.weixin.util.menu;
 
 import com.example.demo.weixin.bean.menu.*;
 
+import static com.example.demo.weixin.util.WechatConstants.CODE_URL;
+
 
 /**
  * @Description: 菜单管理器类
@@ -23,7 +25,7 @@ public class WechatMenuManagerUtil {
         ViewButton firstViewButton = new ViewButton();
         firstViewButton.setName("业务介绍");
         firstViewButton.setType("view");
-        firstViewButton.setUrl("http://loan.ngrok.xiaomiqiu.cn/personalCenter.html");
+        firstViewButton.setUrl(CODE_URL);
 
         ViewButton secondViewButton = new ViewButton();
         secondViewButton.setName("我要贷款");
@@ -34,7 +36,7 @@ public class WechatMenuManagerUtil {
 
         ViewButton viewButton1 = new ViewButton();
         viewButton1.setType("view");
-        viewButton1.setName("个人中心");
+        viewButton1.setName("中心");
         viewButton1.setUrl("http://loan.ngrok.xiaomiqiu.cn/personalCenter.html");
 
         ViewButton viewButton2 = new ViewButton();

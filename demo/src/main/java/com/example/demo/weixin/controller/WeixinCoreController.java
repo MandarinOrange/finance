@@ -1,8 +1,11 @@
 package com.example.demo.weixin.controller;
 
+import com.example.demo.weixin.bean.UserInfo;
+import com.example.demo.weixin.bean.authorize.CodeToken;
 import com.example.demo.weixin.service.DataProcess;
 import com.example.demo.weixin.service.WeixinCoreService;
-import com.example.demo.weixin.util.WeixinSignUtil;
+import com.example.demo.weixin.util.connection.WechatCommonUtil;
+import com.example.demo.weixin.util.connection.WeixinSignUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static com.example.demo.weixin.util.WechatConstants.appid;
+import static com.example.demo.weixin.util.WechatConstants.appsecret;
+
 @RestController
 @RequestMapping(value = "/wechat")
 public class WeixinCoreController {
@@ -22,6 +28,8 @@ public class WeixinCoreController {
 
     @Autowired
     private WeixinSignUtil weixinSignUtil;
+    @Autowired
+    private WechatCommonUtil wechatCommonUtil;
     @Autowired
     private DataProcess dataProcess;
     @Autowired
@@ -67,6 +75,35 @@ public class WeixinCoreController {
             logger.info("----------返回微信消息处理结果-----------------------:"+respXml);
             return respXml;
         }
+    }
+
+    @RequestMapping(value = "/auth",method = RequestMethod.GET)
+    public UserInfo auth(HttpServletRequest request,HttpServletResponse response)throws Exception{
+        logger.info("--------进入auth的方法--------");
+
+        String code = request.getParameter("code");
+        logger.info("code={}",code);
+
+        CodeToken codeToken = wechatCommonUtil.getCodeToken(appid,appsecret,code);
+        UserInfo userInfo = new UserInfo();
+        if(codeToken!=null){
+            try{
+                String openid = codeToken.getOpenid();
+                String refresh_token = codeToken.getRefresh_token();
+                String access_token = codeToken.getAccess_token();
+                //判断access_token是否过期
+                if(!wechatCommonUtil.isTokenValid(access_token,appid)){
+                    wechatCommonUtil.refreshToken(appid,refresh_token);
+                }
+                logger.info("开始获取用户信息");
+                userInfo = wechatCommonUtil.getUserInfo(access_token,openid);
+            }catch (Exception e){
+                userInfo = null;
+            }
+        }else{
+            logger.info("用户授权失败");
+        }
+        return userInfo;
     }
 
 }

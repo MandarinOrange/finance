@@ -2,7 +2,7 @@
  * 对于https请求，我们需要一个证书信任管理器， 这个管理器类需要自己定义，需要实现X509TrustManager接口代码
  */
 
-package com.example.demo.weixin.service.https;
+package com.example.demo.weixin.util.https;
 
 import javax.net.ssl.X509TrustManager;
 import java.security.cert.CertificateEncodingException;

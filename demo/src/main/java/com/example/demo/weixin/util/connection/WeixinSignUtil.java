@@ -2,7 +2,7 @@
    * 检测signature，标识该请求来自于微信
  */
 
-package com.example.demo.weixin.util;
+package com.example.demo.weixin.util.connection;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

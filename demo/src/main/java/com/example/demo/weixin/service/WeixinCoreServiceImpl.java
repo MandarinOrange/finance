@@ -144,6 +144,7 @@ public class WeixinCoreServiceImpl implements WeixinCoreService {
                 }
                 // 自定义菜单（(自定义菜单URl视图)）
                 else if (eventType.equals(weixinMessageUtil.EVENT_TYPE_VIEW)) {
+                    respMessage = "自定义菜单uri视图";
                     System.out.println("处理自定义菜单URI视图");
                 }
 

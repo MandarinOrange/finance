@@ -2,6 +2,10 @@ package com.example.demo.weixin.util.menu;
 
 
 import com.example.demo.weixin.bean.menu.Menu;
+import com.example.demo.weixin.util.connection.WechatCommonUtil;
+
+import static com.example.demo.weixin.util.WechatConstants.appid;
+import static com.example.demo.weixin.util.WechatConstants.appsecret;
 
 /**
  * @Description: 创建自定义菜单主方法
@@ -13,8 +17,7 @@ public class WechatCreatDefaultMenu {
         WechatCommonUtil wechatCommonUtil = new WechatCommonUtil();
         WechatMenuUtil wechatMenuUtil = new WechatMenuUtil();
         WechatMenuManagerUtil wechatMenuManagerUtil = new WechatMenuManagerUtil();
-        String appid = "wx473235c6be5c945a";
-        String appsecret = "69a0c7bcccf20833fd549ae9a530d299";
+
 
         //获取access_token
         String accessToken = wechatCommonUtil.getAccessToken(appid, appsecret).getAccess_token();

@@ -1,7 +1,8 @@
 package com.example.demo.weixin.util.menu;
 
 import com.example.demo.weixin.bean.menu.Menu;
-import com.example.demo.weixin.service.https.HttpRequestUtil;
+import com.example.demo.weixin.util.WechatConstants;
+import com.example.demo.weixin.util.https.HttpRequestUtil;
 import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
